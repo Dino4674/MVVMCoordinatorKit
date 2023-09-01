@@ -11,7 +11,7 @@ open class Coordinator: NSObject, BaseCoordinatorType {
 
     // MARK: Init/Deinit
 
-    deinit { print("💀 Coordinator deinit -> \(self)") }
+    deinit { print("💀 Coordinator deinit: \(self)") }
 
     public init(router: RouterType) {
         self.router = router

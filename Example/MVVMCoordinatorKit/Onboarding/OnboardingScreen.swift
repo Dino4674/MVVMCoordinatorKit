@@ -15,13 +15,13 @@ class OnboardingScreen: ModeledScreen<OnboardingScreenModel> {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var authorizeButton: UIButton!
 
-    // MARK: Screen Override
+    // MARK: Screen
 
     override func setupUI() {
 
     }
 
-    // MARK: ModeledScreen Override
+    // MARK: ModeledScreen
 
     override func bindScreenModel() {
         screenModel.output.screenTitle.receive(on: DispatchQueue.main)

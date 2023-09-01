@@ -9,13 +9,7 @@ import UIKit
 
 open class Screen: UIViewController {
 
-    // MARK: Deinit
-
-    deinit {
-        print("💀 Screen deinit -> \(self)")
-    }
-
-    // MARK: UIViewController
+    deinit { print("💀 Screen deinit: \(self)") }
 
     public override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,20 +19,4 @@ open class Screen: UIViewController {
     // MARK: Subclass
 
     open func setupUI() {}
-}
-
-// MARK: - Factory
-
-extension Screen {
-    static func create() -> Self {
-        return Self.loadFromNib()
-    }
-}
-
-// MARK: - UIViewController + Nib
-
-private extension UIViewController {
-    static func loadFromNib() -> Self {
-        return self.init(nibName: String(describing: self), bundle: nil)
-    }
 }

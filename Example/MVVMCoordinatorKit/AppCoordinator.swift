@@ -13,7 +13,7 @@ class AppCoordinator: CoordinatorWithOutput<Void> {
 
     override func start() {
         // check if user already logged in
-        let userLoggedIn = true
+        let userLoggedIn = false
         if userLoggedIn {
             setHomeCoordinatorAsRoot(animated: false)
         } else {

@@ -8,8 +8,6 @@
 import MVVMCoordinatorKit
 import Combine
 
-// MARK: - ScreenModelType
-
 extension OnboardingScreenModel: ScreenModelType {
     struct Input {
         let authorize: PassthroughSubject<Void, Never>
@@ -21,15 +19,11 @@ extension OnboardingScreenModel: ScreenModelType {
     }
 }
 
-// MARK: - ScreenModelResultType
-
 extension OnboardingScreenModel: ScreenModelResultType {
     struct ResultOutput {
         let authorize: AnyPublisher<Void, Never>
     }
 }
-
-// MARK: - OnboardingScreenModel
 
 class OnboardingScreenModel: ScreenModel {
 

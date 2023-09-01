@@ -17,7 +17,7 @@ public protocol ScreenModelResultType: AnyObject {
 }
 
 open class ScreenModel {
-    deinit { print("💀 BaseScreenModel deinit -> \(self)") }
-
+    deinit { print("💀 ScreenModel deinit: \(self)") }
+    
     public init() {}
 }

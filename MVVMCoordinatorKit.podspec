@@ -9,7 +9,7 @@
 Pod::Spec.new do |s|
   s.name             = 'MVVMCoordinatorKit'
   s.version          = '0.1.0'
-  s.summary          = 'A short description of MVVMCoordinatorKit.'
+  s.summary          = 'MVVM+Coordinator Kit for faster screens creation and navigation'
 
 # This description is used to generate tags and improve search results.
 #   * Think: What does it do? Why did you write it? What is the focus?
@@ -21,11 +21,11 @@ Pod::Spec.new do |s|
 TODO: Add long description of the pod here.
                        DESC
 
-  s.homepage         = 'https://github.com/Dino Bartosak/MVVMCoordinatorKit'
+  s.homepage         = 'https://github.com/Dino4674/MVVMCoordinatorKit'
   # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
-  s.author           = { 'Dino Bartosak' => 'dino.bartosak@gmail.com' }
-  s.source           = { :git => 'https://github.com/Dino Bartosak/MVVMCoordinatorKit.git', :tag => s.version.to_s }
+  s.author           = { 'Dino Bartošak' => 'dino.bartosak@gmail.com' }
+  s.source           = { :git => 'https://github.com/Dino4674/MVVMCoordinatorKit.git', :tag => s.version.to_s }
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
   s.ios.deployment_target = '10.0'

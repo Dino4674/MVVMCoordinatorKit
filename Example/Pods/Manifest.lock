@@ -1,0 +1,16 @@
+PODS:
+  - MVVMCoordinatorKit (0.1.0)
+
+DEPENDENCIES:
+  - MVVMCoordinatorKit (from `../`)
+
+EXTERNAL SOURCES:
+  MVVMCoordinatorKit:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  MVVMCoordinatorKit: e78537b13dc56929d06ffde26cc509ef2bb78145
+
+PODFILE CHECKSUM: 2a9e747a97226f514813abc9250df30ecd00fb44
+
+COCOAPODS: 1.11.3

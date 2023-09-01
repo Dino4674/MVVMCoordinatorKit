@@ -1,0 +1,22 @@
+{
+  "name": "MVVMCoordinatorKit",
+  "version": "0.1.0",
+  "summary": "A short description of MVVMCoordinatorKit.",
+  "description": "TODO: Add long description of the pod here.",
+  "homepage": "https://github.com/Dino Bartosak/MVVMCoordinatorKit",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "Dino Bartosak": "dino.bartosak@gmail.com"
+  },
+  "source": {
+    "git": "https://github.com/Dino Bartosak/MVVMCoordinatorKit.git",
+    "tag": "0.1.0"
+  },
+  "platforms": {
+    "ios": "10.0"
+  },
+  "source_files": "MVVMCoordinatorKit/Classes/**/*"
+}

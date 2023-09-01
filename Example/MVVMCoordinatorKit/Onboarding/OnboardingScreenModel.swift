@@ -31,7 +31,7 @@ extension OnboardingScreenModel: BaseScreenModelResultType {
 
 // MARK: - OnboardingScreenModel
 
-class OnboardingScreenModel: BaseScreenModel {
+class OnboardingScreenModel: ScreenModel {
 
     // MARK: BaseScreenModelType
 

@@ -31,7 +31,7 @@ extension TodayScreenModel: BaseScreenModelResultType {
 
 // MARK: - TodayScreenModel
 
-class TodayScreenModel: BaseScreenModel {
+class TodayScreenModel: ScreenModel {
 
     // MARK: BaseScreenModelType
 

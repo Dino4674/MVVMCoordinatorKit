@@ -16,7 +16,7 @@ class CreateAccountScreen: ModeledScreen<CreateAccountScreenModel> {
     @IBOutlet weak var continueButton: UIButton!
     @IBOutlet weak var goBackButton: UIButton!
 
-    // MARK: BaseScreen Override
+    // MARK: Screen Override
 
     override func setupUI() {
 

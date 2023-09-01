@@ -8,7 +8,7 @@
 import UIKit
 import Combine
 
-open class ModeledScreen<ScreenModelType>: BaseScreen {
+open class ModeledScreen<T>: Screen {
 
     // MARK: Dispose Bag
 
@@ -23,7 +23,7 @@ open class ModeledScreen<ScreenModelType>: BaseScreen {
 
     // MARK: ScreenModel Generic Property
 
-    public private(set) var screenModel: ScreenModelType!
+    public private(set) var screenModel: T!
 
     // MARK: Subclass
     
@@ -33,7 +33,7 @@ open class ModeledScreen<ScreenModelType>: BaseScreen {
 // MARK: - Factory
 
 extension ModeledScreen {
-    public static func create(screenModel: ScreenModelType) -> Self {
+    public static func create(screenModel: T) -> Self {
         let vc = Self.create()
         vc.screenModel = screenModel
         return vc

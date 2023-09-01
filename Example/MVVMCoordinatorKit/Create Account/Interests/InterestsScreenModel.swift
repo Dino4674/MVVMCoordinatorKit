@@ -34,7 +34,7 @@ extension InterestsScreenModel: BaseScreenModelResultType {
 
 // MARK: - InterestsScreenModel
 
-class InterestsScreenModel: BaseScreenModel {
+class InterestsScreenModel: ScreenModel {
 
     // MARK: BaseScreenModelType
 

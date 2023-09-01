@@ -15,7 +15,7 @@ class TodayScreen: ModeledScreen<TodayScreenModel> {
     @IBOutlet weak var logoutButton: UIButton!
     @IBOutlet weak var label: UILabel!
 
-    // MARK: BaseScreen Override
+    // MARK: Screen Override
 
     override func setupUI() {
         view.backgroundColor = .lightGray

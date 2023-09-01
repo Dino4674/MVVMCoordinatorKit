@@ -30,7 +30,7 @@ extension AuthorizeScreenModel: BaseScreenModelResultType {
 
 // MARK: - AuthorizeScreenModel
 
-class AuthorizeScreenModel: BaseScreenModel {
+class AuthorizeScreenModel: ScreenModel {
 
     // MARK: BaseScreenModelType
 

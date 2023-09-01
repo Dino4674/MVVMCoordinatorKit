@@ -1,5 +1,5 @@
 //
-//  BaseScreenModel.swift
+//  ScreenModel.swift
 //  CoordinatorExample
 //
 //  Created by Dino Bartosak on 11.07.2023.
@@ -16,7 +16,7 @@ public protocol BaseScreenModelResultType: AnyObject {
     associatedtype ResultOutput /// output for 'outside world' (e.g. coordinator)
 }
 
-open class BaseScreenModel {
+open class ScreenModel {
 
     // MARK: Deinit
 

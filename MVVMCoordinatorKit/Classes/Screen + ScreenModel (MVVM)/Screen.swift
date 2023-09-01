@@ -1,5 +1,5 @@
 //
-//  BaseScreen.swift
+//  Screen.swift
 //  CoordinatorExample
 //
 //  Created by Dino Bartosak on 11.07.2023.
@@ -7,12 +7,12 @@
 
 import UIKit
 
-open class BaseScreen: UIViewController {
+open class Screen: UIViewController {
 
     // MARK: Deinit
 
     deinit {
-        print("💀 BaseScreen deinit -> \(self)")
+        print("💀 Screen deinit -> \(self)")
     }
 
     // MARK: UIViewController
@@ -29,7 +29,7 @@ open class BaseScreen: UIViewController {
 
 // MARK: - Factory
 
-extension BaseScreen {
+extension Screen {
     static func create() -> Self {
         return Self.loadFromNib()
     }

@@ -14,7 +14,7 @@ class AuthorizeScreen: ModeledScreen<AuthorizeScreenModel> {
 
     @IBOutlet weak var label: UILabel!
 
-    // MARK: BaseScreen Override
+    // MARK: Screen Override
 
     override func setupUI() {
 

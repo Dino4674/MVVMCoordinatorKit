@@ -34,7 +34,7 @@ extension SetupProfileScreenModel: BaseScreenModelResultType {
 
 // MARK: - CreateAccountScreenModel
 
-class SetupProfileScreenModel: BaseScreenModel {
+class SetupProfileScreenModel: ScreenModel {
 
     // MARK: BaseScreenModelType
 

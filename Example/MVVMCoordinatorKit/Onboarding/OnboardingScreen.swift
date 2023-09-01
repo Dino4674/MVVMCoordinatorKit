@@ -15,7 +15,7 @@ class OnboardingScreen: ModeledScreen<OnboardingScreenModel> {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var authorizeButton: UIButton!
 
-    // MARK: BaseScreen Override
+    // MARK: Screen Override
 
     override func setupUI() {
 

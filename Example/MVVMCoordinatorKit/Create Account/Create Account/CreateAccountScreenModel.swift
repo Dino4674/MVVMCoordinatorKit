@@ -34,7 +34,7 @@ extension CreateAccountScreenModel: BaseScreenModelResultType {
 
 // MARK: - CreateAccountScreenModel
 
-class CreateAccountScreenModel: BaseScreenModel {
+class CreateAccountScreenModel: ScreenModel {
 
     // MARK: BaseScreenModelType
 

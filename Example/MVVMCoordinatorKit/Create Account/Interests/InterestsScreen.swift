@@ -16,7 +16,7 @@ class InterestsScreen: ModeledScreen<InterestsScreenModel> {
     @IBOutlet weak var continueButton: UIButton!
     @IBOutlet weak var label: UILabel!
 
-    // MARK: BaseScreen Override
+    // MARK: Screen Override
 
     override func setupUI() {
 

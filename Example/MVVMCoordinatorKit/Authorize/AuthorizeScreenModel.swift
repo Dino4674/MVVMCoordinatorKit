@@ -8,9 +8,9 @@
 import MVVMCoordinatorKit
 import Combine
 
-// MARK: - BaseScreenModelType
+// MARK: - ScreenModelType
 
-extension AuthorizeScreenModel: BaseScreenModelType {
+extension AuthorizeScreenModel: ScreenModelType {
     struct Input {
         let screenInputExample: PassthroughSubject<Void, Never>
     }
@@ -20,9 +20,9 @@ extension AuthorizeScreenModel: BaseScreenModelType {
     }
 }
 
-// MARK: - BaseScreenModelResultType
+// MARK: - ScreenModelResultType
 
-extension AuthorizeScreenModel: BaseScreenModelResultType {
+extension AuthorizeScreenModel: ScreenModelResultType {
     struct ResultOutput {
         let resultOutputExample: AnyPublisher<Void, Never>
     }
@@ -32,12 +32,12 @@ extension AuthorizeScreenModel: BaseScreenModelResultType {
 
 class AuthorizeScreenModel: ScreenModel {
 
-    // MARK: BaseScreenModelType
+    // MARK: ScreenModelType
 
     let input: Input
     let output: Output
 
-    // MARK: BaseScreenModelResultType
+    // MARK: ScreenModelResultType
 
     let resultOutput: ResultOutput
 

@@ -8,9 +8,9 @@
 import MVVMCoordinatorKit
 import Combine
 
-// MARK: - BaseScreenModelType
+// MARK: - ScreenModelType
 
-extension InterestsScreenModel: BaseScreenModelType {
+extension InterestsScreenModel: ScreenModelType {
     struct Input {
         let next: PassthroughSubject<Void, Never>
         let back: PassthroughSubject<Void, Never>
@@ -23,9 +23,9 @@ extension InterestsScreenModel: BaseScreenModelType {
     }
 }
 
-// MARK: - BaseScreenModelResultType
+// MARK: - ScreenModelResultType
 
-extension InterestsScreenModel: BaseScreenModelResultType {
+extension InterestsScreenModel: ScreenModelResultType {
     struct ResultOutput {
         let next: AnyPublisher<Void, Never>
         let back: AnyPublisher<Void, Never>
@@ -36,12 +36,12 @@ extension InterestsScreenModel: BaseScreenModelResultType {
 
 class InterestsScreenModel: ScreenModel {
 
-    // MARK: BaseScreenModelType
+    // MARK: ScreenModelType
 
     let input: Input
     let output: Output
 
-    // MARK: BaseScreenModelResultType
+    // MARK: ScreenModelResultType
 
     let resultOutput: ResultOutput
 

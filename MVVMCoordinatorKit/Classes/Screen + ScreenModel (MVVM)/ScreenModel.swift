@@ -7,22 +7,17 @@
 
 import Foundation
 
-public protocol BaseScreenModelType: AnyObject {
+public protocol ScreenModelType: AnyObject {
     associatedtype Input /// input from view
     associatedtype Output /// output for view
 }
 
-public protocol BaseScreenModelResultType: AnyObject {
+public protocol ScreenModelResultType: AnyObject {
     associatedtype ResultOutput /// output for 'outside world' (e.g. coordinator)
 }
 
 open class ScreenModel {
-
-    // MARK: Deinit
-
-    deinit {
-        print("💀 BaseScreenModel deinit -> \(self)")
-    }
+    deinit { print("💀 BaseScreenModel deinit -> \(self)") }
 
     public init() {}
 }

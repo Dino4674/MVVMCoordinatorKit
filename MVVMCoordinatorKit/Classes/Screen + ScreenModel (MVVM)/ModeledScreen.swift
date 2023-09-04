@@ -1,6 +1,6 @@
 //
 //  ModeledScreen.swift
-//  CoordinatorExample
+//  MVVMCoordinatorKit
 //
 //  Created by Dino Bartosak on 11.07.2023.
 //

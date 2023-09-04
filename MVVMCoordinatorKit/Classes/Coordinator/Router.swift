@@ -1,6 +1,6 @@
 //
 //  Router.swift
-//  CoordinatorExample
+//  MVVMCoordinatorKit
 //
 //  Created by Dino Bartosak on 14.07.2023.
 //
@@ -20,7 +20,7 @@ public class Router: NSObject, RouterType, UINavigationControllerDelegate {
         self.navigationController.delegate = self
     }
 
-    // MARK: Public
+    // MARK: RouterType
 
     public var rootViewController: UIViewController? {
         return navigationController.viewControllers.first
@@ -76,12 +76,13 @@ public class Router: NSObject, RouterType, UINavigationControllerDelegate {
         }
     }
 
+    // MARK: Private
+
     private func runCompletion(for controller: UIViewController) {
         guard let completion = completions[controller] else { return }
         completion()
         completions.removeValue(forKey: controller)
     }
-
 
     // MARK: Presentable
 
@@ -91,7 +92,7 @@ public class Router: NSObject, RouterType, UINavigationControllerDelegate {
 
     // MARK: UINavigationControllerDelegate
 
-    func navigationController(_ navigationController: UINavigationController, didShow viewController: UIViewController, animated: Bool) {
+    private func navigationController(_ navigationController: UINavigationController, didShow viewController: UIViewController, animated: Bool) {
         // Ensure the view controller is popping
         guard let poppedViewController = navigationController.transitionCoordinator?.viewController(forKey: .from),
               !navigationController.viewControllers.contains(poppedViewController) else {

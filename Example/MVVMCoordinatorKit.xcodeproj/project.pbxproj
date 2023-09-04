@@ -206,9 +206,9 @@
 		70B1A3D12AA0E6B100F108A3 /* Create Account */ = {
 			isa = PBXGroup;
 			children = (
+				70B1A3DA2AA0E6B100F108A3 /* CreateAccountCoordinator.swift */,
 				70B1A3D22AA0E6B100F108A3 /* Create Account */,
 				70B1A3D62AA0E6B100F108A3 /* Setup Profile */,
-				70B1A3DA2AA0E6B100F108A3 /* CreateAccountCoordinator.swift */,
 				70B1A3DB2AA0E6B100F108A3 /* Interests */,
 			);
 			path = "Create Account";
@@ -257,8 +257,8 @@
 		70B1A3E42AA0E6B200F108A3 /* Onboarding */ = {
 			isa = PBXGroup;
 			children = (
-				70B1A3E52AA0E6B200F108A3 /* OnboardingScreen.xib */,
 				70B1A3E62AA0E6B200F108A3 /* OnboardingCoordinator.swift */,
+				70B1A3E52AA0E6B200F108A3 /* OnboardingScreen.xib */,
 				70B1A3E72AA0E6B200F108A3 /* OnboardingScreen.swift */,
 				70B1A3E82AA0E6B200F108A3 /* OnboardingScreenModel.swift */,
 			);

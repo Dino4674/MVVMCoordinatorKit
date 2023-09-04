@@ -1,6 +1,6 @@
 //
 //  UIViewController+Presentable.swift
-//  CoordinatorExample
+//  MVVMCoordinatorKit
 //
 //  Created by Dino Bartosak on 29.08.2023.
 //

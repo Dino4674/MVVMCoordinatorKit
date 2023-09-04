@@ -1,13 +1,13 @@
 //
 //  Coordinator.swift
-//  CoordinatorExample
+//  MVVMCoordinatorKit
 //
 //  Created by Dino Bartosak on 07.07.2023.
 //
 
 import UIKit
 
-open class Coordinator: NSObject, BaseCoordinatorType {
+open class Coordinator: NSObject, CoordinatorType {
 
     // MARK: Init/Deinit
 
@@ -17,7 +17,7 @@ open class Coordinator: NSObject, BaseCoordinatorType {
         self.router = router
     }
 
-    // MARK: BaseCoordinatorType
+    // MARK: CoordinatorType
 
     public let router: RouterType
 

@@ -1,6 +1,6 @@
 //
-//  BaseCoordinatorType.swift
-//  CoordinatorExample
+//  CoordinatorProtocols.swift
+//  MVVMCoordinatorKit
 //
 //  Created by Dino Bartosak on 29.08.2023.
 //
@@ -22,7 +22,7 @@ public protocol RouterType: AnyObject, Presentable {
     func popToRootModule(animated: Bool)
 }
 
-public protocol BaseCoordinatorType: AnyObject, Presentable {
+public protocol CoordinatorType: AnyObject, Presentable {
     func start()
     var router: RouterType { get }
 }

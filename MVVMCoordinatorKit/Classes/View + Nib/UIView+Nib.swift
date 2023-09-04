@@ -1,6 +1,6 @@
 //
 //  UIView+Nib.swift
-//  CoordinatorExample
+//  MVVMCoordinatorKit
 //
 //  Created by Dino Bartosak on 07.07.2023.
 //

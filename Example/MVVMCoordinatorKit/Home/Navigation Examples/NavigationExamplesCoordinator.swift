@@ -13,7 +13,7 @@ enum NavigationExamplesCoordinatorResult {
 
 class NavigationExamplesCoordinator: CoordinatorWithOutput<NavigationExamplesCoordinatorResult> {
 
-    private var firstNavigationExamplesScreen: NavigationExamplesScreen!
+    private var rootScreen: NavigationExamplesScreen!
 
     let isRoot: Bool
     let popDismissButtonVisible: Bool
@@ -21,25 +21,24 @@ class NavigationExamplesCoordinator: CoordinatorWithOutput<NavigationExamplesCoo
         self.isRoot = isRoot
         self.popDismissButtonVisible = popDismissButtonVisible
         super.init(router: router)
-        self.firstNavigationExamplesScreen = createInitialNavigationExamplesScreen(removeType: isRoot ? .dismiss : .pop,
-                                                                                   popDismissButtonVisible: popDismissButtonVisible)
+        self.rootScreen = createRootScreen()
     }
 
     override func start() {
         if isRoot {
-            router.setRootModule(firstNavigationExamplesScreen, animated: false, completion: nil)
+            router.setRootModule(rootScreen, animated: false, completion: nil)
         }
     }
 
     override func toPresentable() -> UIViewController {
-        isRoot ? super.toPresentable() : firstNavigationExamplesScreen
+        isRoot ? super.toPresentable() : rootScreen
     }
 
     // MARK: Root Coordinator Screen
 
-    private func createInitialNavigationExamplesScreen(removeType: NavigationExamplesScreenRemoveType, popDismissButtonVisible: Bool) -> NavigationExamplesScreen {
-
-        let screenModel = NavigationExamplesScreenModel(removeType: removeType, popDismissButtonVisible: popDismissButtonVisible)
+    private func createRootScreen() -> NavigationExamplesScreen {
+        let screenModel = NavigationExamplesScreenModel(removeType: isRoot ? .dismiss : .pop,
+                                                        popDismissButtonVisible: popDismissButtonVisible)
 
         screenModel.resultOutput.pushScreen.receive(on: DispatchQueue.main).sink { [weak self] _ in
             self?.pushScreenExample()

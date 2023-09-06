@@ -36,8 +36,8 @@ public class Router: NSObject, RouterType, UINavigationControllerDelegate {
         navigationController.present(module.toPresentable(), animated: animated, completion: nil)
     }
 
-    public func dismissModule(animated: Bool = true, completion: (() -> Void)? = nil) {
-        navigationController.dismiss(animated: animated, completion: completion)
+    public func dismissModule(animated: Bool = true) {
+        navigationController.dismiss(animated: animated, completion: nil)
     }
 
     public func push(_ module: Presentable, animated: Bool = true, completion: (() -> Void)?) {
@@ -92,7 +92,7 @@ public class Router: NSObject, RouterType, UINavigationControllerDelegate {
 
     // MARK: UINavigationControllerDelegate
 
-    private func navigationController(_ navigationController: UINavigationController, didShow viewController: UIViewController, animated: Bool) {
+    public func navigationController(_ navigationController: UINavigationController, didShow viewController: UIViewController, animated: Bool) {
         // Ensure the view controller is popping
         guard let poppedViewController = navigationController.transitionCoordinator?.viewController(forKey: .from),
               !navigationController.viewControllers.contains(poppedViewController) else {

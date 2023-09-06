@@ -46,11 +46,11 @@ class OnboardingCoordinator: CoordinatorWithOutput<OnboardingCoordinatorResult> 
             .receive(on: DispatchQueue.main).sink { [weak self, weak coordinator] result in
             switch result {
             case .accountCreated:
-                self?.router.dismissModule(animated: true, completion: nil)
+                self?.router.dismissModule(animated: true)
                 self?.removeChild(coordinator)
                 self?.onOutput(.authorized)
             case .dismiss:
-                self?.router.dismissModule(animated: true, completion: nil)
+                self?.router.dismissModule(animated: true)
                 self?.removeChild(coordinator)
             }
         }.store(in: &disposeBag)

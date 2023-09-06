@@ -18,13 +18,13 @@ class HomeCoordinator: CoordinatorWithOutput<HomeCoordinatorResult> {
     // MARK: Coordinator
 
     override func start() {
-        let todayCoordinator = createTodayCoordinator()
-        let suggestedCoordinator = createSuggestedCoordinator()
-        setupTabs(with: [todayCoordinator, suggestedCoordinator])
-        addChild(todayCoordinator)
-        addChild(suggestedCoordinator)
-        todayCoordinator.start()
-        suggestedCoordinator.start()
+        let navigationExamplesCoordinator = createNavigationExamplesCoordinator()
+        let profileCoordinator = createProfileCoordinator()
+        setupTabs(with: [navigationExamplesCoordinator, profileCoordinator])
+        addChild(navigationExamplesCoordinator)
+        addChild(profileCoordinator)
+        navigationExamplesCoordinator.start()
+        profileCoordinator.start()
     }
 
     override func toPresentable() -> UIViewController {
@@ -39,11 +39,19 @@ class HomeCoordinator: CoordinatorWithOutput<HomeCoordinatorResult> {
 
     // MARK: Child Coordinators
 
-    private func createTodayCoordinator() -> TodayCoordinator {
+    private func createNavigationExamplesCoordinator() -> NavigationExamplesCoordinator {
         let navigationController = UINavigationController()
-        navigationController.tabBarItem = UITabBarItem(title: "Today", image: nil, selectedImage: nil)
+        navigationController.tabBarItem = UITabBarItem(title: "Navigation Examples", image: nil, selectedImage: nil)
         let router = Router(navigationController: navigationController)
-        let coordinator = TodayCoordinator(router: router)
+        let coordinator = NavigationExamplesCoordinator(router: router, isRoot: true, popDismissButtonVisible: false)
+        return coordinator
+    }
+
+    private func createProfileCoordinator() -> ProfileCoordinator {
+        let navigationController = UINavigationController()
+        navigationController.tabBarItem = UITabBarItem(title: "Profile", image: nil, selectedImage: nil)
+        let router = Router(navigationController: navigationController)
+        let coordinator = ProfileCoordinator(router: router)
         coordinator.outputPublisher.receive(on: DispatchQueue.main)
             .sink { [weak self] result in
                 switch result {
@@ -52,14 +60,6 @@ class HomeCoordinator: CoordinatorWithOutput<HomeCoordinatorResult> {
                 }
             }
             .store(in: &coordinator.disposeBag)
-        return coordinator
-    }
-
-    private func createSuggestedCoordinator() -> SuggestedCoordinator {
-        let navigationController = UINavigationController()
-        navigationController.tabBarItem = UITabBarItem(title: "Suggested", image: nil, selectedImage: nil)
-        let router = Router(navigationController: navigationController)
-        let coordinator = SuggestedCoordinator(router: router)
         return coordinator
     }
 }

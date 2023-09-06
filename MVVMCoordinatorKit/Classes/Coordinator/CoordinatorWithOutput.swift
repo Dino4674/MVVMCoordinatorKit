@@ -15,16 +15,18 @@ open class CoordinatorWithOutput<ResultType>: Coordinator {
 
     // MARK: Public
 
-    public func pushCoordinator<T>(_ coordinator: CoordinatorWithOutput<T>, animated: Bool, completion: (() -> Void)?) {
+    public func pushCoordinator<T>(_ coordinator: CoordinatorWithOutput<T>, animated: Bool) {
         addChild(coordinator)
         coordinator.start()
-        router.push(coordinator, animated: animated, completion: completion)
+        router.push(coordinator, animated: animated) { [weak self, weak coordinator] in
+            self?.removeChild(coordinator)
+        }
     }
 
     public func setRootCoordinator<T>(_ coordinator: CoordinatorWithOutput<T>, animated: Bool) {
         addChild(coordinator)
         coordinator.start()
-        router.setRootModule(coordinator, animated: animated) { [weak self] in
+        router.setRootModule(coordinator, animated: animated) { [weak self, weak coordinator] in
             self?.removeChild(coordinator)
         }
     }

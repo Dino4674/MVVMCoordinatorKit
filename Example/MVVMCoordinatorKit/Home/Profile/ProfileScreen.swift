@@ -1,5 +1,5 @@
 //
-//  TodayScreen.swift
+//  ProfileScreen.swift
 //  CoordinatorExample
 //
 //  Created by Dino Bartosak on 14.07.2023..
@@ -8,7 +8,7 @@
 import MVVMCoordinatorKit
 import Combine
 
-class TodayScreen: ModeledScreen<TodayScreenModel> {
+class ProfileScreen: ModeledScreen<ProfileScreenModel> {
 
     // MARK: Outlets
 
@@ -18,7 +18,7 @@ class TodayScreen: ModeledScreen<TodayScreenModel> {
     // MARK: Screen Override
 
     override func setupUI() {
-        view.backgroundColor = .lightGray
+
     }
 
     // MARK: ModeledScreen Override
@@ -26,7 +26,7 @@ class TodayScreen: ModeledScreen<TodayScreenModel> {
     override func bindScreenModel() {
         screenModel.output.screenTitle.assign(to: \.text, on: label).store(in: &disposeBag)
 
-        screenModel.output.logoutActionTitle.receive(on: DispatchQueue.main)
+        screenModel.output.logoutButtonTitle.receive(on: DispatchQueue.main)
             .sink(receiveValue: { [weak self] in
                 self?.logoutButton.setTitle($0, for: .normal)
             })

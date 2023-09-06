@@ -13,11 +13,11 @@ class AppCoordinator: CoordinatorWithOutput<Void> {
 
     override func start() {
         // check if user already logged in
-        let userLoggedIn = false
+        let userLoggedIn = true
         if userLoggedIn {
             setHomeCoordinatorAsRoot(animated: false)
         } else {
-            setOnboardingCoordinatorAsRoot(animated: false)
+            setAuthenticationCoordinatorAsRoot(animated: false)
         }
     }
 
@@ -33,17 +33,17 @@ class AppCoordinator: CoordinatorWithOutput<Void> {
             .sink { [weak self] result in
                 switch result {
                 case .logout:
-                    self?.setOnboardingCoordinatorAsRoot(animated: false)
+                    self?.setAuthenticationCoordinatorAsRoot(animated: false)
                     break
                 }
             }
             .store(in: &coordinator.disposeBag)
     }
 
-    // MARK: Onboarding Coordinator
+    // MARK: Authentication Coordinator
 
-    private func setOnboardingCoordinatorAsRoot(animated: Bool) {
-        let coordinator = OnboardingCoordinator(router: router)
+    private func setAuthenticationCoordinatorAsRoot(animated: Bool) {
+        let coordinator = AuthenticationCoordinator(router: router)
 
         setRootCoordinator(coordinator, animated: animated)
 
@@ -51,7 +51,7 @@ class AppCoordinator: CoordinatorWithOutput<Void> {
             .receive(on: DispatchQueue.main)
             .sink { [weak self] result in
                 switch result {
-                case .authorized:
+                case .authenticated:
                     self?.setHomeCoordinatorAsRoot(animated: false)
                     break
                 }

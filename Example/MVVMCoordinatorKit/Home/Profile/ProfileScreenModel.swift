@@ -1,5 +1,5 @@
 //
-//  TodayScreenModel.swift
+//  ProfileScreenModel.swift
 //  CoordinatorExample
 //
 //  Created by Dino Bartosak on 14.07.2023..
@@ -10,28 +10,28 @@ import Combine
 
 // MARK: - ScreenModelType
 
-extension TodayScreenModel: ScreenModelType {
+extension ProfileScreenModel: ScreenModelType {
     struct Input {
         let logout: PassthroughSubject<Void, Never>
     }
 
     struct Output {
         let screenTitle: AnyPublisher<String?, Never>
-        let logoutActionTitle: AnyPublisher<String?, Never>
+        let logoutButtonTitle: AnyPublisher<String?, Never>
     }
 }
 
 // MARK: - ScreenModelResultType
 
-extension TodayScreenModel: ScreenModelResultType {
+extension ProfileScreenModel: ScreenModelResultType {
     struct ResultOutput {
-        let logout: AnyPublisher<Void, Never>
+        let onLogout: AnyPublisher<Void, Never>
     }
 }
 
-// MARK: - TodayScreenModel
+// MARK: - ProfileScreenModel
 
-class TodayScreenModel: ScreenModel {
+class ProfileScreenModel: ScreenModel {
 
     // MARK: ScreenModelType
 
@@ -46,12 +46,12 @@ class TodayScreenModel: ScreenModel {
 
     override init() {
         let logout = PassthroughSubject<Void, Never>()
-        let screenTitle = CurrentValueSubject<String?, Never>("Today")
+        let screenTitle = CurrentValueSubject<String?, Never>("Profile")
         let logoutActionTitle = CurrentValueSubject<String?, Never>("Logout")
 
         input = Input(logout: logout)
         output = Output(screenTitle: screenTitle.eraseToAnyPublisher(),
-                        logoutActionTitle: logoutActionTitle.eraseToAnyPublisher())
-        resultOutput = ResultOutput(logout: logout.eraseToAnyPublisher())
+                        logoutButtonTitle: logoutActionTitle.eraseToAnyPublisher())
+        resultOutput = ResultOutput(onLogout: logout.eraseToAnyPublisher())
     }
 }

@@ -21,7 +21,9 @@ class NavigationExamplesScreen: ModeledScreen<NavigationExamplesScreenModel> {
     // MARK: Screen Override
 
     override func setupUI() {
-
+        pushScreenButton.backgroundColor = .blue.withAlphaComponent(0.1)
+        pushCoordinatorButton.backgroundColor = .blue.withAlphaComponent(0.2)
+        presentCoordinatorButton.backgroundColor = .blue.withAlphaComponent(0.3)
     }
 
     // MARK: ModeledScreen Override

@@ -29,7 +29,7 @@
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h1N-9d-4c6">
                             <rect key="frame" x="0.0" y="0.0" width="75" height="34.333333333333336"/>
                             <state key="normal" title="Button"/>
-                            <buttonConfiguration key="configuration" style="tinted" title="Button"/>
+                            <buttonConfiguration key="configuration" style="plain" title="Button"/>
                             <connections>
                                 <action selector="pushScreenAction:" destination="-1" eventType="touchUpInside" id="4EV-kE-vC1"/>
                             </connections>
@@ -37,7 +37,7 @@
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AYd-ps-S6p">
                             <rect key="frame" x="0.0" y="40.333333333333314" width="75" height="34.333333333333343"/>
                             <state key="normal" title="Button"/>
-                            <buttonConfiguration key="configuration" style="tinted" title="Button"/>
+                            <buttonConfiguration key="configuration" style="plain" title="Button"/>
                             <connections>
                                 <action selector="pushCoordinatorAction:" destination="-1" eventType="touchUpInside" id="hs1-LM-fY6"/>
                             </connections>
@@ -45,7 +45,7 @@
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="erx-ZA-2cn">
                             <rect key="frame" x="0.0" y="80.666666666666629" width="75" height="34.333333333333343"/>
                             <state key="normal" title="Button"/>
-                            <buttonConfiguration key="configuration" style="tinted" title="Button"/>
+                            <buttonConfiguration key="configuration" style="plain" title="Button"/>
                             <connections>
                                 <action selector="presentCoordinatorAction:" destination="-1" eventType="touchUpInside" id="O9d-Ig-dkX"/>
                             </connections>

@@ -18,6 +18,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     private lazy var appCoordinator: AppCoordinator = AppCoordinator(router: appRouter)
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+
+        // Disabled by default. Used for debug purposes to ensure memory management is working as expected.
         MVVMCoordinatorKitLogger.loggingEnabled = true
 
         window?.rootViewController = appCoordinator.toPresentable()

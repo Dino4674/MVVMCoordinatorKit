@@ -34,7 +34,6 @@ class AppCoordinator: CoordinatorWithOutput<Void> {
                 switch result {
                 case .logout:
                     self?.setAuthenticationCoordinatorAsRoot(animated: false)
-                    break
                 }
             }
             .store(in: &coordinator.disposeBag)
@@ -53,7 +52,6 @@ class AppCoordinator: CoordinatorWithOutput<Void> {
                 switch result {
                 case .authenticated:
                     self?.setHomeCoordinatorAsRoot(animated: false)
-                    break
                 }
             }
             .store(in: &coordinator.disposeBag)

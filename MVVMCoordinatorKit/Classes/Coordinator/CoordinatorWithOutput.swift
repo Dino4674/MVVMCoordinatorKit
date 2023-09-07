@@ -34,7 +34,9 @@ open class CoordinatorWithOutput<ResultType>: Coordinator {
     public func presentCoordinator<T>(_ coordinator: CoordinatorWithOutput<T>, animated: Bool) {
         addChild(coordinator)
         coordinator.start()
-        router.present(coordinator, animated: animated)
+        router.present(coordinator, animated: animated) { [weak self, weak coordinator] in
+            self?.removeChild(coordinator)
+        }
     }
 
     // MARK: Cordinator Output

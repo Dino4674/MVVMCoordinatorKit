@@ -16,15 +16,18 @@ class NavigationExamplesCoordinator: CoordinatorWithOutput<NavigationExamplesCoo
     private var rootScreen: NavigationExamplesScreen!
 
     let isRoot: Bool
-    let popDismissButtonVisible: Bool
-    init(router: RouterType, isRoot: Bool, popDismissButtonVisible: Bool) {
+    let manualRemoveType: NavigationExamplesScreenModel.ManualRemoveType
+    init(router: RouterType, isRoot: Bool, manualRemoveType: NavigationExamplesScreenModel.ManualRemoveType) {
         self.isRoot = isRoot
-        self.popDismissButtonVisible = popDismissButtonVisible
+        self.manualRemoveType = manualRemoveType
         super.init(router: router)
         self.rootScreen = createRootScreen()
     }
 
     override func start() {
+        // uncomment if you want this to present in full-screen mode
+//        toPresentable().modalPresentationStyle = .fullScreen
+
         if isRoot {
             router.setRootModule(rootScreen, animated: false, completion: nil)
         }
@@ -37,8 +40,7 @@ class NavigationExamplesCoordinator: CoordinatorWithOutput<NavigationExamplesCoo
     // MARK: Root Coordinator Screen
 
     private func createRootScreen() -> NavigationExamplesScreen {
-        let screenModel = NavigationExamplesScreenModel(removeType: isRoot ? .dismiss : .pop,
-                                                        popDismissButtonVisible: popDismissButtonVisible)
+        let screenModel = NavigationExamplesScreenModel(manualRemoveType: manualRemoveType)
 
         screenModel.resultOutput.pushScreen.receive(on: DispatchQueue.main).sink { [weak self] _ in
             self?.pushScreenExample()
@@ -52,7 +54,7 @@ class NavigationExamplesCoordinator: CoordinatorWithOutput<NavigationExamplesCoo
             _ = self?.presentCoordinatorExample()
         }.store(in: &disposeBag)
 
-        screenModel.resultOutput.popDismiss.receive(on: DispatchQueue.main).sink { [weak self] _ in
+        screenModel.resultOutput.manualRemove.receive(on: DispatchQueue.main).sink { [weak self] _ in
             self?.onOutput(.popDismiss)
         }.store(in: &disposeBag)
 
@@ -63,7 +65,7 @@ class NavigationExamplesCoordinator: CoordinatorWithOutput<NavigationExamplesCoo
     // MARK: Push Screen Example
 
     private func pushScreenExample() {
-        let screenModel = NavigationExamplesScreenModel(removeType: .pop, popDismissButtonVisible: true)
+        let screenModel = NavigationExamplesScreenModel(manualRemoveType: .pop)
 
         screenModel.resultOutput.pushScreen.receive(on: DispatchQueue.main).sink { [weak self] _ in
             self?.pushScreenExample()
@@ -77,7 +79,7 @@ class NavigationExamplesCoordinator: CoordinatorWithOutput<NavigationExamplesCoo
             self?.presentCoordinatorExample()
         }.store(in: &disposeBag)
 
-        screenModel.resultOutput.popDismiss.receive(on: DispatchQueue.main).sink { [weak self] _ in
+        screenModel.resultOutput.manualRemove.receive(on: DispatchQueue.main).sink { [weak self] _ in
             self?.router.popModule(animated: true)
         }.store(in: &disposeBag)
 
@@ -88,15 +90,14 @@ class NavigationExamplesCoordinator: CoordinatorWithOutput<NavigationExamplesCoo
     // MARK: Push Coordinator Example
 
     private func pushCoordinatorExample(){
-        let coordinator = NavigationExamplesCoordinator(router: router, isRoot: false, popDismissButtonVisible: true)
+        let coordinator = NavigationExamplesCoordinator(router: router, isRoot: false, manualRemoveType: .pop)
         pushCoordinator(coordinator, animated: true)
 
         coordinator.outputPublisher
-            .receive(on: DispatchQueue.main).sink { [weak self, weak coordinator] result in
+            .receive(on: DispatchQueue.main).sink { [weak self] result in
             switch result {
             case .popDismiss:
                 self?.router.popModule(animated: true)
-                self?.removeChild(coordinator)
             }
         }.store(in: &disposeBag)
     }
@@ -106,15 +107,14 @@ class NavigationExamplesCoordinator: CoordinatorWithOutput<NavigationExamplesCoo
     private func presentCoordinatorExample() {
         let navigationController = UINavigationController()
         let router = Router(navigationController: navigationController)
-        let coordinator = NavigationExamplesCoordinator(router: router, isRoot: true, popDismissButtonVisible: true)
+        let coordinator = NavigationExamplesCoordinator(router: router, isRoot: true, manualRemoveType: .dismiss)
         presentCoordinator(coordinator, animated: true)
 
         coordinator.outputPublisher
-            .receive(on: DispatchQueue.main).sink { [weak self, weak coordinator] result in
+            .receive(on: DispatchQueue.main).sink { [weak self] result in
             switch result {
             case .popDismiss:
                 self?.router.dismissModule(animated: true)
-                self?.removeChild(coordinator)
             }
         }.store(in: &disposeBag)
     }

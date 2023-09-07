@@ -27,11 +27,11 @@ class NavigationExamplesScreen: ModeledScreen<NavigationExamplesScreenModel> {
     // MARK: ModeledScreen Override
 
     override func bindScreenModel() {
-        screenModel.output.popDismissButtonVisible.receive(on: DispatchQueue.main)
+        screenModel.output.manualRemoveButtonVisible.receive(on: DispatchQueue.main)
             .map { !$0 }
             .assign(to: \.isHidden, on: popDismissButton).store(in: &disposeBag)
 
-        screenModel.output.popDismissButtonTitle.receive(on: DispatchQueue.main)
+        screenModel.output.manualRemoveButtonTitle.receive(on: DispatchQueue.main)
             .sink(receiveValue: { [weak self] in
                 self?.popDismissButton.setTitle($0, for: .normal)
             })
@@ -71,6 +71,6 @@ class NavigationExamplesScreen: ModeledScreen<NavigationExamplesScreenModel> {
     }
 
     @IBAction func popDismissButtonTap(_ sender: Any) {
-        screenModel.input.popDismiss.send(())
+        screenModel.input.manualRemove.send(())
     }
 }

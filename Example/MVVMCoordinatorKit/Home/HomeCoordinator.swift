@@ -43,7 +43,7 @@ class HomeCoordinator: CoordinatorWithOutput<HomeCoordinatorResult> {
         let navigationController = UINavigationController()
         navigationController.tabBarItem = UITabBarItem(title: "Navigation Examples", image: nil, selectedImage: nil)
         let router = Router(navigationController: navigationController)
-        let coordinator = NavigationExamplesCoordinator(router: router, isRoot: true, popDismissButtonVisible: false)
+        let coordinator = NavigationExamplesCoordinator(router: router, isRoot: true, manualRemoveType: .none)
         return coordinator
     }
 

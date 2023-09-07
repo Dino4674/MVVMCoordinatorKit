@@ -16,15 +16,15 @@ extension NavigationExamplesScreenModel: ScreenModelType {
         let pushScreen: PassthroughSubject<Void, Never>
         let pushCoordinator: PassthroughSubject<Void, Never>
         let presentCoordinator: PassthroughSubject<Void, Never>
-        let popDismiss: PassthroughSubject<Void, Never>
+        let manualRemove: PassthroughSubject<Void, Never>
     }
 
     struct Output {
         let pushScreenButtonTitle: AnyPublisher<String?, Never>
         let pushCoordinatorButtonTitle: AnyPublisher<String?, Never>
         let presentCoordinatorButtonTitle: AnyPublisher<String?, Never>
-        let popDismissButtonTitle: AnyPublisher<String?, Never>
-        let popDismissButtonVisible: AnyPublisher<Bool, Never>
+        let manualRemoveButtonTitle: AnyPublisher<String?, Never>
+        let manualRemoveButtonVisible: AnyPublisher<Bool, Never>
     }
 }
 
@@ -35,18 +35,19 @@ extension NavigationExamplesScreenModel: ScreenModelResultType {
         let pushScreen: AnyPublisher<Void, Never>
         let pushCoordinator: AnyPublisher<Void, Never>
         let presentCoordinator: AnyPublisher<Void, Never>
-        let popDismiss: AnyPublisher<Void, Never>
+        let manualRemove: AnyPublisher<Void, Never>
     }
 }
 
 // MARK: - NavigationExamplesScreenModel
 
-enum NavigationExamplesScreenRemoveType {
-    case pop
-    case dismiss
-}
-
 class NavigationExamplesScreenModel: ScreenModel {
+
+    enum ManualRemoveType {
+        case pop
+        case dismiss
+        case none
+    }
 
     // MARK: ScreenModelType
 
@@ -59,38 +60,39 @@ class NavigationExamplesScreenModel: ScreenModel {
 
     // MARK: Init
 
-    init(removeType: NavigationExamplesScreenRemoveType, popDismissButtonVisible: Bool) {
+    init(manualRemoveType: ManualRemoveType) {
         let pushScreen = PassthroughSubject<Void, Never>()
         let pushCoordinator = PassthroughSubject<Void, Never>()
         let presentCoordinator = PassthroughSubject<Void, Never>()
-        let popDismiss = PassthroughSubject<Void, Never>()
+        let manualRemove = PassthroughSubject<Void, Never>()
 
         let pushScreenButtonTitle = CurrentValueSubject<String?, Never>("Push Screen")
         let pushCoordinatorButtonTitle = CurrentValueSubject<String?, Never>("Push Coordinator")
         let presentCoordinatorButtonTitle = CurrentValueSubject<String?, Never>("Present Coordinator")
-        let popDismissButtonVisible = CurrentValueSubject<Bool, Never>(popDismissButtonVisible)
+        let manualRemoveButtonVisible = CurrentValueSubject<Bool, Never>(manualRemoveType != .none)
 
-        let removeTypeTitle: String?
-        switch removeType {
-        case .dismiss: removeTypeTitle = "Dismiss manually"
-        case .pop: removeTypeTitle = "Pop manually"
+        let manualRemoveTitle: String?
+        switch manualRemoveType {
+        case .dismiss: manualRemoveTitle = "Dismiss manually"
+        case .pop: manualRemoveTitle = "Pop manually"
+        case .none: manualRemoveTitle = nil
         }
-        let popDismissButtonTitle = CurrentValueSubject<String?, Never>(removeTypeTitle)
+        let manualRemoveButtonTitle = CurrentValueSubject<String?, Never>(manualRemoveTitle)
 
         input = Input(pushScreen: pushScreen,
                       pushCoordinator: pushCoordinator,
                       presentCoordinator: presentCoordinator,
-                      popDismiss: popDismiss)
+                      manualRemove: manualRemove)
 
         output = Output(pushScreenButtonTitle: pushScreenButtonTitle.eraseToAnyPublisher(),
                         pushCoordinatorButtonTitle: pushCoordinatorButtonTitle.eraseToAnyPublisher(),
                         presentCoordinatorButtonTitle: presentCoordinatorButtonTitle.eraseToAnyPublisher(),
-                        popDismissButtonTitle: popDismissButtonTitle.eraseToAnyPublisher(),
-                        popDismissButtonVisible: popDismissButtonVisible.eraseToAnyPublisher())
+                        manualRemoveButtonTitle: manualRemoveButtonTitle.eraseToAnyPublisher(),
+                        manualRemoveButtonVisible: manualRemoveButtonVisible.eraseToAnyPublisher())
 
         resultOutput = ResultOutput(pushScreen: pushScreen.eraseToAnyPublisher(),
                                     pushCoordinator: pushCoordinator.eraseToAnyPublisher(),
                                     presentCoordinator: presentCoordinator.eraseToAnyPublisher(),
-                                    popDismiss: popDismiss.eraseToAnyPublisher())
+                                    manualRemove: manualRemove.eraseToAnyPublisher())
     }
 }

@@ -7,10 +7,9 @@
 
 import UIKit
 
-public class Router: NSObject, RouterType, UINavigationControllerDelegate {
+public class Router: NSObject, RouterType {
 
     private var completions: [UIViewController: () -> Void]
-
     public let navigationController: UINavigationController
 
     public init(navigationController: UINavigationController) {
@@ -30,14 +29,21 @@ public class Router: NSObject, RouterType, UINavigationControllerDelegate {
         return rootViewController != nil
     }
 
-    // MARK: RouterType
+    public func present(_ module: Presentable, animated: Bool = true, completion: (() -> Void)?) {
+        let controller = module.toPresentable()
+        controller.presentationController?.delegate = self
 
-    public func present(_ module: Presentable, animated: Bool = true) {
-        navigationController.present(module.toPresentable(), animated: animated, completion: nil)
+        if let completion = completion {
+            completions[controller] = completion
+        }
+
+        navigationController.present(controller, animated: animated, completion: nil)
     }
 
     public func dismissModule(animated: Bool = true) {
+        guard let controller = navigationController.presentedViewController else { return }
         navigationController.dismiss(animated: animated, completion: nil)
+        runCompletion(for: controller)
     }
 
     public func push(_ module: Presentable, animated: Bool = true, completion: (() -> Void)?) {
@@ -76,6 +82,12 @@ public class Router: NSObject, RouterType, UINavigationControllerDelegate {
         }
     }
 
+    // MARK: Presentable
+
+    public func toPresentable() -> UIViewController {
+        return navigationController
+    }
+
     // MARK: Private
 
     private func runCompletion(for controller: UIViewController) {
@@ -83,15 +95,11 @@ public class Router: NSObject, RouterType, UINavigationControllerDelegate {
         completion()
         completions.removeValue(forKey: controller)
     }
+}
 
-    // MARK: Presentable
+// MARK: - UINavigationControllerDelegate
 
-    public func toPresentable() -> UIViewController {
-        return navigationController
-    }
-
-    // MARK: UINavigationControllerDelegate
-
+extension Router: UINavigationControllerDelegate {
     public func navigationController(_ navigationController: UINavigationController, didShow viewController: UIViewController, animated: Bool) {
         // Ensure the view controller is popping
         guard let poppedViewController = navigationController.transitionCoordinator?.viewController(forKey: .from),
@@ -100,5 +108,13 @@ public class Router: NSObject, RouterType, UINavigationControllerDelegate {
         }
 
         runCompletion(for: poppedViewController)
+    }
+}
+
+// MARK: - UIAdaptivePresentationControllerDelegate
+
+extension Router: UIAdaptivePresentationControllerDelegate {
+    public func presentationControllerDidDismiss(_ presentationController: UIPresentationController) {
+        runCompletion(for: presentationController.presentedViewController)
     }
 }

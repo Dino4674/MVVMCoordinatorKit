@@ -84,14 +84,14 @@ class NavigationExamplesCoordinator: CoordinatorWithOutput<NavigationExamplesCoo
         }.store(in: &disposeBag)
 
         let screen = NavigationExamplesScreen.create(screenModel: screenModel)
-        router.push(screen, animated: true, completion: nil)
+        pushScreen(screen)
     }
 
     // MARK: Push Coordinator Example
 
     private func pushCoordinatorExample(){
         let coordinator = NavigationExamplesCoordinator(router: router, isRoot: false, manualRemoveType: .pop)
-        pushCoordinator(coordinator, animated: true)
+        pushCoordinator(coordinator)
 
         coordinator.outputPublisher
             .receive(on: DispatchQueue.main).sink { [weak self] result in
@@ -108,7 +108,7 @@ class NavigationExamplesCoordinator: CoordinatorWithOutput<NavigationExamplesCoo
         let navigationController = UINavigationController()
         let router = Router(navigationController: navigationController)
         let coordinator = NavigationExamplesCoordinator(router: router, isRoot: true, manualRemoveType: .dismiss)
-        presentCoordinator(coordinator, animated: true)
+        presentCoordinator(coordinator)
 
         coordinator.outputPublisher
             .receive(on: DispatchQueue.main).sink { [weak self] result in

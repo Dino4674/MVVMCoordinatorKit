@@ -15,27 +15,34 @@ open class CoordinatorWithOutput<ResultType>: Coordinator {
 
     // MARK: Public
 
-    public func pushCoordinator<T>(_ coordinator: CoordinatorWithOutput<T>, animated: Bool) {
+    public func pushScreen(_ screen: UIViewController, animated: Bool = true, onPop: RouterCompletion? = nil) {
+        router.push(screen, animated: animated, completion: onPop)
+    }
+
+    public func pushCoordinator<T>(_ coordinator: CoordinatorWithOutput<T>, animated: Bool = true, onPop: RouterCompletion? = nil) {
         addChild(coordinator)
         coordinator.start()
         router.push(coordinator, animated: animated) { [weak self, weak coordinator] in
             self?.removeChild(coordinator)
+            onPop?()
         }
     }
 
-    public func setRootCoordinator<T>(_ coordinator: CoordinatorWithOutput<T>, animated: Bool) {
+    public func setRootCoordinator<T>(_ coordinator: CoordinatorWithOutput<T>, animated: Bool = true, onPop: RouterCompletion? = nil) {
         addChild(coordinator)
         coordinator.start()
         router.setRootModule(coordinator, animated: animated) { [weak self, weak coordinator] in
             self?.removeChild(coordinator)
+            onPop?()
         }
     }
 
-    public func presentCoordinator<T>(_ coordinator: CoordinatorWithOutput<T>, animated: Bool) {
+    public func presentCoordinator<T>(_ coordinator: CoordinatorWithOutput<T>, animated: Bool = true, onDismiss: RouterCompletion? = nil) {
         addChild(coordinator)
         coordinator.start()
         router.present(coordinator, animated: animated) { [weak self, weak coordinator] in
             self?.removeChild(coordinator)
+            onDismiss?()
         }
     }
 

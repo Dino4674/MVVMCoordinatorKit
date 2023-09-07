@@ -17,7 +17,7 @@ public protocol ScreenModelResultType: AnyObject {
 }
 
 open class ScreenModel {
-    deinit { print("💀 ScreenModel deinit: \(self)") }
+    deinit { MVVMCoordinatorKitLogger.log("💀 ScreenModel deinit: \(self)") }
     
     public init() {}
 }

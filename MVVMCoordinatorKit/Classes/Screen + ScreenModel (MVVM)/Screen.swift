@@ -9,7 +9,7 @@ import UIKit
 
 open class Screen: UIViewController {
 
-    deinit { print("💀 Screen deinit: \(self)") }
+    deinit { MVVMCoordinatorKitLogger.log("💀 Screen deinit: \(self)") }
 
     public override func viewDidLoad() {
         super.viewDidLoad()

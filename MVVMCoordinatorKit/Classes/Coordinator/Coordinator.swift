@@ -11,7 +11,7 @@ open class Coordinator: NSObject, CoordinatorType {
 
     // MARK: Init/Deinit
 
-    deinit { print("💀 Coordinator deinit: \(self)") }
+    deinit { MVVMCoordinatorKitLogger.log("💀 Coordinator deinit: \(self)") }
 
     public init(router: RouterType) {
         self.router = router
@@ -36,12 +36,12 @@ open class Coordinator: NSObject, CoordinatorType {
     private(set) var childCoordinators: [Coordinator] = []
 
     public func addChild(_ coordinator: Coordinator) {
-        print("⚪ Add child coordinator: \(coordinator) to \(self)")
+        MVVMCoordinatorKitLogger.log("⚪ Add child coordinator: \(coordinator) to \(self)")
         childCoordinators.append(coordinator)
     }
 
     public func removeChild(_ coordinator: Coordinator?) {
-        print("⚫ Remove child coordinator: \(String(describing: coordinator)) from \(self)")
+        MVVMCoordinatorKitLogger.log("⚫ Remove child coordinator: \(String(describing: coordinator)) from \(self)")
         if let coordinator = coordinator, let index = childCoordinators.firstIndex(of: coordinator) {
             childCoordinators.remove(at: index)
         }

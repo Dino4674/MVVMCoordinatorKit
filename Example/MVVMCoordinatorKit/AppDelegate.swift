@@ -18,6 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     private lazy var appCoordinator: AppCoordinator = AppCoordinator(router: appRouter)
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+        MVVMCoordinatorKitLogger.loggingEnabled = true
 
         window?.rootViewController = appCoordinator.toPresentable()
         window?.makeKeyAndVisible()

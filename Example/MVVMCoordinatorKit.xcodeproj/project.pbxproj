@@ -214,8 +214,8 @@
 			isa = PBXGroup;
 			children = (
 				70B1A3F02AA0E6B200F108A3 /* NavigationExamplesCoordinator.swift */,
-				706961552AA7631A00F2A9AC /* NavigationExamplesScreen.xib */,
 				706961562AA7631A00F2A9AC /* NavigationExamplesScreen.swift */,
+				706961552AA7631A00F2A9AC /* NavigationExamplesScreen.xib */,
 				706961572AA7631A00F2A9AC /* NavigationExamplesScreenModel.swift */,
 			);
 			path = "Navigation Examples";

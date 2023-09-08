@@ -26,12 +26,8 @@ extension NavigationExamplesScreenModel: ScreenModelType {
         let manualRemoveButtonTitle: AnyPublisher<String?, Never>
         let manualRemoveButtonVisible: AnyPublisher<Bool, Never>
     }
-}
 
-// MARK: - ScreenModelResultType
-
-extension NavigationExamplesScreenModel: ScreenModelResultType {
-    struct ResultOutput {
+    struct Result {
         let pushScreen: AnyPublisher<Void, Never>
         let pushCoordinator: AnyPublisher<Void, Never>
         let presentCoordinator: AnyPublisher<Void, Never>
@@ -42,23 +38,15 @@ extension NavigationExamplesScreenModel: ScreenModelResultType {
 // MARK: - NavigationExamplesScreenModel
 
 class NavigationExamplesScreenModel: ScreenModel {
-
     enum ManualRemoveType {
         case pop
         case dismiss
         case none
     }
 
-    // MARK: ScreenModelType
-
     let input: Input
     let output: Output
-
-    // MARK: ScreenModelResultType
-
-    let resultOutput: ResultOutput
-
-    // MARK: Init
+    let result: Result
 
     init(manualRemoveType: ManualRemoveType) {
         let pushScreen = PassthroughSubject<Void, Never>()
@@ -90,9 +78,9 @@ class NavigationExamplesScreenModel: ScreenModel {
                         manualRemoveButtonTitle: manualRemoveButtonTitle.eraseToAnyPublisher(),
                         manualRemoveButtonVisible: manualRemoveButtonVisible.eraseToAnyPublisher())
 
-        resultOutput = ResultOutput(pushScreen: pushScreen.eraseToAnyPublisher(),
-                                    pushCoordinator: pushCoordinator.eraseToAnyPublisher(),
-                                    presentCoordinator: presentCoordinator.eraseToAnyPublisher(),
-                                    manualRemove: manualRemove.eraseToAnyPublisher())
+        result = Result(pushScreen: pushScreen.eraseToAnyPublisher(),
+                        pushCoordinator: pushCoordinator.eraseToAnyPublisher(),
+                        presentCoordinator: presentCoordinator.eraseToAnyPublisher(),
+                        manualRemove: manualRemove.eraseToAnyPublisher())
     }
 }

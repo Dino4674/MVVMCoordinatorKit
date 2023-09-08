@@ -19,7 +19,7 @@ class ProfileCoordinator: CombineCoordinator<ProfileCoordinatorOutput> {
         let screenModel = ProfileScreenModel()
         let screen = ProfileScreen.create(screenModel: screenModel)
 
-        screenModel.resultOutput.didLogout.receive(on: DispatchQueue.main).sink { [weak self] _ in
+        screenModel.result.didLogout.receive(on: DispatchQueue.main).sink { [weak self] _ in
             self?.onOutput(.didLogout)
         }.store(in: &screen.disposeBag)
 

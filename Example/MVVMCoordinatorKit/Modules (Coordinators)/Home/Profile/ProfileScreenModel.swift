@@ -19,12 +19,8 @@ extension ProfileScreenModel: ScreenModelType {
         let screenTitle: AnyPublisher<String?, Never>
         let logoutButtonTitle: AnyPublisher<String?, Never>
     }
-}
 
-// MARK: - ScreenModelResultType
-
-extension ProfileScreenModel: ScreenModelResultType {
-    struct ResultOutput {
+    struct Result {
         let didLogout: AnyPublisher<Void, Never>
     }
 }
@@ -32,17 +28,9 @@ extension ProfileScreenModel: ScreenModelResultType {
 // MARK: - ProfileScreenModel
 
 class ProfileScreenModel: ScreenModel {
-
-    // MARK: ScreenModelType
-
     let input: Input
     let output: Output
-
-    // MARK: ScreenModelResultType
-
-    let resultOutput: ResultOutput
-
-    // MARK: Init
+    let result: Result
 
     override init() {
         let logout = PassthroughSubject<Void, Never>()
@@ -52,6 +40,6 @@ class ProfileScreenModel: ScreenModel {
         input = Input(logout: logout)
         output = Output(screenTitle: screenTitle.eraseToAnyPublisher(),
                         logoutButtonTitle: logoutActionTitle.eraseToAnyPublisher())
-        resultOutput = ResultOutput(didLogout: logout.eraseToAnyPublisher())
+        result = Result(didLogout: logout.eraseToAnyPublisher())
     }
 }

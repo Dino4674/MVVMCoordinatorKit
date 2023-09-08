@@ -42,19 +42,19 @@ class NavigationExamplesCoordinator: CombineCoordinator<NavigationExamplesCoordi
     private func createRootScreen() -> NavigationExamplesScreen {
         let screenModel = NavigationExamplesScreenModel(manualRemoveType: manualRemoveType)
 
-        screenModel.resultOutput.pushScreen.receive(on: DispatchQueue.main).sink { [weak self] _ in
+        screenModel.result.pushScreen.receive(on: DispatchQueue.main).sink { [weak self] _ in
             self?.pushScreenExample()
         }.store(in: &disposeBag)
 
-        screenModel.resultOutput.pushCoordinator.receive(on: DispatchQueue.main).sink { [weak self] _ in
+        screenModel.result.pushCoordinator.receive(on: DispatchQueue.main).sink { [weak self] _ in
             _ = self?.pushCoordinatorExample()
         }.store(in: &disposeBag)
 
-        screenModel.resultOutput.presentCoordinator.receive(on: DispatchQueue.main).sink { [weak self] _ in
+        screenModel.result.presentCoordinator.receive(on: DispatchQueue.main).sink { [weak self] _ in
             _ = self?.presentCoordinatorExample()
         }.store(in: &disposeBag)
 
-        screenModel.resultOutput.manualRemove.receive(on: DispatchQueue.main).sink { [weak self] _ in
+        screenModel.result.manualRemove.receive(on: DispatchQueue.main).sink { [weak self] _ in
             self?.onOutput(.removeManually)
         }.store(in: &disposeBag)
 
@@ -67,19 +67,19 @@ class NavigationExamplesCoordinator: CombineCoordinator<NavigationExamplesCoordi
     private func pushScreenExample() {
         let screenModel = NavigationExamplesScreenModel(manualRemoveType: .pop)
 
-        screenModel.resultOutput.pushScreen.receive(on: DispatchQueue.main).sink { [weak self] _ in
+        screenModel.result.pushScreen.receive(on: DispatchQueue.main).sink { [weak self] _ in
             self?.pushScreenExample()
         }.store(in: &disposeBag)
 
-        screenModel.resultOutput.pushCoordinator.receive(on: DispatchQueue.main).sink { [weak self] _ in
+        screenModel.result.pushCoordinator.receive(on: DispatchQueue.main).sink { [weak self] _ in
             self?.pushCoordinatorExample()
         }.store(in: &disposeBag)
 
-        screenModel.resultOutput.presentCoordinator.receive(on: DispatchQueue.main).sink { [weak self] _ in
+        screenModel.result.presentCoordinator.receive(on: DispatchQueue.main).sink { [weak self] _ in
             self?.presentCoordinatorExample()
         }.store(in: &disposeBag)
 
-        screenModel.resultOutput.manualRemove.receive(on: DispatchQueue.main).sink { [weak self] _ in
+        screenModel.result.manualRemove.receive(on: DispatchQueue.main).sink { [weak self] _ in
             self?.router.popModule(animated: true)
         }.store(in: &disposeBag)
 

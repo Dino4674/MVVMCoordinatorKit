@@ -8,12 +8,9 @@
 import Foundation
 
 public protocol ScreenModelType: AnyObject {
-    associatedtype Input /// input from view
-    associatedtype Output /// output for view
-}
-
-public protocol ScreenModelResultType: AnyObject {
-    associatedtype ResultOutput /// output for 'outside world' (Coordinator)
+    associatedtype Input /// input FROM the view
+    associatedtype Output /// output FOR the view
+    associatedtype Result /// result FOR 'outside world' (Coordinator)
 }
 
 open class ScreenModel {

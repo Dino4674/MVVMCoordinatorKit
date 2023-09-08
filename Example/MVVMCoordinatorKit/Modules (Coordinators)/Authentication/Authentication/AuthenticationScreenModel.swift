@@ -9,7 +9,7 @@
 import MVVMCoordinatorKit
 import Combine
 
-// MARK: - ScreenModel
+// MARK: - ScreenModelType
 
 extension AuthenticationScreenModel: ScreenModelType {
     struct Input {
@@ -19,10 +19,8 @@ extension AuthenticationScreenModel: ScreenModelType {
     struct Output {
         let authenticateButtonTitle: AnyPublisher<String?, Never>
     }
-}
 
-extension AuthenticationScreenModel: ScreenModelResultType {
-    struct ResultOutput {
+    struct Result {
         let didAuthenticate: AnyPublisher<Void, Never>
     }
 }
@@ -32,7 +30,7 @@ extension AuthenticationScreenModel: ScreenModelResultType {
 class AuthenticationScreenModel: ScreenModel {
     let input: Input
     let output: Output
-    let resultOutput: ResultOutput
+    let result: Result
 
     override init() {
         let authenticate = PassthroughSubject<Void, Never>()
@@ -40,6 +38,6 @@ class AuthenticationScreenModel: ScreenModel {
 
         input = Input(authenticate: authenticate)
         output = Output(authenticateButtonTitle: authenticateButtonTitle.eraseToAnyPublisher())
-        resultOutput = ResultOutput(didAuthenticate: authenticate.eraseToAnyPublisher())
+        result = Result(didAuthenticate: authenticate.eraseToAnyPublisher())
     }
 }

@@ -7,19 +7,18 @@
 
 import UIKit
 
-open class Coordinator: NSObject, CoordinatorType {
+open class Coordinator: NSObject, Presentable {
 
-    // MARK: Init/Deinit
+    private(set) var childCoordinators: [Coordinator] = []
+    public let router: Router
 
-    deinit { MVVMCoordinatorKitLogger.log("💀 Coordinator deinit: \(self)") }
-
-    public init(router: RouterType) {
+    public init(router: Router) {
         self.router = router
     }
 
-    // MARK: CoordinatorType
+    deinit { MVVMCoordinatorKitLogger.log("💀 Coordinator deinit: \(self)") }
 
-    public let router: RouterType
+    // MARK: Start (Needs Override)
 
     open func start() {
         fatalError("Override 'start' function")
@@ -33,8 +32,6 @@ open class Coordinator: NSObject, CoordinatorType {
 
     // MARK: Child Coordinators
 
-    private(set) var childCoordinators: [Coordinator] = []
-
     public func addChild(_ coordinator: Coordinator) {
         MVVMCoordinatorKitLogger.log("⚪ Add child coordinator: \(coordinator) to \(self)")
         childCoordinators.append(coordinator)
@@ -44,6 +41,41 @@ open class Coordinator: NSObject, CoordinatorType {
         MVVMCoordinatorKitLogger.log("⚫ Remove child coordinator: \(String(describing: coordinator)) from \(self)")
         if let coordinator = coordinator, let index = childCoordinators.firstIndex(of: coordinator) {
             childCoordinators.remove(at: index)
+        }
+    }
+}
+
+// MARK: - Navigation Helpers
+
+extension Coordinator {
+    public func pushScreen(_ screen: UIViewController, animated: Bool = true, onPop: RouterCompletion? = nil) {
+        router.push(screen, animated: animated, completion: onPop)
+    }
+
+    public func pushCoordinator(_ coordinator: Coordinator, animated: Bool = true, onPop: RouterCompletion? = nil) {
+        addChild(coordinator)
+        coordinator.start()
+        router.push(coordinator, animated: animated) { [weak self, weak coordinator] in
+            self?.removeChild(coordinator)
+            onPop?()
+        }
+    }
+
+    public func setRootCoordinator(_ coordinator: Coordinator, animated: Bool = true, onPop: RouterCompletion? = nil) {
+        addChild(coordinator)
+        coordinator.start()
+        router.setRootModule(coordinator, animated: animated) { [weak self, weak coordinator] in
+            self?.removeChild(coordinator)
+            onPop?()
+        }
+    }
+
+    public func presentCoordinator(_ coordinator: Coordinator, animated: Bool = true, onDismiss: RouterCompletion? = nil) {
+        addChild(coordinator)
+        coordinator.start()
+        router.present(coordinator, animated: animated) { [weak self, weak coordinator] in
+            self?.removeChild(coordinator)
+            onDismiss?()
         }
     }
 }

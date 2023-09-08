@@ -7,11 +7,11 @@
 
 import MVVMCoordinatorKit
 
-enum HomeCoordinatorResult {
-    case logout
+enum HomeCoordinatorOutput {
+    case didLogout
 }
 
-class HomeCoordinator: CoordinatorWithOutput<HomeCoordinatorResult> {
+class HomeCoordinator: CombineCoordinator<HomeCoordinatorOutput> {
 
     private var tabBarController = UITabBarController()
 
@@ -55,8 +55,8 @@ class HomeCoordinator: CoordinatorWithOutput<HomeCoordinatorResult> {
         coordinator.outputPublisher.receive(on: DispatchQueue.main)
             .sink { [weak self] result in
                 switch result {
-                case .logout:
-                    self?.onOutput(.logout)
+                case .didLogout:
+                    self?.onOutput(.didLogout)
                 }
             }
             .store(in: &coordinator.disposeBag)

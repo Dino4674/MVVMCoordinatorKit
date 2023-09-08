@@ -7,7 +7,9 @@
 
 import UIKit
 
-public class Router: NSObject, RouterType {
+public typealias RouterCompletion = () -> Void
+
+public class Router: NSObject, Presentable {
 
     private var completions: [UIViewController: () -> Void]
     public let navigationController: UINavigationController
@@ -19,15 +21,7 @@ public class Router: NSObject, RouterType {
         self.navigationController.delegate = self
     }
 
-    // MARK: RouterType
-
-    public var rootViewController: UIViewController? {
-        return navigationController.viewControllers.first
-    }
-
-    var hasRootController: Bool {
-        return rootViewController != nil
-    }
+    // MARK: Public
 
     public func present(_ module: Presentable, animated: Bool = true, completion: (() -> Void)?) {
         let controller = module.toPresentable()

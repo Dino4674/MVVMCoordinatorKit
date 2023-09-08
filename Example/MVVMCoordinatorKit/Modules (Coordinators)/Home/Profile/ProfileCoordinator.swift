@@ -7,11 +7,11 @@
 
 import MVVMCoordinatorKit
 
-enum ProfileCoordinatorResult {
-    case logout
+enum ProfileCoordinatorOutput {
+    case didLogout
 }
 
-class ProfileCoordinator: CoordinatorWithOutput<ProfileCoordinatorResult> {
+class ProfileCoordinator: CombineCoordinator<ProfileCoordinatorOutput> {
 
     // MARK: Screens
 
@@ -20,7 +20,7 @@ class ProfileCoordinator: CoordinatorWithOutput<ProfileCoordinatorResult> {
         let screen = ProfileScreen.create(screenModel: screenModel)
 
         screenModel.resultOutput.onLogout.receive(on: DispatchQueue.main).sink { [weak self] _ in
-            self?.onOutput(.logout)
+            self?.onOutput(.didLogout)
         }.store(in: &screen.disposeBag)
 
         return screen

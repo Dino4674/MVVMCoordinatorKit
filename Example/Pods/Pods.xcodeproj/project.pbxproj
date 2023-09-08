@@ -14,10 +14,9 @@
 		70B1A3C92AA0E62D00F108A3 /* ScreenModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70B1A3BF2AA0E62D00F108A3 /* ScreenModel.swift */; };
 		70B1A3CA2AA0E62D00F108A3 /* Screen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70B1A3C02AA0E62D00F108A3 /* Screen.swift */; };
 		70B1A3CB2AA0E62D00F108A3 /* ModeledScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70B1A3C12AA0E62D00F108A3 /* ModeledScreen.swift */; };
-		70B1A3CC2AA0E62D00F108A3 /* UIViewController+Presentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70B1A3C32AA0E62D00F108A3 /* UIViewController+Presentable.swift */; };
 		70B1A3CD2AA0E62D00F108A3 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70B1A3C42AA0E62D00F108A3 /* Router.swift */; };
-		70B1A3CE2AA0E62D00F108A3 /* CoordinatorWithOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70B1A3C52AA0E62D00F108A3 /* CoordinatorWithOutput.swift */; };
-		70B1A3CF2AA0E62D00F108A3 /* CoordinatorProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70B1A3C62AA0E62D00F108A3 /* CoordinatorProtocols.swift */; };
+		70B1A3CE2AA0E62D00F108A3 /* CombineCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70B1A3C52AA0E62D00F108A3 /* CombineCoordinator.swift */; };
+		70B1A3CF2AA0E62D00F108A3 /* Presentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70B1A3C62AA0E62D00F108A3 /* Presentable.swift */; };
 		70B1A3D02AA0E62D00F108A3 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70B1A3C72AA0E62D00F108A3 /* Coordinator.swift */; };
 		70D9E6D92AA1D0E800718B2B /* Screen+Nib.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70D9E6D82AA1D0E800718B2B /* Screen+Nib.swift */; };
 		9A299CB788035A02ECD1BA9E359BEF3A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */; };
@@ -59,10 +58,9 @@
 		70B1A3BF2AA0E62D00F108A3 /* ScreenModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScreenModel.swift; sourceTree = "<group>"; };
 		70B1A3C02AA0E62D00F108A3 /* Screen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Screen.swift; sourceTree = "<group>"; };
 		70B1A3C12AA0E62D00F108A3 /* ModeledScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModeledScreen.swift; sourceTree = "<group>"; };
-		70B1A3C32AA0E62D00F108A3 /* UIViewController+Presentable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Presentable.swift"; sourceTree = "<group>"; };
 		70B1A3C42AA0E62D00F108A3 /* Router.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
-		70B1A3C52AA0E62D00F108A3 /* CoordinatorWithOutput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoordinatorWithOutput.swift; sourceTree = "<group>"; };
-		70B1A3C62AA0E62D00F108A3 /* CoordinatorProtocols.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoordinatorProtocols.swift; sourceTree = "<group>"; };
+		70B1A3C52AA0E62D00F108A3 /* CombineCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CombineCoordinator.swift; sourceTree = "<group>"; };
+		70B1A3C62AA0E62D00F108A3 /* Presentable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Presentable.swift; sourceTree = "<group>"; };
 		70B1A3C72AA0E62D00F108A3 /* Coordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		70D9E6D82AA1D0E800718B2B /* Screen+Nib.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Screen+Nib.swift"; sourceTree = "<group>"; };
 		73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
@@ -178,10 +176,9 @@
 			isa = PBXGroup;
 			children = (
 				70B1A3C72AA0E62D00F108A3 /* Coordinator.swift */,
-				70B1A3C52AA0E62D00F108A3 /* CoordinatorWithOutput.swift */,
 				70B1A3C42AA0E62D00F108A3 /* Router.swift */,
-				70B1A3C62AA0E62D00F108A3 /* CoordinatorProtocols.swift */,
-				70B1A3C32AA0E62D00F108A3 /* UIViewController+Presentable.swift */,
+				70B1A3C62AA0E62D00F108A3 /* Presentable.swift */,
+				70B1A3C52AA0E62D00F108A3 /* CombineCoordinator.swift */,
 			);
 			name = Coordinator;
 			path = MVVMCoordinatorKit/Classes/Coordinator;
@@ -443,13 +440,12 @@
 				70D9E6D92AA1D0E800718B2B /* Screen+Nib.swift in Sources */,
 				70B1A3D02AA0E62D00F108A3 /* Coordinator.swift in Sources */,
 				70B1A3CB2AA0E62D00F108A3 /* ModeledScreen.swift in Sources */,
-				70B1A3CF2AA0E62D00F108A3 /* CoordinatorProtocols.swift in Sources */,
+				70B1A3CF2AA0E62D00F108A3 /* Presentable.swift in Sources */,
 				70B1A3CD2AA0E62D00F108A3 /* Router.swift in Sources */,
 				70B1A3CA2AA0E62D00F108A3 /* Screen.swift in Sources */,
 				7019C63F2AA9E38700198A0B /* MVVMCoordinatorKitLogger.swift in Sources */,
-				70B1A3CC2AA0E62D00F108A3 /* UIViewController+Presentable.swift in Sources */,
 				C7BD26DD45C0F781FDE4E30B3EF094BD /* MVVMCoordinatorKit-dummy.m in Sources */,
-				70B1A3CE2AA0E62D00F108A3 /* CoordinatorWithOutput.swift in Sources */,
+				70B1A3CE2AA0E62D00F108A3 /* CombineCoordinator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

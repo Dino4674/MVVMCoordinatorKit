@@ -9,16 +9,16 @@
 import MVVMCoordinatorKit
 import Combine
 
-enum AuthenticationCoordinatorResult {
-    case authenticated
+enum AuthenticationCoordinatorOutput {
+    case didAuthenticate
 }
 
-class AuthenticationCoordinator: CoordinatorWithOutput<AuthenticationCoordinatorResult> {
+class AuthenticationCoordinator: CombineCoordinator<AuthenticationCoordinatorOutput> {
 
     lazy var authenticationScreen: AuthenticationScreen = {
         let screenModel = AuthenticationScreenModel()
         screenModel.resultOutput.authenticated.receive(on: DispatchQueue.main).sink { [weak self] _ in
-            self?.onOutput(.authenticated)
+            self?.onOutput(.didAuthenticate)
         }.store(in: &disposeBag)
 
         let screen = AuthenticationScreen.create(screenModel: screenModel)

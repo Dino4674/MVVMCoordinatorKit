@@ -9,7 +9,7 @@
 import MVVMCoordinatorKit
 import Combine
 
-// MARK: - BaseScreenModelType
+// MARK: - ScreenModelType
 
 extension AuthenticationScreenModel: ScreenModelType {
     struct Input {
@@ -21,7 +21,7 @@ extension AuthenticationScreenModel: ScreenModelType {
     }
 }
 
-// MARK: - BaseScreenModelResultType
+// MARK: - ScreenModelResultType
 
 extension AuthenticationScreenModel: ScreenModelResultType {
     struct ResultOutput {
@@ -33,12 +33,12 @@ extension AuthenticationScreenModel: ScreenModelResultType {
 
 class AuthenticationScreenModel: ScreenModel {
 
-    // MARK: BaseScreenModelType
+    // MARK: ScreenModelType
 
     let input: Input
     let output: Output
 
-    // MARK: BaseScreenModelResultType
+    // MARK: ScreenModelResultType
 
     let resultOutput: ResultOutput
 

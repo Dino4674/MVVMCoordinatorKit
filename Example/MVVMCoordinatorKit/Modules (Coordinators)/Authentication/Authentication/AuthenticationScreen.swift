@@ -15,7 +15,7 @@ class AuthenticationScreen: ModeledScreen<AuthenticationScreenModel> {
 
     @IBOutlet weak var authenticateButton: UIButton!
     
-    // MARK: BaseScreen Override
+    // MARK: Screen Override
 
     override func setupUI() {
 

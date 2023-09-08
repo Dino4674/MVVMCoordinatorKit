@@ -7,17 +7,17 @@
 
 import MVVMCoordinatorKit
 
-enum NavigationExamplesCoordinatorResult {
-    case popDismiss
+enum NavigationExamplesCoordinatorOutput {
+    case removeManually
 }
 
-class NavigationExamplesCoordinator: CoordinatorWithOutput<NavigationExamplesCoordinatorResult> {
+class NavigationExamplesCoordinator: CombineCoordinator<NavigationExamplesCoordinatorOutput> {
 
     private var rootScreen: NavigationExamplesScreen!
 
     let isRoot: Bool
     let manualRemoveType: NavigationExamplesScreenModel.ManualRemoveType
-    init(router: RouterType, isRoot: Bool, manualRemoveType: NavigationExamplesScreenModel.ManualRemoveType) {
+    init(router: Router, isRoot: Bool, manualRemoveType: NavigationExamplesScreenModel.ManualRemoveType) {
         self.isRoot = isRoot
         self.manualRemoveType = manualRemoveType
         super.init(router: router)
@@ -55,7 +55,7 @@ class NavigationExamplesCoordinator: CoordinatorWithOutput<NavigationExamplesCoo
         }.store(in: &disposeBag)
 
         screenModel.resultOutput.manualRemove.receive(on: DispatchQueue.main).sink { [weak self] _ in
-            self?.onOutput(.popDismiss)
+            self?.onOutput(.removeManually)
         }.store(in: &disposeBag)
 
         let screen = NavigationExamplesScreen.create(screenModel: screenModel)
@@ -100,7 +100,7 @@ class NavigationExamplesCoordinator: CoordinatorWithOutput<NavigationExamplesCoo
         coordinator.outputPublisher
             .receive(on: DispatchQueue.main).sink { [weak self] result in
             switch result {
-            case .popDismiss:
+            case .removeManually:
                 self?.router.popModule(animated: true)
             }
         }.store(in: &disposeBag)
@@ -119,7 +119,7 @@ class NavigationExamplesCoordinator: CoordinatorWithOutput<NavigationExamplesCoo
         coordinator.outputPublisher
             .receive(on: DispatchQueue.main).sink { [weak self] result in
             switch result {
-            case .popDismiss:
+            case .removeManually:
                 self?.router.dismissModule(animated: true)
             }
         }.store(in: &disposeBag)

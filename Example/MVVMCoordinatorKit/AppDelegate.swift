@@ -13,9 +13,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-    private lazy var appNavigationController: UINavigationController = UINavigationController()
-    private lazy var appRouter: RouterType = Router(navigationController: appNavigationController)
-    private lazy var appCoordinator: AppCoordinator = AppCoordinator(router: appRouter)
+    private lazy var appNavigationController = UINavigationController()
+    private lazy var appRouter = Router(navigationController: appNavigationController)
+    private lazy var appCoordinator = AppCoordinator(router: appRouter)
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
 

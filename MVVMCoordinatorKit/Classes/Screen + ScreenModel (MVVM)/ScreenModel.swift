@@ -13,7 +13,7 @@ public protocol ScreenModelType: AnyObject {
 }
 
 public protocol ScreenModelResultType: AnyObject {
-    associatedtype ResultOutput /// output for 'outside world' (e.g. coordinator)
+    associatedtype ResultOutput /// output for 'outside world' (Coordinator)
 }
 
 open class ScreenModel {

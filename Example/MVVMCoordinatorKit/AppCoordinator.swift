@@ -7,7 +7,7 @@
 
 import MVVMCoordinatorKit
 
-class AppCoordinator: CoordinatorWithOutput<Void> {
+class AppCoordinator: CombineCoordinator<Void> {
 
     // MARK: Coordinator
 
@@ -32,7 +32,7 @@ class AppCoordinator: CoordinatorWithOutput<Void> {
             .receive(on: DispatchQueue.main)
             .sink { [weak self] result in
                 switch result {
-                case .logout:
+                case .didLogout:
                     self?.setAuthenticationCoordinatorAsRoot(animated: false)
                 }
             }
@@ -50,7 +50,7 @@ class AppCoordinator: CoordinatorWithOutput<Void> {
             .receive(on: DispatchQueue.main)
             .sink { [weak self] result in
                 switch result {
-                case .authenticated:
+                case .didAuthenticate:
                     self?.setHomeCoordinatorAsRoot(animated: false)
                 }
             }

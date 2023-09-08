@@ -1,5 +1,5 @@
 //
-//  CombineCoordinator.swift
+//  CoordinatorWithResult.swift
 //  MVVMCoordinatorKit
 //
 //  Created by Dino Bartosak on 11.07.2023.
@@ -7,7 +7,7 @@
 
 import Combine
 
-open class CombineCoordinator<OutputType>: Coordinator {
+open class CoordinatorWithResult<ResultType>: Coordinator {
 
     // MARK: Dispose Bag
 
@@ -15,15 +15,15 @@ open class CombineCoordinator<OutputType>: Coordinator {
 
     // MARK: Coordinator Output
 
-    private let outputPassthroughSubject = PassthroughSubject<OutputType, Never>()
+    private let resultPassthroughSubject = PassthroughSubject<ResultType, Never>()
 
     /// Each Coordinator is responsible for calling this when it is ready to pass some information to a parent Coordinator
-    public func onOutput(_ result: OutputType) {
-        outputPassthroughSubject.send(result)
+    public func onResult(_ result: ResultType) {
+        resultPassthroughSubject.send(result)
     }
 
     /// Each Coordinator is responsible for listening to this publisher for results that it's child Coordinator is producing
-    public var outputPublisher: AnyPublisher<OutputType, Never> {
-        outputPassthroughSubject.eraseToAnyPublisher()
+    public var resultPublisher: AnyPublisher<ResultType, Never> {
+        resultPassthroughSubject.eraseToAnyPublisher()
     }
 }

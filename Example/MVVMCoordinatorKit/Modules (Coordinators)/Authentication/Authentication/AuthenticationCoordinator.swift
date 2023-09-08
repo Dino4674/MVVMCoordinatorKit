@@ -13,12 +13,12 @@ enum AuthenticationCoordinatorOutput {
     case didAuthenticate
 }
 
-class AuthenticationCoordinator: CombineCoordinator<AuthenticationCoordinatorOutput> {
+class AuthenticationCoordinator: CoordinatorWithResult<AuthenticationCoordinatorOutput> {
 
     lazy var authenticationScreen: AuthenticationScreen = {
         let screenModel = AuthenticationScreenModel()
         screenModel.result.didAuthenticate.receive(on: DispatchQueue.main).sink { [weak self] _ in
-            self?.onOutput(.didAuthenticate)
+            self?.onResult(.didAuthenticate)
         }.store(in: &disposeBag)
 
         let screen = AuthenticationScreen.create(screenModel: screenModel)

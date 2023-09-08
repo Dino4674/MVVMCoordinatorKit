@@ -6,11 +6,8 @@
 //
 
 import MVVMCoordinatorKit
-import Combine
 
 class ProfileScreen: Screen<ProfileScreenModel> {
-
-    public var disposeBag = Set<AnyCancellable>()
 
     // MARK: Outlets
 

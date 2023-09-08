@@ -7,11 +7,8 @@
 //
 
 import MVVMCoordinatorKit
-import Combine
 
 class AuthenticationScreen: Screen<AuthenticationScreenModel> {
-
-    public var disposeBag = Set<AnyCancellable>()
 
     // MARK: Outlets
 

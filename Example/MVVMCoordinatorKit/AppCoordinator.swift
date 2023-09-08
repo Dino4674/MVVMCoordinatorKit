@@ -7,7 +7,7 @@
 
 import MVVMCoordinatorKit
 
-class AppCoordinator: CombineCoordinator<Void> {
+class AppCoordinator: CoordinatorWithResult<Void> {
 
     // MARK: Coordinator
 
@@ -28,7 +28,7 @@ class AppCoordinator: CombineCoordinator<Void> {
 
         setRootCoordinator(coordinator, animated: animated)
 
-        coordinator.outputPublisher
+        coordinator.resultPublisher
             .receive(on: DispatchQueue.main)
             .sink { [weak self] result in
                 switch result {
@@ -46,7 +46,7 @@ class AppCoordinator: CombineCoordinator<Void> {
 
         setRootCoordinator(coordinator, animated: animated)
 
-        coordinator.outputPublisher
+        coordinator.resultPublisher
             .receive(on: DispatchQueue.main)
             .sink { [weak self] result in
                 switch result {

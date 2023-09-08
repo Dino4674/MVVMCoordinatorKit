@@ -11,7 +11,7 @@ enum ProfileCoordinatorOutput {
     case didLogout
 }
 
-class ProfileCoordinator: CombineCoordinator<ProfileCoordinatorOutput> {
+class ProfileCoordinator: CoordinatorWithResult<ProfileCoordinatorOutput> {
 
     // MARK: Screens
 
@@ -20,7 +20,7 @@ class ProfileCoordinator: CombineCoordinator<ProfileCoordinatorOutput> {
         let screen = ProfileScreen.create(screenModel: screenModel)
 
         screenModel.result.didLogout.receive(on: DispatchQueue.main).sink { [weak self] _ in
-            self?.onOutput(.didLogout)
+            self?.onResult(.didLogout)
         }.store(in: &screen.disposeBag)
 
         return screen

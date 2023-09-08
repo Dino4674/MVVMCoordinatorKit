@@ -11,7 +11,7 @@ enum HomeCoordinatorOutput {
     case didLogout
 }
 
-class HomeCoordinator: CombineCoordinator<HomeCoordinatorOutput> {
+class HomeCoordinator: CoordinatorWithResult<HomeCoordinatorOutput> {
 
     private var tabBarController = UITabBarController()
 
@@ -52,11 +52,11 @@ class HomeCoordinator: CombineCoordinator<HomeCoordinatorOutput> {
         navigationController.tabBarItem = UITabBarItem(title: "Profile", image: nil, selectedImage: nil)
         let router = Router(navigationController: navigationController)
         let coordinator = ProfileCoordinator(router: router)
-        coordinator.outputPublisher.receive(on: DispatchQueue.main)
+        coordinator.resultPublisher.receive(on: DispatchQueue.main)
             .sink { [weak self] result in
                 switch result {
                 case .didLogout:
-                    self?.onOutput(.didLogout)
+                    self?.onResult(.didLogout)
                 }
             }
             .store(in: &coordinator.disposeBag)

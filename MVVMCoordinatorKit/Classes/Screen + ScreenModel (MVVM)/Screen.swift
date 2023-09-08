@@ -6,8 +6,11 @@
 //
 
 import UIKit
+import Combine
 
 open class Screen<T>: UIViewController {
+
+    public var disposeBag = Set<AnyCancellable>()
 
     deinit { MVVMCoordinatorKitLogger.log("💀 Screen deinit: \(self)") }
 

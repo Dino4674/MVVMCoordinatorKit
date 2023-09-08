@@ -11,7 +11,7 @@ enum NavigationExamplesCoordinatorOutput {
     case removeManually
 }
 
-class NavigationExamplesCoordinator: CombineCoordinator<NavigationExamplesCoordinatorOutput> {
+class NavigationExamplesCoordinator: CoordinatorWithResult<NavigationExamplesCoordinatorOutput> {
 
     private var rootScreen: NavigationExamplesScreen!
 
@@ -55,7 +55,7 @@ class NavigationExamplesCoordinator: CombineCoordinator<NavigationExamplesCoordi
         }.store(in: &disposeBag)
 
         screenModel.result.manualRemove.receive(on: DispatchQueue.main).sink { [weak self] _ in
-            self?.onOutput(.removeManually)
+            self?.onResult(.removeManually)
         }.store(in: &disposeBag)
 
         let screen = NavigationExamplesScreen.create(screenModel: screenModel)
@@ -97,7 +97,7 @@ class NavigationExamplesCoordinator: CombineCoordinator<NavigationExamplesCoordi
             print("Do something if you need on coordinator pop")
         }
 
-        coordinator.outputPublisher
+        coordinator.resultPublisher
             .receive(on: DispatchQueue.main).sink { [weak self] result in
             switch result {
             case .removeManually:
@@ -116,7 +116,7 @@ class NavigationExamplesCoordinator: CombineCoordinator<NavigationExamplesCoordi
             print("Do something if you need on coordinator dismiss")
         }
 
-        coordinator.outputPublisher
+        coordinator.resultPublisher
             .receive(on: DispatchQueue.main).sink { [weak self] result in
             switch result {
             case .removeManually:

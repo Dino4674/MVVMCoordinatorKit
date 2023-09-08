@@ -17,7 +17,7 @@ class AuthenticationCoordinator: CombineCoordinator<AuthenticationCoordinatorOut
 
     lazy var authenticationScreen: AuthenticationScreen = {
         let screenModel = AuthenticationScreenModel()
-        screenModel.resultOutput.authenticated.receive(on: DispatchQueue.main).sink { [weak self] _ in
+        screenModel.resultOutput.didAuthenticate.receive(on: DispatchQueue.main).sink { [weak self] _ in
             self?.onOutput(.didAuthenticate)
         }.store(in: &disposeBag)
 

@@ -9,7 +9,9 @@
 import MVVMCoordinatorKit
 import Combine
 
-class NavigationExamplesScreen: ModeledScreen<NavigationExamplesScreenModel> {
+class NavigationExamplesScreen: Screen<NavigationExamplesScreenModel> {
+
+    public var disposeBag = Set<AnyCancellable>()
 
     // MARK: Outlets
 
@@ -25,8 +27,6 @@ class NavigationExamplesScreen: ModeledScreen<NavigationExamplesScreenModel> {
         pushCoordinatorButton.backgroundColor = .blue.withAlphaComponent(0.2)
         presentCoordinatorButton.backgroundColor = .blue.withAlphaComponent(0.3)
     }
-
-    // MARK: ModeledScreen Override
 
     override func bindScreenModel() {
         screenModel.output.manualRemoveButtonVisible.receive(on: DispatchQueue.main)

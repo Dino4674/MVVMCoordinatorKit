@@ -25,7 +25,7 @@ extension ProfileScreenModel: ScreenModelType {
 
 extension ProfileScreenModel: ScreenModelResultType {
     struct ResultOutput {
-        let onLogout: AnyPublisher<Void, Never>
+        let didLogout: AnyPublisher<Void, Never>
     }
 }
 
@@ -52,6 +52,6 @@ class ProfileScreenModel: ScreenModel {
         input = Input(logout: logout)
         output = Output(screenTitle: screenTitle.eraseToAnyPublisher(),
                         logoutButtonTitle: logoutActionTitle.eraseToAnyPublisher())
-        resultOutput = ResultOutput(onLogout: logout.eraseToAnyPublisher())
+        resultOutput = ResultOutput(didLogout: logout.eraseToAnyPublisher())
     }
 }

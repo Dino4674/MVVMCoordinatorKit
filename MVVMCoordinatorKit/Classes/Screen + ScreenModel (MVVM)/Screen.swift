@@ -7,16 +7,34 @@
 
 import UIKit
 
-open class Screen: UIViewController {
+open class Screen<T>: UIViewController {
 
     deinit { MVVMCoordinatorKitLogger.log("💀 Screen deinit: \(self)") }
+
+    public private(set) var screenModel: T!
 
     public override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
+        bindScreenModel()
     }
 
-    // MARK: Subclass
-
     open func setupUI() {}
+    open func bindScreenModel() {}
+}
+
+// MARK: - Factory
+
+extension Screen {
+    public static func create(screenModel: T) -> Self {
+        let vc = Self.loadFromNib()
+        vc.screenModel = screenModel
+        return vc
+    }
+}
+
+private extension UIViewController {
+    static func loadFromNib() -> Self {
+        return self.init(nibName: String(describing: self), bundle: nil)
+    }
 }

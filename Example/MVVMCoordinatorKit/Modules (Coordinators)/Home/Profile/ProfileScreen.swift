@@ -8,7 +8,9 @@
 import MVVMCoordinatorKit
 import Combine
 
-class ProfileScreen: ModeledScreen<ProfileScreenModel> {
+class ProfileScreen: Screen<ProfileScreenModel> {
+
+    public var disposeBag = Set<AnyCancellable>()
 
     // MARK: Outlets
 
@@ -20,8 +22,6 @@ class ProfileScreen: ModeledScreen<ProfileScreenModel> {
     override func setupUI() {
 
     }
-
-    // MARK: ModeledScreen Override
 
     override func bindScreenModel() {
         screenModel.output.screenTitle.assign(to: \.text, on: label).store(in: &disposeBag)

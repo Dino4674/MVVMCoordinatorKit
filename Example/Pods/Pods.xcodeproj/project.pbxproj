@@ -10,15 +10,12 @@
 		058C2A0484B5AF4B1F82D38E396BD553 /* Pods-MVVMCoordinatorKit_Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 65AFD753230DAB2356FBFBC281DE809B /* Pods-MVVMCoordinatorKit_Tests-dummy.m */; };
 		12CF71337B7D7B4A045EE51DE97A843B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */; };
 		7019C63F2AA9E38700198A0B /* MVVMCoordinatorKitLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7019C63E2AA9E38700198A0B /* MVVMCoordinatorKitLogger.swift */; };
-		70B1A3C82AA0E62D00F108A3 /* UIView+Nib.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70B1A3BD2AA0E62D00F108A3 /* UIView+Nib.swift */; };
 		70B1A3C92AA0E62D00F108A3 /* ScreenModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70B1A3BF2AA0E62D00F108A3 /* ScreenModel.swift */; };
 		70B1A3CA2AA0E62D00F108A3 /* Screen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70B1A3C02AA0E62D00F108A3 /* Screen.swift */; };
-		70B1A3CB2AA0E62D00F108A3 /* ModeledScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70B1A3C12AA0E62D00F108A3 /* ModeledScreen.swift */; };
 		70B1A3CD2AA0E62D00F108A3 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70B1A3C42AA0E62D00F108A3 /* Router.swift */; };
 		70B1A3CE2AA0E62D00F108A3 /* CombineCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70B1A3C52AA0E62D00F108A3 /* CombineCoordinator.swift */; };
 		70B1A3CF2AA0E62D00F108A3 /* Presentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70B1A3C62AA0E62D00F108A3 /* Presentable.swift */; };
 		70B1A3D02AA0E62D00F108A3 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70B1A3C72AA0E62D00F108A3 /* Coordinator.swift */; };
-		70D9E6D92AA1D0E800718B2B /* Screen+Nib.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70D9E6D82AA1D0E800718B2B /* Screen+Nib.swift */; };
 		9A299CB788035A02ECD1BA9E359BEF3A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */; };
 		A1B6F847FE168066704AF21848C8685B /* Pods-MVVMCoordinatorKit_Tests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 11A0B3DD1A3CD3568440C779DC410275 /* Pods-MVVMCoordinatorKit_Tests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B7F3255899A41F28F375946688482A6E /* Pods-MVVMCoordinatorKit_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = E126BA2DA5F86732B9938E15439315CA /* Pods-MVVMCoordinatorKit_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -54,15 +51,12 @@
 		65AFD753230DAB2356FBFBC281DE809B /* Pods-MVVMCoordinatorKit_Tests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-MVVMCoordinatorKit_Tests-dummy.m"; sourceTree = "<group>"; };
 		6C14B618CBD5F5ABC6F510440022C5B2 /* MVVMCoordinatorKit-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "MVVMCoordinatorKit-Info.plist"; sourceTree = "<group>"; };
 		7019C63E2AA9E38700198A0B /* MVVMCoordinatorKitLogger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MVVMCoordinatorKitLogger.swift; sourceTree = "<group>"; };
-		70B1A3BD2AA0E62D00F108A3 /* UIView+Nib.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Nib.swift"; sourceTree = "<group>"; };
 		70B1A3BF2AA0E62D00F108A3 /* ScreenModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScreenModel.swift; sourceTree = "<group>"; };
 		70B1A3C02AA0E62D00F108A3 /* Screen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Screen.swift; sourceTree = "<group>"; };
-		70B1A3C12AA0E62D00F108A3 /* ModeledScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModeledScreen.swift; sourceTree = "<group>"; };
 		70B1A3C42AA0E62D00F108A3 /* Router.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		70B1A3C52AA0E62D00F108A3 /* CombineCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CombineCoordinator.swift; sourceTree = "<group>"; };
 		70B1A3C62AA0E62D00F108A3 /* Presentable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Presentable.swift; sourceTree = "<group>"; };
 		70B1A3C72AA0E62D00F108A3 /* Coordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
-		70D9E6D82AA1D0E800718B2B /* Screen+Nib.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Screen+Nib.swift"; sourceTree = "<group>"; };
 		73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		75F5F6121E98A8377E1B0C3AAB1AFC80 /* Pods-MVVMCoordinatorKit_Tests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-MVVMCoordinatorKit_Tests-acknowledgements.plist"; sourceTree = "<group>"; };
 		819225315143E376C548F92B2894E9B6 /* Pods-MVVMCoordinatorKit_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-MVVMCoordinatorKit_Example.debug.xcconfig"; sourceTree = "<group>"; };
@@ -151,14 +145,13 @@
 			path = MVVMCoordinatorKit/Classes/Logger;
 			sourceTree = "<group>";
 		};
-		70B1A3BC2AA0E62D00F108A3 /* View + Nib */ = {
+		703D4C322AAB3FC800B8A79C /* Combine Implementation */ = {
 			isa = PBXGroup;
 			children = (
-				70B1A3BD2AA0E62D00F108A3 /* UIView+Nib.swift */,
-				70D9E6D82AA1D0E800718B2B /* Screen+Nib.swift */,
+				70B1A3C52AA0E62D00F108A3 /* CombineCoordinator.swift */,
 			);
-			name = "View + Nib";
-			path = "MVVMCoordinatorKit/Classes/View + Nib";
+			name = "Combine Implementation";
+			path = "MVVMCoordinatorKit/Classes/Combine Implementation";
 			sourceTree = "<group>";
 		};
 		70B1A3BE2AA0E62D00F108A3 /* Screen + ScreenModel (MVVM) */ = {
@@ -166,7 +159,6 @@
 			children = (
 				70B1A3C02AA0E62D00F108A3 /* Screen.swift */,
 				70B1A3BF2AA0E62D00F108A3 /* ScreenModel.swift */,
-				70B1A3C12AA0E62D00F108A3 /* ModeledScreen.swift */,
 			);
 			name = "Screen + ScreenModel (MVVM)";
 			path = "MVVMCoordinatorKit/Classes/Screen + ScreenModel (MVVM)";
@@ -178,7 +170,6 @@
 				70B1A3C72AA0E62D00F108A3 /* Coordinator.swift */,
 				70B1A3C42AA0E62D00F108A3 /* Router.swift */,
 				70B1A3C62AA0E62D00F108A3 /* Presentable.swift */,
-				70B1A3C52AA0E62D00F108A3 /* CombineCoordinator.swift */,
 			);
 			name = Coordinator;
 			path = MVVMCoordinatorKit/Classes/Coordinator;
@@ -250,10 +241,10 @@
 		DC24D4B3B070A8D8D309E5D311405036 /* MVVMCoordinatorKit */ = {
 			isa = PBXGroup;
 			children = (
+				703D4C322AAB3FC800B8A79C /* Combine Implementation */,
 				7019C63D2AA9E38700198A0B /* Logger */,
 				70B1A3C22AA0E62D00F108A3 /* Coordinator */,
 				70B1A3BE2AA0E62D00F108A3 /* Screen + ScreenModel (MVVM) */,
-				70B1A3BC2AA0E62D00F108A3 /* View + Nib */,
 				7DF6F2406C656BEF1890912CDB5A73EA /* Pod */,
 				ECA671F253C64F192ACF74A7D41EF506 /* Support Files */,
 			);
@@ -435,11 +426,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				70B1A3C82AA0E62D00F108A3 /* UIView+Nib.swift in Sources */,
 				70B1A3C92AA0E62D00F108A3 /* ScreenModel.swift in Sources */,
-				70D9E6D92AA1D0E800718B2B /* Screen+Nib.swift in Sources */,
 				70B1A3D02AA0E62D00F108A3 /* Coordinator.swift in Sources */,
-				70B1A3CB2AA0E62D00F108A3 /* ModeledScreen.swift in Sources */,
 				70B1A3CF2AA0E62D00F108A3 /* Presentable.swift in Sources */,
 				70B1A3CD2AA0E62D00F108A3 /* Router.swift in Sources */,
 				70B1A3CA2AA0E62D00F108A3 /* Screen.swift in Sources */,

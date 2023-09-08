@@ -9,7 +9,9 @@
 import MVVMCoordinatorKit
 import Combine
 
-class AuthenticationScreen: ModeledScreen<AuthenticationScreenModel> {
+class AuthenticationScreen: Screen<AuthenticationScreenModel> {
+
+    public var disposeBag = Set<AnyCancellable>()
 
     // MARK: Outlets
 
@@ -20,8 +22,6 @@ class AuthenticationScreen: ModeledScreen<AuthenticationScreenModel> {
     override func setupUI() {
 
     }
-
-    // MARK: ModeledScreen Override
 
     override func bindScreenModel() {
         screenModel.output.authenticateButtonTitle.receive(on: DispatchQueue.main)

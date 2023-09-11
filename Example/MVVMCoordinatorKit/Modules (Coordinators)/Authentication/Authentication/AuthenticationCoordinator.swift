@@ -13,7 +13,7 @@ enum AuthenticationCoordinatorOutput {
     case didAuthenticate
 }
 
-class AuthenticationCoordinator: CoordinatorWithResult<AuthenticationCoordinatorOutput> {
+class AuthenticationCoordinator: CombineCoordinator<AuthenticationCoordinatorOutput> {
 
     lazy var authenticationScreen: AuthenticationScreen = {
         let screenModel = AuthenticationScreenModel()

@@ -6,11 +6,8 @@
 //
 
 import UIKit
-import Combine
 
 open class Screen<T>: UIViewController {
-
-    public var disposeBag = Set<AnyCancellable>()
 
     deinit { MVVMCoordinatorKitLogger.log("💀 Screen deinit: \(self)") }
 
@@ -31,6 +28,12 @@ open class Screen<T>: UIViewController {
 extension Screen {
     public static func createWithNib(screenModel: T) -> Self {
         let vc = Self.loadFromNib()
+        vc.screenModel = screenModel
+        return vc
+    }
+
+    public static func create(screenModel: T) -> Self {
+        let vc = Self.self.init()
         vc.screenModel = screenModel
         return vc
     }

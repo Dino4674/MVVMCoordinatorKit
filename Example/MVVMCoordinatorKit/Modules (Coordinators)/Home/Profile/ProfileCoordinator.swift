@@ -11,13 +11,13 @@ enum ProfileCoordinatorOutput {
     case didLogout
 }
 
-class ProfileCoordinator: CoordinatorWithResult<ProfileCoordinatorOutput> {
+class ProfileCoordinator: CombineCoordinator<ProfileCoordinatorOutput> {
 
     // MARK: Screens
 
     lazy var profileScreen: ProfileScreen = {
         let screenModel = ProfileScreenModel()
-        let screen = ProfileScreen.createWithNib(screenModel: screenModel)
+        let screen = ProfileScreen.create(screenModel: screenModel)
 
         screenModel.result.didLogout.receive(on: DispatchQueue.main).sink { [weak self] _ in
             self?.onResult(.didLogout)

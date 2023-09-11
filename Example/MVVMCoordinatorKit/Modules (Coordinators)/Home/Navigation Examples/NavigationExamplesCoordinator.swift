@@ -11,7 +11,7 @@ enum NavigationExamplesCoordinatorOutput {
     case removeManually
 }
 
-class NavigationExamplesCoordinator: CoordinatorWithResult<NavigationExamplesCoordinatorOutput> {
+class NavigationExamplesCoordinator: CombineCoordinator<NavigationExamplesCoordinatorOutput> {
 
     private var rootScreen: NavigationExamplesScreen!
 

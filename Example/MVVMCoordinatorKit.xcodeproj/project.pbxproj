@@ -18,12 +18,12 @@
 		706961592AA7631A00F2A9AC /* NavigationExamplesScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 706961562AA7631A00F2A9AC /* NavigationExamplesScreen.swift */; };
 		7069615A2AA7631A00F2A9AC /* NavigationExamplesScreenModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 706961572AA7631A00F2A9AC /* NavigationExamplesScreenModel.swift */; };
 		70B1A3FF2AA0E6B200F108A3 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70B1A3E32AA0E6B200F108A3 /* AppCoordinator.swift */; };
+		70BB1A852AAF342000375551 /* CombineCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70BB1A842AAF342000375551 /* CombineCoordinator.swift */; };
 		70D9E6C52AA1CFC900718B2B /* ProfileCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70B1A3EE2AA0E6B200F108A3 /* ProfileCoordinator.swift */; };
 		70D9E6C62AA1CFC900718B2B /* ProfileScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70B1A3EB2AA0E6B200F108A3 /* ProfileScreen.swift */; };
 		70D9E6CF2AA1CFC900718B2B /* ProfileScreenModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70B1A3ED2AA0E6B200F108A3 /* ProfileScreenModel.swift */; };
 		70D9E6D02AA1CFC900718B2B /* HomeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70B1A3F12AA0E6B200F108A3 /* HomeCoordinator.swift */; };
 		70D9E6D22AA1CFC900718B2B /* NavigationExamplesCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70B1A3F02AA0E6B200F108A3 /* NavigationExamplesCoordinator.swift */; };
-		70D9E6D52AA1CFC900718B2B /* ProfileScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 70B1A3EC2AA0E6B200F108A3 /* ProfileScreen.xib */; };
 		70D9E6DC2AA74ED200718B2B /* AuthenticationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70D9E6DB2AA74ED200718B2B /* AuthenticationCoordinator.swift */; };
 		70D9E6E12AA74F5800718B2B /* AuthenticationScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70D9E6DE2AA74F5800718B2B /* AuthenticationScreen.swift */; };
 		70D9E6E22AA74F5800718B2B /* AuthenticationScreenModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70D9E6DF2AA74F5800718B2B /* AuthenticationScreenModel.swift */; };
@@ -61,11 +61,11 @@
 		706961572AA7631A00F2A9AC /* NavigationExamplesScreenModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationExamplesScreenModel.swift; sourceTree = "<group>"; };
 		70B1A3E32AA0E6B200F108A3 /* AppCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		70B1A3EB2AA0E6B200F108A3 /* ProfileScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileScreen.swift; sourceTree = "<group>"; };
-		70B1A3EC2AA0E6B200F108A3 /* ProfileScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProfileScreen.xib; sourceTree = "<group>"; };
 		70B1A3ED2AA0E6B200F108A3 /* ProfileScreenModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileScreenModel.swift; sourceTree = "<group>"; };
 		70B1A3EE2AA0E6B200F108A3 /* ProfileCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileCoordinator.swift; sourceTree = "<group>"; };
 		70B1A3F02AA0E6B200F108A3 /* NavigationExamplesCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationExamplesCoordinator.swift; sourceTree = "<group>"; };
 		70B1A3F12AA0E6B200F108A3 /* HomeCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeCoordinator.swift; sourceTree = "<group>"; };
+		70BB1A842AAF342000375551 /* CombineCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CombineCoordinator.swift; sourceTree = "<group>"; };
 		70D9E6DB2AA74ED200718B2B /* AuthenticationCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationCoordinator.swift; sourceTree = "<group>"; };
 		70D9E6DE2AA74F5800718B2B /* AuthenticationScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationScreen.swift; sourceTree = "<group>"; };
 		70D9E6DF2AA74F5800718B2B /* AuthenticationScreenModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationScreenModel.swift; sourceTree = "<group>"; };
@@ -135,6 +135,7 @@
 				607FACD51AFB9204008FA782 /* AppDelegate.swift */,
 				70B1A3E32AA0E6B200F108A3 /* AppCoordinator.swift */,
 				7019C6392AA9D5C300198A0B /* Modules (Coordinators) */,
+				70BB1A862AAF34AD00375551 /* MVVMCoordinator Combine Implementation */,
 				607FACD71AFB9204008FA782 /* ViewController.swift */,
 				607FACD91AFB9204008FA782 /* Main.storyboard */,
 				607FACDC1AFB9204008FA782 /* Images.xcassets */,
@@ -203,9 +204,7 @@
 			isa = PBXGroup;
 			children = (
 				70B1A3EE2AA0E6B200F108A3 /* ProfileCoordinator.swift */,
-				70B1A3EB2AA0E6B200F108A3 /* ProfileScreen.swift */,
-				70B1A3EC2AA0E6B200F108A3 /* ProfileScreen.xib */,
-				70B1A3ED2AA0E6B200F108A3 /* ProfileScreenModel.swift */,
+				70BB1A872AAF350E00375551 /* Profile Screen (example without Nib) */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -214,11 +213,46 @@
 			isa = PBXGroup;
 			children = (
 				70B1A3F02AA0E6B200F108A3 /* NavigationExamplesCoordinator.swift */,
+				70BB1A812AAF010F00375551 /* Navigation Examples Screen (example with Nib) */,
+			);
+			path = "Navigation Examples";
+			sourceTree = "<group>";
+		};
+		70BB1A812AAF010F00375551 /* Navigation Examples Screen (example with Nib) */ = {
+			isa = PBXGroup;
+			children = (
 				706961562AA7631A00F2A9AC /* NavigationExamplesScreen.swift */,
 				706961552AA7631A00F2A9AC /* NavigationExamplesScreen.xib */,
 				706961572AA7631A00F2A9AC /* NavigationExamplesScreenModel.swift */,
 			);
-			path = "Navigation Examples";
+			path = "Navigation Examples Screen (example with Nib)";
+			sourceTree = "<group>";
+		};
+		70BB1A832AAF13EC00375551 /* Authentication Screen (example with Nib) */ = {
+			isa = PBXGroup;
+			children = (
+				70D9E6DE2AA74F5800718B2B /* AuthenticationScreen.swift */,
+				70F3C9E62AA74F7E00CF9791 /* AuthenticationScreen.xib */,
+				70D9E6DF2AA74F5800718B2B /* AuthenticationScreenModel.swift */,
+			);
+			path = "Authentication Screen (example with Nib)";
+			sourceTree = "<group>";
+		};
+		70BB1A862AAF34AD00375551 /* MVVMCoordinator Combine Implementation */ = {
+			isa = PBXGroup;
+			children = (
+				70BB1A842AAF342000375551 /* CombineCoordinator.swift */,
+			);
+			path = "MVVMCoordinator Combine Implementation";
+			sourceTree = "<group>";
+		};
+		70BB1A872AAF350E00375551 /* Profile Screen (example without Nib) */ = {
+			isa = PBXGroup;
+			children = (
+				70B1A3EB2AA0E6B200F108A3 /* ProfileScreen.swift */,
+				70B1A3ED2AA0E6B200F108A3 /* ProfileScreenModel.swift */,
+			);
+			path = "Profile Screen (example without Nib)";
 			sourceTree = "<group>";
 		};
 		70D9E6DA2AA74E9900718B2B /* Authentication */ = {
@@ -233,9 +267,7 @@
 			isa = PBXGroup;
 			children = (
 				70D9E6DB2AA74ED200718B2B /* AuthenticationCoordinator.swift */,
-				70D9E6DE2AA74F5800718B2B /* AuthenticationScreen.swift */,
-				70F3C9E62AA74F7E00CF9791 /* AuthenticationScreen.xib */,
-				70D9E6DF2AA74F5800718B2B /* AuthenticationScreenModel.swift */,
+				70BB1A832AAF13EC00375551 /* Authentication Screen (example with Nib) */,
 			);
 			path = Authentication;
 			sourceTree = "<group>";
@@ -338,7 +370,6 @@
 			files = (
 				70F3C9E72AA74F7E00CF9791 /* AuthenticationScreen.xib in Resources */,
 				607FACDB1AFB9204008FA782 /* Main.storyboard in Resources */,
-				70D9E6D52AA1CFC900718B2B /* ProfileScreen.xib in Resources */,
 				607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */,
 				706961582AA7631A00F2A9AC /* NavigationExamplesScreen.xib in Resources */,
 				607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */,
@@ -425,6 +456,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				70B1A3FF2AA0E6B200F108A3 /* AppCoordinator.swift in Sources */,
+				70BB1A852AAF342000375551 /* CombineCoordinator.swift in Sources */,
 				70D9E6D22AA1CFC900718B2B /* NavigationExamplesCoordinator.swift in Sources */,
 				70D9E6C52AA1CFC900718B2B /* ProfileCoordinator.swift in Sources */,
 				607FACD81AFB9204008FA782 /* ViewController.swift in Sources */,

@@ -13,7 +13,6 @@
 		70B1A3C92AA0E62D00F108A3 /* ScreenModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70B1A3BF2AA0E62D00F108A3 /* ScreenModel.swift */; };
 		70B1A3CA2AA0E62D00F108A3 /* Screen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70B1A3C02AA0E62D00F108A3 /* Screen.swift */; };
 		70B1A3CD2AA0E62D00F108A3 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70B1A3C42AA0E62D00F108A3 /* Router.swift */; };
-		70B1A3CE2AA0E62D00F108A3 /* CoordinatorWithResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70B1A3C52AA0E62D00F108A3 /* CoordinatorWithResult.swift */; };
 		70B1A3CF2AA0E62D00F108A3 /* Presentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70B1A3C62AA0E62D00F108A3 /* Presentable.swift */; };
 		70B1A3D02AA0E62D00F108A3 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70B1A3C72AA0E62D00F108A3 /* Coordinator.swift */; };
 		9A299CB788035A02ECD1BA9E359BEF3A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */; };
@@ -54,7 +53,6 @@
 		70B1A3BF2AA0E62D00F108A3 /* ScreenModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScreenModel.swift; sourceTree = "<group>"; };
 		70B1A3C02AA0E62D00F108A3 /* Screen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Screen.swift; sourceTree = "<group>"; };
 		70B1A3C42AA0E62D00F108A3 /* Router.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
-		70B1A3C52AA0E62D00F108A3 /* CoordinatorWithResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoordinatorWithResult.swift; sourceTree = "<group>"; };
 		70B1A3C62AA0E62D00F108A3 /* Presentable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Presentable.swift; sourceTree = "<group>"; };
 		70B1A3C72AA0E62D00F108A3 /* Coordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
@@ -159,7 +157,6 @@
 			isa = PBXGroup;
 			children = (
 				70B1A3C72AA0E62D00F108A3 /* Coordinator.swift */,
-				70B1A3C52AA0E62D00F108A3 /* CoordinatorWithResult.swift */,
 				70B1A3C42AA0E62D00F108A3 /* Router.swift */,
 				70B1A3C62AA0E62D00F108A3 /* Presentable.swift */,
 			);
@@ -424,7 +421,6 @@
 				70B1A3CA2AA0E62D00F108A3 /* Screen.swift in Sources */,
 				7019C63F2AA9E38700198A0B /* MVVMCoordinatorKitLogger.swift in Sources */,
 				C7BD26DD45C0F781FDE4E30B3EF094BD /* MVVMCoordinatorKit-dummy.m in Sources */,
-				70B1A3CE2AA0E62D00F108A3 /* CoordinatorWithResult.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -7,7 +7,7 @@
 
 import MVVMCoordinatorKit
 
-class AppCoordinator: CoordinatorWithResult<Void> {
+class AppCoordinator: CombineCoordinator<Void> {
 
     // MARK: Coordinator
 

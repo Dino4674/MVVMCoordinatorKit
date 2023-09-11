@@ -1,13 +1,14 @@
 //
-//  CoordinatorWithResult.swift
+//  CombineCoordinator.swift
 //  MVVMCoordinatorKit
 //
 //  Created by Dino Bartosak on 11.07.2023.
 //
 
+import MVVMCoordinatorKit
 import Combine
 
-open class CoordinatorWithResult<ResultType>: Coordinator {
+open class CombineCoordinator<ResultType>: Coordinator {
 
     // MARK: Dispose Bag
 

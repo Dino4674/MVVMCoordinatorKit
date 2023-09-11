@@ -11,7 +11,7 @@ enum HomeCoordinatorOutput {
     case didLogout
 }
 
-class HomeCoordinator: CoordinatorWithResult<HomeCoordinatorOutput> {
+class HomeCoordinator: CombineCoordinator<HomeCoordinatorOutput> {
 
     private var tabBarController = UITabBarController()
 

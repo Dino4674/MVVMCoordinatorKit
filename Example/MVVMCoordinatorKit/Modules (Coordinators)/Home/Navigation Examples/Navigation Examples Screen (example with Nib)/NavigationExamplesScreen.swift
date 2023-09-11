@@ -7,8 +7,11 @@
 //
 
 import MVVMCoordinatorKit
+import Combine
 
 class NavigationExamplesScreen: Screen<NavigationExamplesScreenModel> {
+
+    public var disposeBag = Set<AnyCancellable>()
 
     // MARK: Outlets
 

@@ -21,7 +21,7 @@ class AuthenticationCoordinator: CoordinatorWithResult<AuthenticationCoordinator
             self?.onResult(.didAuthenticate)
         }.store(in: &disposeBag)
 
-        let screen = AuthenticationScreen.create(screenModel: screenModel)
+        let screen = AuthenticationScreen.createWithNib(screenModel: screenModel)
         return screen
     }()
 

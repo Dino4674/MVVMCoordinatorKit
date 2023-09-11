@@ -58,7 +58,7 @@ class NavigationExamplesCoordinator: CoordinatorWithResult<NavigationExamplesCoo
             self?.onResult(.removeManually)
         }.store(in: &disposeBag)
 
-        let screen = NavigationExamplesScreen.create(screenModel: screenModel)
+        let screen = NavigationExamplesScreen.createWithNib(screenModel: screenModel)
         return screen
     }
 
@@ -83,7 +83,7 @@ class NavigationExamplesCoordinator: CoordinatorWithResult<NavigationExamplesCoo
             self?.router.popModule(animated: true)
         }.store(in: &disposeBag)
 
-        let screen = NavigationExamplesScreen.create(screenModel: screenModel)
+        let screen = NavigationExamplesScreen.createWithNib(screenModel: screenModel)
         pushScreen(screen) {
             print("Do something if you need on screen pop")
         }

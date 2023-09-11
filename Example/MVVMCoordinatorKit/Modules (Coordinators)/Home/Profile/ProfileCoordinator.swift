@@ -17,7 +17,7 @@ class ProfileCoordinator: CoordinatorWithResult<ProfileCoordinatorOutput> {
 
     lazy var profileScreen: ProfileScreen = {
         let screenModel = ProfileScreenModel()
-        let screen = ProfileScreen.create(screenModel: screenModel)
+        let screen = ProfileScreen.createWithNib(screenModel: screenModel)
 
         screenModel.result.didLogout.receive(on: DispatchQueue.main).sink { [weak self] _ in
             self?.onResult(.didLogout)

@@ -29,7 +29,7 @@ open class Screen<T>: UIViewController {
 // MARK: - Factory
 
 extension Screen {
-    public static func create(screenModel: T) -> Self {
+    public static func createWithNib(screenModel: T) -> Self {
         let vc = Self.loadFromNib()
         vc.screenModel = screenModel
         return vc

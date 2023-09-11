@@ -2,7 +2,7 @@
 //  NavigationExamplesScreen.swift
 //  MVVMCoordinatorKit_Example
 //
-//  Created by Dino Bartosak on 05.09.2023..
+//  Created by Dino Bartosak on 05.09.2023.
 //  Copyright © 2023 CocoaPods. All rights reserved.
 //
 

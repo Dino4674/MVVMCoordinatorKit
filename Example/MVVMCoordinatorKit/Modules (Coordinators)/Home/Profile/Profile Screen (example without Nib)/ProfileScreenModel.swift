@@ -2,7 +2,7 @@
 //  ProfileScreenModel.swift
 //  CoordinatorExample
 //
-//  Created by Dino Bartosak on 14.07.2023..
+//  Created by Dino Bartosak on 14.07.2023.
 //
 
 import MVVMCoordinatorKit

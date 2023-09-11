@@ -7,11 +7,11 @@
 
 import MVVMCoordinatorKit
 
-enum ProfileCoordinatorOutput {
+enum ProfileCoordinatorResult {
     case didLogout
 }
 
-class ProfileCoordinator: CombineCoordinator<ProfileCoordinatorOutput> {
+class ProfileCoordinator: CombineCoordinator<ProfileCoordinatorResult> {
 
     // MARK: Screens
 

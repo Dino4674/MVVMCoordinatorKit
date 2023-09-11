@@ -7,11 +7,11 @@
 
 import MVVMCoordinatorKit
 
-enum HomeCoordinatorOutput {
+enum HomeCoordinatorResult {
     case didLogout
 }
 
-class HomeCoordinator: CombineCoordinator<HomeCoordinatorOutput> {
+class HomeCoordinator: CombineCoordinator<HomeCoordinatorResult> {
 
     private var tabBarController = UITabBarController()
 

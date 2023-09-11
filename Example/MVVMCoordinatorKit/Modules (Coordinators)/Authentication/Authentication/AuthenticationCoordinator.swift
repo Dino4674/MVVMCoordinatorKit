@@ -9,11 +9,11 @@
 import MVVMCoordinatorKit
 import Combine
 
-enum AuthenticationCoordinatorOutput {
+enum AuthenticationCoordinatorResult {
     case didAuthenticate
 }
 
-class AuthenticationCoordinator: CombineCoordinator<AuthenticationCoordinatorOutput> {
+class AuthenticationCoordinator: CombineCoordinator<AuthenticationCoordinatorResult> {
 
     lazy var authenticationScreen: AuthenticationScreen = {
         let screenModel = AuthenticationScreenModel()

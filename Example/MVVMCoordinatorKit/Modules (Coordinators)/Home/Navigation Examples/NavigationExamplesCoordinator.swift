@@ -7,11 +7,11 @@
 
 import MVVMCoordinatorKit
 
-enum NavigationExamplesCoordinatorOutput {
+enum NavigationExamplesCoordinatorResult {
     case removeManually
 }
 
-class NavigationExamplesCoordinator: CombineCoordinator<NavigationExamplesCoordinatorOutput> {
+class NavigationExamplesCoordinator: CombineCoordinator<NavigationExamplesCoordinatorResult> {
 
     private var rootScreen: NavigationExamplesScreen!
 

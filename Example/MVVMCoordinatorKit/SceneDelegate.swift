@@ -27,4 +27,3 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         appCoordinator.start()
     }
 }
-

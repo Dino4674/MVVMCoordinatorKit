@@ -77,7 +77,7 @@ MVVMCoordinatorKit is designed not to depend on any particular bindings implemen
 
 ## Templates
 
-To reduce the time when creating a particular Screen or Coordinator, you can download these templates and move them into one of these two folders:
+To reduce the time when creating a particular Screen or Coordinator, you can [download] (https://github.com/Dino4674/MVVMCoordinatorKit/files/12609289/MVVMCoordinatorKit.Screen.%2B.ScreenModel.%2B.Coordinator.zip) custom templates for this Kit and move them into one of these two folders:
 
 ```
 ~/Library/Developer/Xcode/Templates/File Templates

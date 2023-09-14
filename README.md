@@ -67,7 +67,7 @@ let coordinator = ExampleCoordinator(router: router)
 presentCoordinator(coordinator)
 ```
 
-If we want to PUSH flow, we will use the same `Router` from the current parent `Coordinator`:
+If we want to PUSH flow, we will use the same `Router` from the current `Coordinator`:
 ```
 let coordinator = ExampleCoordinator(router: router)
 pushCoordinator(coordinator)

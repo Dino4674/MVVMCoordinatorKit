@@ -59,9 +59,19 @@ public func presentCoordinator(_ coordinator: Coordinator, animated: Bool = true
 public func setRootCoordinator(_ coordinator: Coordinator, animated: Bool = true, onPop: RouterCompletion? = nil)
 ```
 
-Typically if we want to PRESENT flow, we would create a new `Router` with a new `UINavigationController`. 
+Typically if we want to PRESENT flow, we would create a new `Router` with a new `UINavigationController`:
+```
+let navigationController = UINavigationController()
+let router = Router(navigationController: navigationController)
+let coordinator = ExampleCoordinator(router: router)
+presentCoordinator(coordinator)
+```
 
-If we want to PUSH flow, we will use the same `Router` from the current parent `Coordinator`
+If we want to PUSH flow, we will use the same `Router` from the current parent `Coordinator`:
+```
+let coordinator = ExampleCoordinator(router: router)
+pushCoordinator(coordinator)
+```
 
 MVVMCoordinatorKit is designed not to depend on any particular bindings implementation. The Example app uses Combine for bindings, and in the Example app, there is an implementation of Coordinator which uses Combine (`CombineCoordinator`).
 

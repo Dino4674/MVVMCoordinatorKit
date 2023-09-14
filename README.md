@@ -40,18 +40,18 @@ Since our `Screen` is a `UIViewController`, this Kit uses different naming conve
 - `View` -> `Screen`
 - `ViewModel` -> `ScreenModel`
 
-## Templates
+We can call our `MVVM` the `MSSCM` (Model-Screen-ScreenModel)
 
 ## Usage
+
+The best way to explore MVVMCoordinatorKit is to examine the Example app, which contains all the examples.
 
 Main classes of interest:
 
 - `Coordinator` - encapsulates a particular flow of screens and its business logic (e.g. AuthCoordinator, PurchaseCordinator, ProfileCordinator...)
 - `Router` - has a reference to `UINavigationController` and handles navigation logic (push/pop/present/dismiss)
 
-Each `Coordinator` has its own `Router`, which you use to do all the push/pop/present/dismiss calls.
-
-However, the base `Coordinator` class has convenience functions for push, present, and setRoot Coordinator, which automatically handles releasing resources for you.
+Each `Coordinator` has its own `Router`, which you use to do all the push/pop/present/dismiss calls. However, the base `Coordinator` class has convenience functions for push, present, and setRoot Coordinator, which automatically handles the release of resources for you.
 
 ```
 public func pushCoordinator(_ coordinator: Coordinator, animated: Bool = true, onPop: RouterCompletion? = nil)
@@ -74,6 +74,18 @@ pushCoordinator(coordinator)
 ```
 
 MVVMCoordinatorKit is designed not to depend on any particular bindings implementation. The Example app uses Combine for bindings, and in the Example app, there is an implementation of Coordinator which uses Combine (`CombineCoordinator`).
+
+## Templates
+
+To reduce the time when creating a particular Screen or Coordinator, you can download these templates and move them into one of these two folders:
+
+```
+~/Library/Developer/Xcode/Templates/File Templates
+```
+```
+/Applications/Xcode.app/Contents/Developer/Library/Xcode/Templates
+```
+*NOTE: If you add templates to the 2nd location, they won't survive the Xcode update.*
 
 ## Author
 

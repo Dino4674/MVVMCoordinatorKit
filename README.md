@@ -1,6 +1,6 @@
 # MVVMCoordinatorKit
 
-A Swift Kit that helps you with Screen navigation and organizing Screens into reusable coherent flows using `Coordinator` pattern.
+A Swift Kit that helps you with Screen navigation and organizing Screens into reusable coherent flows using a `Coordinator` pattern.
 
 [![CI Status](https://img.shields.io/travis/Dino Bartosak/MVVMCoordinatorKit.svg?style=flat)](https://travis-ci.org/Dino Bartosak/MVVMCoordinatorKit)
 [![Version](https://img.shields.io/cocoapods/v/MVVMCoordinatorKit.svg?style=flat)](https://cocoapods.org/pods/MVVMCoordinatorKit)
@@ -9,9 +9,20 @@ A Swift Kit that helps you with Screen navigation and organizing Screens into re
 
 ## Description
 
-This Kit aims to speed up your development and help you organize screens into coherent flows that are easily reusable using `Coordinator`, making navigation between screens simple and readable.
+This Kit aims to speed up your development and help you organize screens into coherent flows that are easily reusable using `Coordinator` pattern, making navigation between screens simple and readable.
 
-This Kit also helps you with the creation of `UIViewController` (the `View` in `MVVM` pattern) and its `ViewModel`.
+This Kit also helps you with the creation of `UIViewController` (the `View` in `MVVM` pattern) and its `ViewModel`. `Model` is not part of this Kit, as it is up to the developers to define their own models in the app.
+
+## Naming Conventions
+In a classic `MVVM` pattern:
+- `M` is `Model`
+- `V` is `View`
+- `VM` is `ViewModel`
+
+Since our `Screen` is actually a `UIViewController`, this Kit uses different naming conventions for `View` because `UIView` is actually a subview of a `Screen` (`UIViewController`).
+- `View` -> `Screen`
+- `ViewModel` -> `ScreenModel`
+
 
 ## Example
 

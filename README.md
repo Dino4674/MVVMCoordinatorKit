@@ -53,6 +53,8 @@ We can call our `MVVM` the `MSSM` (Model-Screen-ScreenModel)
 
 MVVMCoordinatorKit is designed not to depend on any particular bindings implementation. The Example app uses `Combine` for bindings, and in the Example app, there is an implementation of `Coordinator` which uses `Combine` (`CombineCoordinator`).
 
+*NOTE: `CombineCoordinator` is not part of this Kit so that the Kit does not have a `Combine` dependency. You can simply copy/paste `CombineCoordinator` into your project if you would like to use it.*
+
 ## Templates
 
 To reduce the time when creating a particular `Screen+ScreenModel` or `Coordinator`, you can [download](https://github.com/Dino4674/MVVMCoordinatorKit/files/12609289/MVVMCoordinatorKit.Screen.%2B.ScreenModel.%2B.Coordinator.zip) custom templates for this Kit and move them into one of these two folders:
@@ -68,14 +70,18 @@ To reduce the time when creating a particular `Screen+ScreenModel` or `Coordinat
 ![MVVMCoordinator_Templates](https://github.com/Dino4674/MVVMCoordinatorKit/assets/1395703/84bec8cc-d3f1-426b-a378-1b7466161a1e)
 
 With these templates, you can create files more quickly without the need for adding boilerplate code every time.
-There are templates for `Coordinator` and for `Screen+ScreenModel` (`MVVM`), and each of them has two versions, *Plain* (no binding framework added) and *Combine* (Combine binding imported with added example properties).
+There are templates for `Coordinator` and for `Screen+ScreenModel` (`MVVM`), and each of them has two versions, *Plain* (no binding framework added) and *Combine* (`Combine` binding imported with added example properties).
 
-Also, when using the `MVVM` template (`Screen+ScreenModel`) you can pick a *View type*:
+Additionally, when using the `MVVM` template (`Screen+ScreenModel`) you can pick a *View type*:
 - *Code* - just a `Screen` (`UIViewController`) without a `.xib` file.
 - *With XIB* - `Screen` (`UIViewController`) with a companion `.xib` file.
 
 ![MVVM_2](https://github.com/Dino4674/MVVMCoordinatorKit/assets/1395703/7d9e5d85-4168-4eec-b04d-390c7812c01d)
 ![MVVM_1](https://github.com/Dino4674/MVVMCoordinatorKit/assets/1395703/5394d998-cdf6-4798-9331-bf34d00ad039)
+
+**IMPORTANT**:
+See the *Bindings* section
+If you use the `Coordinator (Combine)` template, you will need to add `CombineCoordinator` file into you project manually.
 
 ## Usage
 

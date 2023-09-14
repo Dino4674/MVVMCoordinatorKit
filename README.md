@@ -54,9 +54,12 @@ Each `Coordinator` has its own `Router`, which you use to do all the push/pop/pr
 However, the base `Coordinator` class has convenience functions for push, present, and setRoot Coordinator, which automatically handles releasing resources for you.
 
 ```
-public func pushCoordinator
-public func presentCoordinator
+public func pushCoordinator(_ coordinator: Coordinator, animated: Bool = true, onPop: RouterCompletion? = nil)
+public func presentCoordinator(_ coordinator: Coordinator, animated: Bool = true, onDismiss: RouterCompletion? = nil)
 public func setRootCoordinator(_ coordinator: Coordinator, animated: Bool = true, onPop: RouterCompletion? = nil)
+public func pushScreen(_ screen: UIViewController, animated: Bool = true, onPop: RouterCompletion? = nil) {
+        router.push(screen, animated: animated, completion: onPop)
+    }
 ```
 
 Typically if we want to PRESENT flow, we would create a new `Router` with a new `UINavigationController`. 

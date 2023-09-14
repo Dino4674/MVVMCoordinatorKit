@@ -57,7 +57,6 @@ However, the base `Coordinator` class has convenience functions for push, presen
 public func pushCoordinator(_ coordinator: Coordinator, animated: Bool = true, onPop: RouterCompletion? = nil)
 public func presentCoordinator(_ coordinator: Coordinator, animated: Bool = true, onDismiss: RouterCompletion? = nil)
 public func setRootCoordinator(_ coordinator: Coordinator, animated: Bool = true, onPop: RouterCompletion? = nil)
-public func pushScreen(_ screen: UIViewController, animated: Bool = true, onPop: RouterCompletion? = nil)
 ```
 
 Typically if we want to PRESENT flow, we would create a new `Router` with a new `UINavigationController`. 

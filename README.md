@@ -40,7 +40,7 @@ Since our `Screen` is a `UIViewController`, this Kit uses different naming conve
 - `View` -> `Screen`
 - `ViewModel` -> `ScreenModel`
 
-We can call our `MVVM` the `MSSCM` (Model-Screen-ScreenModel)
+We can call our `MVVM` the `MSSM` (Model-Screen-ScreenModel)
 
 ## Usage
 

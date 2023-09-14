@@ -1,9 +1,17 @@
 # MVVMCoordinatorKit
 
+A Swift Kit that helps you with Screen navigation and organizing Screens into reusable coherent flows using `Coordinator` pattern.
+
 [![CI Status](https://img.shields.io/travis/Dino Bartosak/MVVMCoordinatorKit.svg?style=flat)](https://travis-ci.org/Dino Bartosak/MVVMCoordinatorKit)
 [![Version](https://img.shields.io/cocoapods/v/MVVMCoordinatorKit.svg?style=flat)](https://cocoapods.org/pods/MVVMCoordinatorKit)
 [![License](https://img.shields.io/cocoapods/l/MVVMCoordinatorKit.svg?style=flat)](https://cocoapods.org/pods/MVVMCoordinatorKit)
 [![Platform](https://img.shields.io/cocoapods/p/MVVMCoordinatorKit.svg?style=flat)](https://cocoapods.org/pods/MVVMCoordinatorKit)
+
+## Description
+
+This Kit aims to speed up your development and help you organize screens into coherent flows that are easily reusable using `Coordinator`, making navigation between screens simple and readable.
+
+This Kit also helps you with the creation of `UIViewController` (the `View` in `MVVM` pattern) and its `ViewModel`.
 
 ## Example
 

@@ -45,20 +45,25 @@ Since our `Screen` is a `UIViewController`, this Kit uses different naming conve
 ## Usage
 
 Main classes of interest:
+
 - `Coordinator` - encapsulates a particular flow of screens and its business logic (e.g. AuthCoordinator, PurchaseCordinator, ProfileCordinator...)
-- `Router` - has a reference to `UINavigationController` handles navigation logic (push/pop/present/dismiss)
+- `Router` - has a reference to `UINavigationController` and handles navigation logic (push/pop/present/dismiss)
 
-Each `Coordinator` has its own `Router` which you use to do all the push/pop/present/dismiss calls.
+Each `Coordinator` has its own `Router`, which you use to do all the push/pop/present/dismiss calls.
 
-However, base `Coordinator` class has convenience 
+However, the base `Coordinator` class has convenience functions for push, present, and setRoot Coordinator, which automatically handles releasing resources for you.
 
-Typically if we want to PRESENT flow, we would create a new `Router` with new `UINavigationController`. 
+```
+public func pushCoordinator
+public func presentCoordinator
+public func setRootCoordinator(_ coordinator: Coordinator, animated: Bool = true, onPop: RouterCompletion? = nil)
+```
 
-
+Typically if we want to PRESENT flow, we would create a new `Router` with a new `UINavigationController`. 
 
 If we want to PUSH flow, we will use the same `Router` from the current parent `Coordinator`
 
-MVVMCoordinatorKit is designed not to depend on any particular bindings implementation. The Example app uses Combine for bindings and in the Example app there is a implementation of Coordinator which uses Combine (`CombineCoordinator`).
+MVVMCoordinatorKit is designed not to depend on any particular bindings implementation. The Example app uses Combine for bindings, and in the Example app, there is an implementation of Coordinator which uses Combine (`CombineCoordinator`).
 
 ## Author
 

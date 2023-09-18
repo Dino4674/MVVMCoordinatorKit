@@ -11,7 +11,7 @@ enum HomeCoordinatorResult {
     case didLogout
 }
 
-class HomeCoordinator: CombineCoordinator<HomeCoordinatorResult> {
+class HomeCoordinator: Coordinator<DeepLinkOption, HomeCoordinatorResult> {
 
     private var tabBarController = UITabBarController()
 
@@ -33,7 +33,7 @@ class HomeCoordinator: CombineCoordinator<HomeCoordinatorResult> {
 
     // MARK: Tabs
 
-    private func setupTabs(with coordinators: [Coordinator]) {
+    private func setupTabs(with coordinators: [BaseCoordinator<DeepLinkType>]) {
         tabBarController.setViewControllers(coordinators.map { $0.toPresentable() }, animated: false)
     }
 
@@ -52,14 +52,14 @@ class HomeCoordinator: CombineCoordinator<HomeCoordinatorResult> {
         navigationController.tabBarItem = UITabBarItem(title: "Profile", image: nil, selectedImage: nil)
         let router = Router(navigationController: navigationController)
         let coordinator = ProfileCoordinator(router: router)
-        coordinator.resultPublisher.receive(on: DispatchQueue.main)
-            .sink { [weak self] result in
-                switch result {
-                case .didLogout:
-                    self?.onResult(.didLogout)
-                }
+
+        coordinator.finishFlow = { [weak self] result in
+            switch result {
+            case .didLogout:
+                self?.finishFlow?(.didLogout)
             }
-            .store(in: &coordinator.disposeBag)
+        }
+
         return coordinator
     }
 }

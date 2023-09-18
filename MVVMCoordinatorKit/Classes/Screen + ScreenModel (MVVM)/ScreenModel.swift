@@ -10,11 +10,12 @@ import Foundation
 public protocol ScreenModelType: AnyObject {
     associatedtype Input /// input FROM the view
     associatedtype Output /// output FOR the view
-    associatedtype Result /// result FOR 'outside world' (Coordinator)
 }
 
-open class ScreenModel {
+open class ScreenModel<Result> {
     deinit { MVVMCoordinatorKitLogger.log("💀 ScreenModel deinit: \(self)") }
-    
+
     public init() {}
+
+    public var onResult: ((Result) -> Void)?
 }

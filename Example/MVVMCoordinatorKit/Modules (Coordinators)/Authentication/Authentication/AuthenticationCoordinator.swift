@@ -13,23 +13,21 @@ enum AuthenticationCoordinatorResult {
     case didAuthenticate
 }
 
-class AuthenticationCoordinator: CombineCoordinator<AuthenticationCoordinatorResult> {
+class AuthenticationCoordinator: Coordinator<DeepLinkOption, AuthenticationCoordinatorResult> {
 
     lazy var authenticationScreen: AuthenticationScreen = {
         let screenModel = AuthenticationScreenModel()
-        screenModel.result.didAuthenticate.receive(on: DispatchQueue.main).sink { [weak self] _ in
-            self?.onResult(.didAuthenticate)
-        }.store(in: &disposeBag)
+        screenModel.onResult = { [weak self] result in
+            switch result {
+            case .didAuthenticate: self?.finishFlow?(.didAuthenticate)
+            }
+        }
 
         let screen = AuthenticationScreen.createWithNib(screenModel: screenModel)
         return screen
     }()
 
     // MARK: Coordinator
-
-    override func start() {
-
-    }
 
     override func toPresentable() -> UIViewController {
         return authenticationScreen

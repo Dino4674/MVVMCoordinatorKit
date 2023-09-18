@@ -7,13 +7,13 @@
 
 import MVVMCoordinatorKit
 
-class AppCoordinator: CombineCoordinator<Void> {
+class AppCoordinator: Coordinator<DeepLinkOption, Void> {
 
     // MARK: Coordinator
 
     override func start() {
         // check if user already logged in
-        let userLoggedIn = true
+        let userLoggedIn = false
         if userLoggedIn {
             setHomeCoordinatorAsRoot(animated: false)
         } else {
@@ -28,15 +28,12 @@ class AppCoordinator: CombineCoordinator<Void> {
 
         setRootCoordinator(coordinator, animated: animated)
 
-        coordinator.resultPublisher
-            .receive(on: DispatchQueue.main)
-            .sink { [weak self] result in
-                switch result {
-                case .didLogout:
-                    self?.setAuthenticationCoordinatorAsRoot(animated: false)
-                }
+        coordinator.finishFlow = { [weak self] result in
+            switch result {
+            case .didLogout:
+                self?.setAuthenticationCoordinatorAsRoot(animated: false)
             }
-            .store(in: &coordinator.disposeBag)
+        }
     }
 
     // MARK: Authentication Coordinator
@@ -46,14 +43,11 @@ class AppCoordinator: CombineCoordinator<Void> {
 
         setRootCoordinator(coordinator, animated: animated)
 
-        coordinator.resultPublisher
-            .receive(on: DispatchQueue.main)
-            .sink { [weak self] result in
-                switch result {
-                case .didAuthenticate:
-                    self?.setHomeCoordinatorAsRoot(animated: false)
-                }
+        coordinator.finishFlow = { [weak self] result in
+            switch result {
+            case .didAuthenticate:
+                self?.setHomeCoordinatorAsRoot(animated: false)
             }
-            .store(in: &coordinator.disposeBag)
+        }
     }
 }

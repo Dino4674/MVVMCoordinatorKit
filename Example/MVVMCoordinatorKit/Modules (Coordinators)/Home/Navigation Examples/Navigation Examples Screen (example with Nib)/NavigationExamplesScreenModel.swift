@@ -26,27 +26,29 @@ extension NavigationExamplesScreenModel: ScreenModelType {
         let manualRemoveButtonTitle: AnyPublisher<String?, Never>
         let manualRemoveButtonVisible: AnyPublisher<Bool, Never>
     }
-
-    struct Result {
-        let pushScreen: AnyPublisher<Void, Never>
-        let pushCoordinator: AnyPublisher<Void, Never>
-        let presentCoordinator: AnyPublisher<Void, Never>
-        let manualRemove: AnyPublisher<Void, Never>
-    }
 }
 
 // MARK: - NavigationExamplesScreenModel
 
-class NavigationExamplesScreenModel: ScreenModel {
+enum NavigationExamplesScreenModelResult {
+    case pushScreen
+    case pushCoordinator
+    case presentCoordinator
+    case manualRemove
+}
+
+
+class NavigationExamplesScreenModel: ScreenModel<NavigationExamplesScreenModelResult> {
     enum ManualRemoveType {
         case pop
         case dismiss
         case none
     }
 
+    public var disposeBag = Set<AnyCancellable>()
+
     let input: Input
     let output: Output
-    let result: Result
 
     init(manualRemoveType: ManualRemoveType) {
         let pushScreen = PassthroughSubject<Void, Never>()
@@ -78,9 +80,22 @@ class NavigationExamplesScreenModel: ScreenModel {
                         manualRemoveButtonTitle: manualRemoveButtonTitle.eraseToAnyPublisher(),
                         manualRemoveButtonVisible: manualRemoveButtonVisible.eraseToAnyPublisher())
 
-        result = Result(pushScreen: pushScreen.eraseToAnyPublisher(),
-                        pushCoordinator: pushCoordinator.eraseToAnyPublisher(),
-                        presentCoordinator: presentCoordinator.eraseToAnyPublisher(),
-                        manualRemove: manualRemove.eraseToAnyPublisher())
+        super.init()
+
+        pushScreen.receive(on: DispatchQueue.main).sink { [weak self] _ in
+            self?.onResult?(.pushScreen)
+        }.store(in: &disposeBag)
+
+        pushCoordinator.receive(on: DispatchQueue.main).sink { [weak self] _ in
+            self?.onResult?(.pushCoordinator)
+        }.store(in: &disposeBag)
+
+        presentCoordinator.receive(on: DispatchQueue.main).sink { [weak self] _ in
+            self?.onResult?(.presentCoordinator)
+        }.store(in: &disposeBag)
+
+        manualRemove.receive(on: DispatchQueue.main).sink { [weak self] _ in
+            self?.onResult?(.manualRemove)
+        }.store(in: &disposeBag)
     }
 }

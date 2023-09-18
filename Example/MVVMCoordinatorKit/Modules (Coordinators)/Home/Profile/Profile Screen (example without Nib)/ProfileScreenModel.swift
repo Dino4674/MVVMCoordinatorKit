@@ -19,18 +19,22 @@ extension ProfileScreenModel: ScreenModelType {
         let screenTitle: AnyPublisher<String?, Never>
         let logoutButtonTitle: AnyPublisher<String?, Never>
     }
+}
 
-    struct Result {
-        let didLogout: AnyPublisher<Void, Never>
+extension ProfileScreenModel {
+    enum Result {
+        case didLogout
     }
 }
 
 // MARK: - ProfileScreenModel
 
-class ProfileScreenModel: ScreenModel {
+class ProfileScreenModel: ScreenModel<ProfileScreenModel.Result> {
+
+    public var disposeBag = Set<AnyCancellable>()
+
     let input: Input
     let output: Output
-    let result: Result
 
     override init() {
         let logout = PassthroughSubject<Void, Never>()
@@ -40,6 +44,11 @@ class ProfileScreenModel: ScreenModel {
         input = Input(logout: logout)
         output = Output(screenTitle: screenTitle.eraseToAnyPublisher(),
                         logoutButtonTitle: logoutActionTitle.eraseToAnyPublisher())
-        result = Result(didLogout: logout.eraseToAnyPublisher())
+        
+        super.init()
+
+        logout.receive(on: DispatchQueue.main).sink { [weak self] _ in
+            self?.onResult?(.didLogout)
+        }.store(in: &disposeBag)
     }
 }

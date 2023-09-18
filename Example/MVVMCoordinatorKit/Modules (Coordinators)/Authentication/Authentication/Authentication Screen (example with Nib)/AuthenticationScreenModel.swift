@@ -19,18 +19,22 @@ extension AuthenticationScreenModel: ScreenModelType {
     struct Output {
         let authenticateButtonTitle: AnyPublisher<String?, Never>
     }
-
-    struct Result {
-        let didAuthenticate: AnyPublisher<Void, Never>
-    }
 }
 
 // MARK: - AuthenticationScreenModel
 
-class AuthenticationScreenModel: ScreenModel {
+extension AuthenticationScreenModel {
+    enum Result {
+        case didAuthenticate
+    }
+}
+
+class AuthenticationScreenModel: ScreenModel<AuthenticationScreenModel.Result> {
+
+    public var disposeBag = Set<AnyCancellable>()
+
     let input: Input
     let output: Output
-    let result: Result
 
     override init() {
         let authenticate = PassthroughSubject<Void, Never>()
@@ -38,6 +42,11 @@ class AuthenticationScreenModel: ScreenModel {
 
         input = Input(authenticate: authenticate)
         output = Output(authenticateButtonTitle: authenticateButtonTitle.eraseToAnyPublisher())
-        result = Result(didAuthenticate: authenticate.eraseToAnyPublisher())
+
+        super.init()
+
+        authenticate.receive(on: DispatchQueue.main).sink { [weak self] _ in
+            self?.onResult?(.didAuthenticate)
+        }.store(in: &disposeBag)
     }
 }

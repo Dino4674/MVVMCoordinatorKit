@@ -11,7 +11,7 @@ enum NavigationExamplesCoordinatorResult {
     case removeManually
 }
 
-class NavigationExamplesCoordinator: CombineCoordinator<NavigationExamplesCoordinatorResult> {
+class NavigationExamplesCoordinator: Coordinator<DeepLinkOption, NavigationExamplesCoordinatorResult> {
 
     private var rootScreen: NavigationExamplesScreen!
 
@@ -42,21 +42,14 @@ class NavigationExamplesCoordinator: CombineCoordinator<NavigationExamplesCoordi
     private func createRootScreen() -> NavigationExamplesScreen {
         let screenModel = NavigationExamplesScreenModel(manualRemoveType: manualRemoveType)
 
-        screenModel.result.pushScreen.receive(on: DispatchQueue.main).sink { [weak self] _ in
-            self?.pushScreenExample()
-        }.store(in: &disposeBag)
-
-        screenModel.result.pushCoordinator.receive(on: DispatchQueue.main).sink { [weak self] _ in
-            _ = self?.pushCoordinatorExample()
-        }.store(in: &disposeBag)
-
-        screenModel.result.presentCoordinator.receive(on: DispatchQueue.main).sink { [weak self] _ in
-            _ = self?.presentCoordinatorExample()
-        }.store(in: &disposeBag)
-
-        screenModel.result.manualRemove.receive(on: DispatchQueue.main).sink { [weak self] _ in
-            self?.onResult(.removeManually)
-        }.store(in: &disposeBag)
+        screenModel.onResult = { [weak self] result in
+            switch result {
+            case .pushScreen: self?.pushScreenExample()
+            case .pushCoordinator: self?.pushCoordinatorExample()
+            case .presentCoordinator: self?.presentCoordinatorExample()
+            case .manualRemove: self?.finishFlow?(.removeManually)
+            }
+        }
 
         let screen = NavigationExamplesScreen.createWithNib(screenModel: screenModel)
         return screen
@@ -67,21 +60,14 @@ class NavigationExamplesCoordinator: CombineCoordinator<NavigationExamplesCoordi
     private func pushScreenExample() {
         let screenModel = NavigationExamplesScreenModel(manualRemoveType: .pop)
 
-        screenModel.result.pushScreen.receive(on: DispatchQueue.main).sink { [weak self] _ in
-            self?.pushScreenExample()
-        }.store(in: &disposeBag)
-
-        screenModel.result.pushCoordinator.receive(on: DispatchQueue.main).sink { [weak self] _ in
-            self?.pushCoordinatorExample()
-        }.store(in: &disposeBag)
-
-        screenModel.result.presentCoordinator.receive(on: DispatchQueue.main).sink { [weak self] _ in
-            self?.presentCoordinatorExample()
-        }.store(in: &disposeBag)
-
-        screenModel.result.manualRemove.receive(on: DispatchQueue.main).sink { [weak self] _ in
-            self?.router.popModule(animated: true)
-        }.store(in: &disposeBag)
+        screenModel.onResult = { [weak self] result in
+            switch result {
+            case .pushScreen: self?.pushScreenExample()
+            case .pushCoordinator: self?.pushCoordinatorExample()
+            case .presentCoordinator: self?.presentCoordinatorExample()
+            case .manualRemove: self?.router.popModule(animated: true)
+            }
+        }
 
         let screen = NavigationExamplesScreen.createWithNib(screenModel: screenModel)
         pushScreen(screen) {
@@ -97,13 +83,11 @@ class NavigationExamplesCoordinator: CombineCoordinator<NavigationExamplesCoordi
             print("Do something if you need on coordinator pop")
         }
 
-        coordinator.resultPublisher
-            .receive(on: DispatchQueue.main).sink { [weak self] result in
+        coordinator.finishFlow = { [weak self] result in
             switch result {
-            case .removeManually:
-                self?.router.popModule(animated: true)
+            case .removeManually: self?.router.popModule(animated: true)
             }
-        }.store(in: &disposeBag)
+        }
     }
 
     // MARK: Present Coordinator Example
@@ -116,12 +100,10 @@ class NavigationExamplesCoordinator: CombineCoordinator<NavigationExamplesCoordi
             print("Do something if you need on coordinator dismiss")
         }
 
-        coordinator.resultPublisher
-            .receive(on: DispatchQueue.main).sink { [weak self] result in
+        coordinator.finishFlow = { [weak self] result in
             switch result {
-            case .removeManually:
-                self?.router.dismissModule(animated: true)
+            case .removeManually: self?.router.dismissModule(animated: true)
             }
-        }.store(in: &disposeBag)
+        }
     }
 }

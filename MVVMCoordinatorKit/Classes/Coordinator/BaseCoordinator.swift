@@ -7,7 +7,7 @@
 
 import Foundation
 
-open class BaseCoordinator<DeepLinkType>: NSObject, BaseCoordinatorType {
+open class BaseCoordinator<DeepLinkType>: NSObject, Presentable {
 
     deinit { MVVMCoordinatorKitLogger.log("💀 Coordinator deinit: \(self)") }
 
@@ -17,17 +17,11 @@ open class BaseCoordinator<DeepLinkType>: NSObject, BaseCoordinatorType {
         self.router = router
     }
 
-    // MARK: BaseCoordinatorType
+    // MARK: Public
 
     public let router: Router
 
     open func start(deepLink: DeepLinkType?) {}
-
-    // MARK: Presentable
-
-    open func toPresentable() -> UIViewController {
-        return router.toPresentable()
-    }
 
     // MARK: Child Coordinators
 
@@ -41,6 +35,12 @@ open class BaseCoordinator<DeepLinkType>: NSObject, BaseCoordinatorType {
         if let coordinator = coordinator, let index = childCoordinators.firstIndex(of: coordinator) {
             childCoordinators.remove(at: index)
         }
+    }
+
+    // MARK: Presentable
+
+    open func toPresentable() -> UIViewController {
+        return router.toPresentable()
     }
 }
 

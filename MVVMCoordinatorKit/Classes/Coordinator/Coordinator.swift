@@ -7,7 +7,7 @@
 
 import UIKit
 
-open class Coordinator<DeepLinkType, CoordinatorOutput>: BaseCoordinator<DeepLinkType> {
+open class Coordinator<DeepLinkType, CoordinatorOutput>: BaseCoordinator<DeepLinkType>, CoordinatorOutputType {
 
     // MARK: CoordinatorType
 

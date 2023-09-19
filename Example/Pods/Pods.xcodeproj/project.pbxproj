@@ -10,6 +10,7 @@
 		058C2A0484B5AF4B1F82D38E396BD553 /* Pods-MVVMCoordinatorKit_Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 65AFD753230DAB2356FBFBC281DE809B /* Pods-MVVMCoordinatorKit_Tests-dummy.m */; };
 		12CF71337B7D7B4A045EE51DE97A843B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */; };
 		7019C63F2AA9E38700198A0B /* MVVMCoordinatorKitLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7019C63E2AA9E38700198A0B /* MVVMCoordinatorKitLogger.swift */; };
+		702C6AD02AB4406D00836DAD /* CoordinatorProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 702C6ACF2AB4406D00836DAD /* CoordinatorProtocols.swift */; };
 		70B1A3C92AA0E62D00F108A3 /* ScreenModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70B1A3BF2AA0E62D00F108A3 /* ScreenModel.swift */; };
 		70B1A3CA2AA0E62D00F108A3 /* Screen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70B1A3C02AA0E62D00F108A3 /* Screen.swift */; };
 		70B1A3CD2AA0E62D00F108A3 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70B1A3C42AA0E62D00F108A3 /* Router.swift */; };
@@ -51,6 +52,7 @@
 		65AFD753230DAB2356FBFBC281DE809B /* Pods-MVVMCoordinatorKit_Tests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-MVVMCoordinatorKit_Tests-dummy.m"; sourceTree = "<group>"; };
 		6C14B618CBD5F5ABC6F510440022C5B2 /* MVVMCoordinatorKit-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "MVVMCoordinatorKit-Info.plist"; sourceTree = "<group>"; };
 		7019C63E2AA9E38700198A0B /* MVVMCoordinatorKitLogger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MVVMCoordinatorKitLogger.swift; sourceTree = "<group>"; };
+		702C6ACF2AB4406D00836DAD /* CoordinatorProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatorProtocols.swift; sourceTree = "<group>"; };
 		70B1A3BF2AA0E62D00F108A3 /* ScreenModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScreenModel.swift; sourceTree = "<group>"; };
 		70B1A3C02AA0E62D00F108A3 /* Screen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Screen.swift; sourceTree = "<group>"; };
 		70B1A3C42AA0E62D00F108A3 /* Router.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
@@ -158,6 +160,7 @@
 		70B1A3C22AA0E62D00F108A3 /* Coordinator */ = {
 			isa = PBXGroup;
 			children = (
+				702C6ACF2AB4406D00836DAD /* CoordinatorProtocols.swift */,
 				70B1A3C72AA0E62D00F108A3 /* BaseCoordinator.swift */,
 				70EE27D32AB84B86001EC0F2 /* Coordinator.swift */,
 				70B1A3C42AA0E62D00F108A3 /* Router.swift */,
@@ -421,6 +424,7 @@
 				70EE27D42AB84B86001EC0F2 /* Coordinator.swift in Sources */,
 				70B1A3D02AA0E62D00F108A3 /* BaseCoordinator.swift in Sources */,
 				70B1A3CF2AA0E62D00F108A3 /* Presentable.swift in Sources */,
+				702C6AD02AB4406D00836DAD /* CoordinatorProtocols.swift in Sources */,
 				70B1A3CD2AA0E62D00F108A3 /* Router.swift in Sources */,
 				70B1A3CA2AA0E62D00F108A3 /* Screen.swift in Sources */,
 				7019C63F2AA9E38700198A0B /* MVVMCoordinatorKitLogger.swift in Sources */,

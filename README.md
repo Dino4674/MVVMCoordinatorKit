@@ -73,18 +73,19 @@ Move the root extracted folder (`MVVMCoordinatorKit (Screen + ScreenModel + Coor
 ![Screenshot 2023-09-19 at 12 59 53](https://github.com/Dino4674/MVVMCoordinatorKit/assets/1395703/e60cfebc-e87b-4791-8e3d-7dde07bb93fc)
 
 With these templates, you can create files more quickly without the need for adding boilerplate code every time.
-There are templates for `Coordinator` and for `Screen+ScreenModel` (`MVVM`).
+There are templates for `Coordinator` and for `Screen+ScreenModel`.
 
-Additionally, when using the `MVVM` template (`Screen+ScreenModel`) you can pick a *View type*:
-- *Code* - just a `Screen` (`UIViewController`) without a `.xib` file.
-- *With XIB* - `Screen` (`UIViewController`) with a companion `.xib` file.
+Additionally, when using the `Screen+ScreenModel` template you can pick a *View type*:
+- *Code* - just a `*YourName*Screen.swift` (`UIViewController`) without a `.xib` file.
+- *With XIB* - `*YourName*Screen.swift` (`UIViewController`) with a companion `.xib` file.
+Optionally select whether to import `Combine` framework with an example code serving you as a starter point for your `Screen` and `ScreenModel`.
 
-![MVVM_2](https://github.com/Dino4674/MVVMCoordinatorKit/assets/1395703/7d9e5d85-4168-4eec-b04d-390c7812c01d)
-![MVVM_1](https://github.com/Dino4674/MVVMCoordinatorKit/assets/1395703/5394d998-cdf6-4798-9331-bf34d00ad039)
+![MVVM-1](https://github.com/Dino4674/MVVMCoordinatorKit/assets/1395703/4a9b65c2-7a4c-41e3-9cf2-561ab410089f)
+![MVVM-2](https://github.com/Dino4674/MVVMCoordinatorKit/assets/1395703/aea9591f-5d2e-4fd1-81c8-1e9a572bb11f)
 
-**IMPORTANT**:
-See the *Bindings* section
-If you use the `Coordinator (Combine)` template, you will need to add `CombineCoordinator` file into you project manually.
+In the screenshots example above, template will generate these 3 files:
+
+![MVVM-3](https://github.com/Dino4674/MVVMCoordinatorKit/assets/1395703/da04e732-39eb-4e09-9050-4b35633c7fa5)
 
 ## Usage
 

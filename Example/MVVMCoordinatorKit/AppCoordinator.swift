@@ -9,12 +9,15 @@ import MVVMCoordinatorKit
 
 class AppCoordinator: Coordinator<DeepLinkOption, Void> {
 
+    private var isAuthorized = false
+
     // MARK: Coordinator
 
-    override func start() {
-        // check if user already logged in
-        let userLoggedIn = false
-        if userLoggedIn {
+    override func start(deepLink: DeepLinkType?) {
+
+        // Here you can check your deep link and start a particular flow
+
+        if isAuthorized {
             setHomeCoordinatorAsRoot(animated: false)
         } else {
             setAuthenticationCoordinatorAsRoot(animated: false)

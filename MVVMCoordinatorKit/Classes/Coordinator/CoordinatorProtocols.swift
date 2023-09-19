@@ -9,9 +9,8 @@ import Foundation
 
 public protocol BaseCoordinatorType: Presentable {
     associatedtype DeepLinkType
-    var router: Router { get }
-    func start()
     func start(deepLink: DeepLinkType?)
+    var router: Router { get }
 }
 
 public protocol CoordinatorOutputType {

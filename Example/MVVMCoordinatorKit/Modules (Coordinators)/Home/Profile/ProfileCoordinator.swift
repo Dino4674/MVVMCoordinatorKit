@@ -30,7 +30,7 @@ class ProfileCoordinator: Coordinator<DeepLinkOption, ProfileCoordinatorResult> 
 
     // MARK: Coordinator
 
-    override func start() {
+    override func start(deepLink: DeepLinkType?) {
         router.setRootModule(profileScreen, animated: false, completion: nil)
     }
 }

@@ -24,6 +24,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let window = window else { return }
         window.rootViewController = appCoordinator.toPresentable()
         window.makeKeyAndVisible()
-        appCoordinator.start()
+        appCoordinator.start(deepLink: nil)
     }
 }

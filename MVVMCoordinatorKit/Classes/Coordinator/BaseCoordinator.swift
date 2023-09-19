@@ -21,13 +21,7 @@ open class BaseCoordinator<DeepLinkType>: NSObject, BaseCoordinatorType {
 
     public let router: Router
 
-    open func start() {
-        start(deepLink: nil)
-    }
-
-    open func start(deepLink: DeepLinkType?) {
-
-    }
+    open func start(deepLink: DeepLinkType?) {}
 
     // MARK: Presentable
 
@@ -57,27 +51,27 @@ extension BaseCoordinator {
         router.push(screen, animated: animated, completion: onPop)
     }
 
-    public func pushCoordinator(_ coordinator: BaseCoordinator, animated: Bool = true, onPop: RouterCompletion? = nil) {
+    public func pushCoordinator(_ coordinator: BaseCoordinator, deepLink: DeepLinkType? = nil, animated: Bool = true, onPop: RouterCompletion? = nil) {
         addChild(coordinator)
-        coordinator.start()
+        coordinator.start(deepLink: deepLink)
         router.push(coordinator, animated: animated) { [weak self, weak coordinator] in
             self?.removeChild(coordinator)
             onPop?()
         }
     }
 
-    public func setRootCoordinator(_ coordinator: BaseCoordinator, animated: Bool = true, onPop: RouterCompletion? = nil) {
+    public func setRootCoordinator(_ coordinator: BaseCoordinator, deepLink: DeepLinkType? = nil, animated: Bool = true, onPop: RouterCompletion? = nil) {
         addChild(coordinator)
-        coordinator.start()
+        coordinator.start(deepLink: deepLink)
         router.setRootModule(coordinator, animated: animated) { [weak self, weak coordinator] in
             self?.removeChild(coordinator)
             onPop?()
         }
     }
 
-    public func presentCoordinator(_ coordinator: BaseCoordinator, animated: Bool = true, onDismiss: RouterCompletion? = nil) {
+    public func presentCoordinator(_ coordinator: BaseCoordinator, deepLink: DeepLinkType? = nil, animated: Bool = true, onDismiss: RouterCompletion? = nil) {
         addChild(coordinator)
-        coordinator.start()
+        coordinator.start(deepLink: deepLink)
         router.present(coordinator, animated: animated) { [weak self, weak coordinator] in
             self?.removeChild(coordinator)
             onDismiss?()

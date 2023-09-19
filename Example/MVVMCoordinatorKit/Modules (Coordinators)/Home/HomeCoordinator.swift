@@ -17,14 +17,14 @@ class HomeCoordinator: Coordinator<DeepLinkOption, HomeCoordinatorResult> {
 
     // MARK: Coordinator
 
-    override func start() {
+    override func start(deepLink: DeepLinkType?) {
         let navigationExamplesCoordinator = createNavigationExamplesCoordinator()
         let profileCoordinator = createProfileCoordinator()
         setupTabs(with: [navigationExamplesCoordinator, profileCoordinator])
         addChild(navigationExamplesCoordinator)
         addChild(profileCoordinator)
-        navigationExamplesCoordinator.start()
-        profileCoordinator.start()
+        navigationExamplesCoordinator.start(deepLink: deepLink)
+        profileCoordinator.start(deepLink: deepLink)
     }
 
     override func toPresentable() -> UIViewController {

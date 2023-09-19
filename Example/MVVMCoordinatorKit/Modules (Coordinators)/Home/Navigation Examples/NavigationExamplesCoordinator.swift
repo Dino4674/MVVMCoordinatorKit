@@ -24,7 +24,7 @@ class NavigationExamplesCoordinator: Coordinator<DeepLinkOption, NavigationExamp
         self.rootScreen = createRootScreen()
     }
 
-    override func start() {
+    override func start(deepLink: DeepLinkType?) {
         // uncomment if you want this to present in full-screen mode
 //        toPresentable().modalPresentationStyle = .fullScreen
 

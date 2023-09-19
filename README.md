@@ -76,8 +76,9 @@ With these templates, you can create files more quickly without the need for add
 There are templates for `Coordinator` and for `Screen+ScreenModel`.
 
 Additionally, when using the `Screen+ScreenModel` template you can pick a *View type*:
-- *Code* - just a `*YourName*Screen.swift` (`UIViewController`) without a `.xib` file.
-- *With XIB* - `*YourName*Screen.swift` (`UIViewController`) with a companion `.xib` file.
+- *Code* - just a `*Module Name*Screen.swift` (`UIViewController`) without a `.xib` file.
+- *With XIB* - `*Module Name*Screen.swift` (`UIViewController`) with a companion `.xib` file.
+
 Optionally select whether to import `Combine` framework with an example code serving you as a starter point for your `Screen` and `ScreenModel`.
 
 ![MVVM-1](https://github.com/Dino4674/MVVMCoordinatorKit/assets/1395703/4a9b65c2-7a4c-41e3-9cf2-561ab410089f)

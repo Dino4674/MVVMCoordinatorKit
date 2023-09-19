@@ -47,7 +47,7 @@ We can call our `MVVM` the `MSSM` (Model-Screen-ScreenModel)
 
 ## Main classes of interest:
 
-- `Coordinator` - encapsulates a particular flow of screens and its business logic
+- `Coordinator` (inherits from `BaseCoordinator`) - encapsulates a particular flow of screens and its business logic
 - `Router` - has a reference to `UINavigationController` and handles navigation logic (push/pop/present/dismiss)
 - `Screen` - a base `UIViewController` with its `ScreenModel`
 - `ScreenModel`
@@ -94,12 +94,12 @@ The best way to explore MVVMCoordinatorKit is to examine the Example app, which 
 
 ### Coordinator + Router
 
-Each `Coordinator` has its own `Router`, which you use to do all the push/pop/present/dismiss calls. However, the base `Coordinator` class has convenience functions for `push`, `present`, and `setRoot` `Coordinator`, which automatically handles the release of resources for you.
+Each `Coordinator` has its own `Router`, which you use to do all the push/pop/present/dismiss calls. However, the `BaseCoordinator` class has convenience functions for `push`, `present`, and `setRoot` `Coordinator`, which automatically handles the release of resources for you.
 
 ```
-public func pushCoordinator(_ coordinator: Coordinator, animated: Bool = true, onPop: RouterCompletion? = nil)
-public func presentCoordinator(_ coordinator: Coordinator, animated: Bool = true, onDismiss: RouterCompletion? = nil)
-public func setRootCoordinator(_ coordinator: Coordinator, animated: Bool = true, onPop: RouterCompletion? = nil)
+public func pushCoordinator(_ coordinator: BaseCoordinator, deepLink: DeepLinkType? = nil, animated: Bool = true, onPop: RouterCompletion? = nil)
+public func presentCoordinator(_ coordinator: BaseCoordinator, deepLink: DeepLinkType? = nil, animated: Bool = true, onDismiss: RouterCompletion? = nil)
+public func setRootCoordinator(_ coordinator: BaseCoordinator, deepLink: DeepLinkType? = nil, animated: Bool = true, onPop: RouterCompletion? = nil)
 ```
 
 Typically if we want to PRESENT flow, we would create a new `Router` with a new `UINavigationController`:
@@ -116,19 +116,48 @@ let coordinator = ExampleCoordinator(router: router)
 pushCoordinator(coordinator)
 ```
 
+When a `Coordinator` adds a child `Coordinator` (push, present, doesn't matter), it will need to observe its child results, and it is doing it through this callback:
+```
+public var finishFlow: ((CoordinatorOutput) -> ())?
+```
+
+`CoordinatorOutput` is defined in `Coordinator` class and it will most likely be some `enum`:
+
+```
+enum ProfileCoordinatorResult {
+    case didLogout
+}
+
+class ProfileCoordinator: Coordinator<DeepLinkOption, ProfileCoordinatorResult>
+```
+
+e.g.
+```
+let coordinator = ExampleCoordinator(router: router)
+coordinator.finishFlow = { [weak self] coordinatorOutput in
+  switch coordinatorOutput {
+  case .someCaseOfYour-MostLikelySomeEnum
+  }
+}
+
+pushCoordinator(coordinator)
+```
+
 ### Screen + ScreenModel
 
 Each `Screen` needs to define its `ScreenModel`, e.g.:
-
 ```
 class ProfileScreen: Screen<ProfileScreenModel>
 ```
 
-`Screen` class has two convenience functions for instantiating a `Screen`:
+`ScreenModel` needs to define its `Result` type (can be `Void` if not needed), which is needed for its parent `Coordinator` for results observation:
 
+`ProfileScreenModel<MostLikelySomeEnum>`
+
+`Screen` class has two convenience functions for instantiating a `Screen`:
 ```
 public static func createWithNib(screenModel: T) -> Self // Screen with .xib file
-public static func create(screenModel: T) -> Self // in code Screen
+public static func create(screenModel: T) -> Self // in-code Screen
 ```
 
 If we are using *Code* template:
@@ -141,6 +170,20 @@ If we are using *With XIB* template:
 ```
 let screenModel = ProfileScreenModel()
 let screen = ProfileScreen.createWithNib(screenModel: screenModel)
+```
+
+A parent `Coordinator`, which sets up the `ScreenModel` will listen for `ScreenModel` results through this callback:
+```
+public var onResult: ((Result) -> Void)?
+```
+
+e.g.
+```
+let screenModel = ProfileScreenModel()
+screenModel.onResult = { [weak self] result in
+  switch result {
+  case .someCaseOfYour-MostLikelySomeEnum
+  }
 ```
 
 ## Author

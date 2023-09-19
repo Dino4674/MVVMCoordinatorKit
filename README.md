@@ -70,10 +70,10 @@ Move the root extracted folder (`MVVMCoordinatorKit (Screen + ScreenModel + Coor
 
 *NOTE: If you add templates to the 2nd location, they won't survive the Xcode update.*
 
-![MVVMCoordinator_Templates](https://github.com/Dino4674/MVVMCoordinatorKit/assets/1395703/84bec8cc-d3f1-426b-a378-1b7466161a1e)
+![Screenshot 2023-09-19 at 12 59 53](https://github.com/Dino4674/MVVMCoordinatorKit/assets/1395703/e60cfebc-e87b-4791-8e3d-7dde07bb93fc)
 
 With these templates, you can create files more quickly without the need for adding boilerplate code every time.
-There are templates for `Coordinator` and for `Screen+ScreenModel` (`MVVM`), and each of them has two versions, *Plain* (no binding framework added) and *Combine* (`Combine` binding imported with added example properties).
+There are templates for `Coordinator` and for `Screen+ScreenModel` (`MVVM`).
 
 Additionally, when using the `MVVM` template (`Screen+ScreenModel`) you can pick a *View type*:
 - *Code* - just a `Screen` (`UIViewController`) without a `.xib` file.

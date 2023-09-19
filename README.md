@@ -67,6 +67,7 @@ To reduce the time when creating a particular `Screen+ScreenModel` or `Coordinat
 /Applications/Xcode.app/Contents/Developer/Library/Xcode/Templates/File Templates
 ```
 Move the root extracted folder (`MVVMCoordinatorKit (Screen + ScreenModel + Coordinator)`) into one of these two locations:
+
 *NOTE: If you add templates to the 2nd location, they won't survive the Xcode update.*
 
 ![MVVMCoordinator_Templates](https://github.com/Dino4674/MVVMCoordinatorKit/assets/1395703/84bec8cc-d3f1-426b-a378-1b7466161a1e)

@@ -43,7 +43,7 @@ In a classic `MVVM` pattern:
 
 Since Apple forces us through their APIs to use the `MVC` pattern (yes, I am talking about the `UIViewController`), we are used to naming our custom ViewControllers with the *ViewController* suffix, which does not fit well with the `MVVM` naming conventions. We want to treat `UIViewController` as the `Screen`.
 
-`UIView` in iOS represents a view that is part of a `UIViewController`'s view hierarchy, and we want to treat `UIViewController` as the 'main' view -> `Screen`.
+`UIView` in iOS represents a view that is part of a `UIViewController`'s view hierarchy, and we want to treat `UIViewController` as the "main" view -> `Screen`.
 
 Since our `Screen` is a `UIViewController`, this Kit uses different naming conventions for the `View` part of the `MVVM`:
 - `View` -> `Screen`
@@ -51,7 +51,7 @@ Since our `Screen` is a `UIViewController`, this Kit uses different naming conve
 
 We can call our `MVVM` the `MSSM` (Model-Screen-ScreenModel)
 
-This is to distinguish between the `UIViewController` and `UIView` file names because in your apps, you are likely to have lots of custom `UIView`s, and you are almost certainly going to append *View* suffix to those custom views. Additionally, when creating a `UIViewController`, you are likely to name it with the *ViewController* suffix, which, as mentioned, does not fit well with the `MVVM` naming conventions.
+This is to distinguish between the `UIViewController` and `UIView` file names because in your apps, you are likely to have lots of custom `UIView`s, and you are almost certainly going to append *View* suffix to those custom views. Additionally, when creating a `UIViewController`, you are likely to name it with the *ViewController* suffix, which, as mentioned, does not fit well with the `MVVM` naming conventions. This Kit is encouraging the usage of *Screen* suffix for `UIViewController`s.
 
 ## Main classes of interest
 
@@ -115,6 +115,8 @@ The best way to explore MVVMCoordinatorKit is to examine the Example app, which 
 
 ### `Coordinator` + `Router`
 
+#### Navigation (Push/Present)
+
 Each `Coordinator` has its own `Router`, which you use to do all the push/pop/present/dismiss calls. However, the `BaseCoordinator` class has convenience functions for `push`, `present`, and `setRoot` `Coordinator`, which automatically handles the release of resources for you.
 
 ```
@@ -137,12 +139,16 @@ let coordinator = ExampleCoordinator(router: router)
 pushCoordinator(coordinator)
 ```
 
+#### Observing child coordinator's results
+
 When a `Coordinator` adds a child `Coordinator` (push, present, doesn't matter), it will need to observe its child results, and it is doing it through this callback:
 ```
 public var finishFlow: ((CoordinatorOutput) -> ())?
 ```
 
-`CoordinatorOutput` is defined in `Coordinator` class and it will most likely be some `enum`:
+`CoordinatorOutput` is defined in `Coordinator` class and it will most likely be some `enum`.
+
+`Coordinator` template will autogenerate this `enum` for you, ready to be filled with your use cases:
 
 e.g.
 ```
@@ -157,7 +163,11 @@ class ProfileCoordinator: Coordinator<DeepLinkOption, ProfileCoordinatorResult>
 let coordinator = ProfileCoordinator(router: router)
 coordinator.finishFlow = { [weak self] coordinatorOutput in
   switch coordinatorOutput {
-  case .didLogout: break // do something here (show another flow, pop ProfileCoordinator, or call self?.finishFlow to propagate the event up the tree and let the parent Coordinator decide what to do next)
+  case .didLogout: // do something here...
+    // show another flow,
+    // pop ProfileCoordinator,
+    // or call self?.finishFlow to propagate the event up the tree and let the parent Coordinator decide what to do next)
+    break
   }
 }
 
@@ -173,12 +183,35 @@ e.g.
 class ProfileScreen: Screen<ProfileScreenModel>
 ```
 
+#### Instantiate a `Screen` with `ScreenModel`
+
+The `Screen` class has two convenience functions for instantiating a `Screen`:
+```
+public static func createWithNib(screenModel: T) -> Self // Screen with .xib file
+public static func create(screenModel: T) -> Self // in-code Screen
+```
+
+If we are using the *Code* template:
+```
+let screenModel = ProfileScreenModel()
+let screen = ProfileScreen.create(screenModel: screenModel)
+```
+
+If we are using the *With XIB* template:
+```
+let screenModel = ProfileScreenModel()
+let screen = ProfileScreen.createWithNib(screenModel: screenModel)
+```
+
+#### Observing `ScreenModel`'s results
+
 `ScreenModel` needs to define its `Result` type (can be `Void` if not needed), which is needed for its parent `Coordinator` for results observation:
 
 `ProfileScreenModel<MostLikelySomeEnum>`
 
-`Screen + ScreenModel` template will autogenerate this enum for you, ready to be filled with your use cases:
+The `Screen + ScreenModel` template will autogenerate this `enum` for you, ready to be filled with your use cases:
 
+e.g.
 ```
 extension ProfileScreenModel {
     enum Result {
@@ -187,24 +220,6 @@ extension ProfileScreenModel {
 }
 
 class ProfileScreenModel: ScreenModel<ProfileScreenModel.Result>
-```
-
-`Screen` class has two convenience functions for instantiating a `Screen`:
-```
-public static func createWithNib(screenModel: T) -> Self // Screen with .xib file
-public static func create(screenModel: T) -> Self // in-code Screen
-```
-
-If we are using *Code* template:
-```
-let screenModel = ProfileScreenModel()
-let screen = ProfileScreen.create(screenModel: screenModel)
-```
-
-If we are using *With XIB* template:
-```
-let screenModel = ProfileScreenModel()
-let screen = ProfileScreen.createWithNib(screenModel: screenModel)
 ```
 
 A parent `Coordinator`, which sets up the `ScreenModel`, will listen for `ScreenModel`'s results through this callback:
@@ -219,7 +234,19 @@ screenModel.onResult = { [weak self] result in
   switch result {
   case .didLogout: self?.finishFlow?(.didLogout)
   }
+}
 ```
+
+## Logging
+
+A quick note on the logging in this Kit. There is an `MVVMCoordinatorKitLogger` class used for debugging of this Kit to make sure all resources are properly released.
+Logging is disabled by default. You can enable it by calling this (from `AppDelegate` e.g.):
+
+```
+MVVMCoordinatorKitLogger.loggingEnabled = true
+```
+
+You probably won't need this, as it will just pollute your logs.
 
 ## Author
 

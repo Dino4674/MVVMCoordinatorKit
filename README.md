@@ -1,6 +1,6 @@
 # MVVMCoordinatorKit
 
-A Swift Kit that helps you with Screen (`UIViewController`) creation, navigation, and organization into reusable coherent flows using `MVVM` pattern in combination with `Coordinator` pattern.
+A Swift Kit that helps you with Screen (`UIViewController`) creation, navigation, and organization into reusable coherent flows using the `MVVM` pattern in combination with the `Coordinator` pattern.
 
 [![CI Status](https://img.shields.io/travis/Dino Bartosak/MVVMCoordinatorKit.svg?style=flat)](https://travis-ci.org/Dino Bartosak/MVVMCoordinatorKit)
 [![Version](https://img.shields.io/cocoapods/v/MVVMCoordinatorKit.svg?style=flat)](https://cocoapods.org/pods/MVVMCoordinatorKit)
@@ -13,7 +13,9 @@ This Kit aims to speed up your development and help you organize Screens into co
 
 This Kit also helps you create `UIViewController` (the `View` in the `MVVM` pattern) and its `ViewModel`.
 
-*`Model` is not part of this Kit, as it is up to the developers to define their models in the app.*
+`Model` is not part of this Kit, as it is up to the developers to define their models in the app.
+
+**NOTE**: *This README is not meant to describe the ins and outs of the `MVVM` pattern and the evolution from `MVC` to `MVVM`. There are lots of articles online about the `MVVM` and why it is better than `MVC`. If you are reading this README, it is likely that you are already familiar with the `MVVM` and just want a framework that helps you with `MVVM` development.*
 
 ## Requirements
 
@@ -39,28 +41,39 @@ In a classic `MVVM` pattern:
 - `V` stands for `View`
 - `VM` stands for `ViewModel`
 
-Since our `Screen` is a `UIViewController`, this Kit uses different naming conventions for `View` part of the `MVVM`.
+Since Apple forces us through their APIs to use the `MVC` pattern (yes, I am talking about the `UIViewController`), we are used to naming our custom ViewControllers with the *ViewController* suffix, which does not fit well with the `MVVM` naming conventions. We want to treat `UIViewController` as the `Screen`.
 
-`UIView` in iOS represents a view that is part of a `UIViewController`'s view hierarchy, and we want to treat `UIViewController` as the 'main' view --> `Screen`.
+`UIView` in iOS represents a view that is part of a `UIViewController`'s view hierarchy, and we want to treat `UIViewController` as the 'main' view -> `Screen`.
 
-So changes in namings are these:
+Since our `Screen` is a `UIViewController`, this Kit uses different naming conventions for the `View` part of the `MVVM`:
 - `View` -> `Screen`
 - `ViewModel` -> `ScreenModel`
 
 We can call our `MVVM` the `MSSM` (Model-Screen-ScreenModel)
 
-This is to distinguish between the `UIViewController` and `UIView` file names because in your apps, you are likely to have lots of custom `UIView`s, and you are almost certainly going to append *View* suffix to those custom views. Additionally, when creating a `UIViewController`, you are likely to name it with the *ViewController* suffix, which does not fit well with the `MVVM` naming conventions. We want to treat `UIViewController` as the `Screen`.
+This is to distinguish between the `UIViewController` and `UIView` file names because in your apps, you are likely to have lots of custom `UIView`s, and you are almost certainly going to append *View* suffix to those custom views. Additionally, when creating a `UIViewController`, you are likely to name it with the *ViewController* suffix, which, as mentioned, does not fit well with the `MVVM` naming conventions.
 
-## Main classes of interest:
+## Main classes of interest
 
-- `Coordinator` (inherits from `BaseCoordinator`) - encapsulates a particular flow of screens and its business logic
-- `Router` - has a reference to `UINavigationController` and handles navigation logic (push/pop/present/dismiss)
-- `Screen` - a base `UIViewController` with its `ScreenModel`
-- `ScreenModel`
+### `Coordinator<DeepLinkType, CoordinatorOutput>`
+Encapsulates a particular flow of screens and its business logic, with the ability to push/present/setRoot child coordinators.
+
+`Coordinator` has a `CoordinatorOutput` type which is used to notify its parent `Coordinator` when it is finished with its flow.
+
+It also has a `DeepLinkType`, which you can use to implement deep linking specifically to your app needs. Note that each `Coordinator` that you create in a "coordinators tree" will have to have the exact same concrete implementation of `DeepLinkType` (In 99.99% of cases, this will be an `enum` named `DeepLinkOption`).
+
+### `Router`
+Has a reference to `UINavigationController` and handles navigation logic (push/pop/present/dismiss/setRoot). Each `Coordinator` has a reference to one `Router`.
+
+### `Screen<ScreenModel>`
+A base `UIViewController` with its `ScreenModel`.
+
+### `ScreenModel<Result>`
+A `ScreenModel`, coupled with its holding `Screen`. Each `ScreenModel` defines its `Result` type, which is used to notify the `Coordinator` in charge when it produces results worthy of navigation changes.
 
 ## Bindings
 
-MVVMCoordinatorKit is designed not to depend on any particular bindings implementation. The Example app uses `Combine` for bindings between the `Screen` and its `ScreenModel`. You can use `Combine` or any other of your preferred bindings.
+MVVMCoordinatorKit is designed NOT to depend on any particular bindings implementation. The Example app uses `Combine` for bindings between the `Screen` and its `ScreenModel`. You can use `Combine` or any other of your preferred bindings implementation.
 
 ## Templates
 

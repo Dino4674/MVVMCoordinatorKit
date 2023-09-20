@@ -113,7 +113,7 @@ In the screenshots example above, template will generate these 3 files:
 
 The best way to explore MVVMCoordinatorKit is to examine the Example app, which contains all the examples.
 
-### Coordinator + Router
+### `Coordinator` + `Router`
 
 Each `Coordinator` has its own `Router`, which you use to do all the push/pop/present/dismiss calls. However, the `BaseCoordinator` class has convenience functions for `push`, `present`, and `setRoot` `Coordinator`, which automatically handles the release of resources for you.
 
@@ -144,6 +144,7 @@ public var finishFlow: ((CoordinatorOutput) -> ())?
 
 `CoordinatorOutput` is defined in `Coordinator` class and it will most likely be some `enum`:
 
+e.g.
 ```
 enum ProfileCoordinatorResult {
     case didLogout
@@ -152,21 +153,22 @@ enum ProfileCoordinatorResult {
 class ProfileCoordinator: Coordinator<DeepLinkOption, ProfileCoordinatorResult>
 ```
 
-e.g.
 ```
-let coordinator = ExampleCoordinator(router: router)
+let coordinator = ProfileCoordinator(router: router)
 coordinator.finishFlow = { [weak self] coordinatorOutput in
   switch coordinatorOutput {
-  case .someCaseOfYour-MostLikelySomeEnum
+  case .didLogout: break // do something here (show another flow, pop ProfileCoordinator, or call self?.finishFlow to propagate the event up the tree and let the parent Coordinator decide what to do next)
   }
 }
 
 pushCoordinator(coordinator)
 ```
 
-### Screen + ScreenModel
+### `Screen` + `ScreenModel`
 
-Each `Screen` needs to define its `ScreenModel`, e.g.:
+Each `Screen` needs to define its `ScreenModel`.
+
+e.g.
 ```
 class ProfileScreen: Screen<ProfileScreenModel>
 ```
@@ -174,6 +176,18 @@ class ProfileScreen: Screen<ProfileScreenModel>
 `ScreenModel` needs to define its `Result` type (can be `Void` if not needed), which is needed for its parent `Coordinator` for results observation:
 
 `ProfileScreenModel<MostLikelySomeEnum>`
+
+`Screen + ScreenModel` template will autogenerate this enum for you, ready to be filled with your use cases:
+
+```
+extension ProfileScreenModel {
+    enum Result {
+        case didLogout
+    }
+}
+
+class ProfileScreenModel: ScreenModel<ProfileScreenModel.Result>
+```
 
 `Screen` class has two convenience functions for instantiating a `Screen`:
 ```
@@ -193,7 +207,7 @@ let screenModel = ProfileScreenModel()
 let screen = ProfileScreen.createWithNib(screenModel: screenModel)
 ```
 
-A parent `Coordinator`, which sets up the `ScreenModel` will listen for `ScreenModel` results through this callback:
+A parent `Coordinator`, which sets up the `ScreenModel`, will listen for `ScreenModel`'s results through this callback:
 ```
 public var onResult: ((Result) -> Void)?
 ```
@@ -203,7 +217,7 @@ e.g.
 let screenModel = ProfileScreenModel()
 screenModel.onResult = { [weak self] result in
   switch result {
-  case .someCaseOfYour-MostLikelySomeEnum
+  case .didLogout: self?.finishFlow?(.didLogout)
   }
 ```
 

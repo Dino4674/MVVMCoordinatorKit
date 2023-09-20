@@ -77,7 +77,7 @@ MVVMCoordinatorKit is designed NOT to depend on any particular bindings implemen
 
 ## Templates
 
-To reduce the time when creating a particular `Screen+ScreenModel` or `Coordinator`, you can [download](https://github.com/Dino4674/MVVMCoordinatorKit/files/12659000/MVVMCoordinatorKit.Screen.%2B.ScreenModel.%2B.Coordinator.zip) custom templates made for this Kit and move them into one of these two folders: 
+To reduce the time when creating a particular `Screen+ScreenModel` or `Coordinator`, you can [download](https://github.com/Dino4674/MVVMCoordinatorKit/files/12659000/MVVMCoordinatorKit.Screen.%2B.ScreenModel.%2B.Coordinator.zip) custom templates made for this Kit. Move the root extracted folder `MVVMCoordinatorKit (Screen + ScreenModel + Coordinator)` into one of these two folders: 
 
 ```
 ~/Library/Developer/Xcode/Templates
@@ -85,9 +85,8 @@ To reduce the time when creating a particular `Screen+ScreenModel` or `Coordinat
 ```
 /Applications/Xcode.app/Contents/Developer/Library/Xcode/Templates/File Templates
 ```
-Move the root extracted folder (`MVVMCoordinatorKit (Screen + ScreenModel + Coordinator)`) into one of these two locations:
 
-*NOTE: If you add templates to the 2nd location, they won't survive the Xcode update.*
+*NOTE: If you add templates to the 2nd location, they won't survive the Xcode update. I prefer adding all my custom templates to the 1st location.*
 
 ![Screenshot 2023-09-19 at 12 59 53](https://github.com/Dino4674/MVVMCoordinatorKit/assets/1395703/e60cfebc-e87b-4791-8e3d-7dde07bb93fc)
 

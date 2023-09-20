@@ -66,12 +66,12 @@ It also has a `DeepLinkType`, which you can use to implement deep linking specif
 Has a reference to `UINavigationController` and handles navigation logic (push/pop/present/dismiss/setRoot). Each `Coordinator` has a reference to one `Router`.
 
 ### `Screen<ScreenModel>`
-A base `UIViewController` with its `ScreenModel`.
+A base `UIViewController` with its `ScreenModel`. Each `Screen` is defined with its `ScreenModel`.
 
 ### `ScreenModel<Result>`
 A `ScreenModel`, coupled with its holding `Screen`. Each `ScreenModel` defines its `Result` type, which is used to notify the `Coordinator` in charge when it produces results worthy of navigation changes.
 
-## Bindings
+## Bindings (between `Screen` and `ScreenModel`)
 
 MVVMCoordinatorKit is designed NOT to depend on any particular bindings implementation. The Example app uses `Combine` for bindings between the `Screen` and its `ScreenModel`. You can use `Combine` or any other of your preferred bindings implementation.
 

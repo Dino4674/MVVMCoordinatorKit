@@ -1,6 +1,6 @@
 # MVVMCoordinatorKit
 
-A Swift Kit that helps you with Screen navigation and organizing Screens into reusable coherent flows using a `Coordinator` pattern.
+A Swift Kit that helps you with Screen (`UIViewController`) creation, navigation, and organization into reusable coherent flows using `MVVM` pattern in combination with `Coordinator` pattern.
 
 [![CI Status](https://img.shields.io/travis/Dino Bartosak/MVVMCoordinatorKit.svg?style=flat)](https://travis-ci.org/Dino Bartosak/MVVMCoordinatorKit)
 [![Version](https://img.shields.io/cocoapods/v/MVVMCoordinatorKit.svg?style=flat)](https://cocoapods.org/pods/MVVMCoordinatorKit)
@@ -9,7 +9,7 @@ A Swift Kit that helps you with Screen navigation and organizing Screens into re
 
 ## Description
 
-This Kit aims to speed up your development and help you organize screens into coherent flows that are easily reusable using the `Coordinator` pattern, making navigation between screens simple and readable.
+This Kit aims to speed up your development and help you organize Screens into coherent flows that are easily reusable using the `Coordinator` pattern, making navigation between screens simple and readable.
 
 This Kit also helps you create `UIViewController` (the `View` in the `MVVM` pattern) and its `ViewModel`.
 
@@ -17,7 +17,7 @@ This Kit also helps you create `UIViewController` (the `View` in the `MVVM` patt
 
 ## Requirements
 
-- iOS 13.0+
+- iOS 10.0+
 
 ## Installation
 
@@ -35,15 +35,21 @@ To run the example project, clone the repo, and open `Example/MVVMCoordinatorKit
 ## Naming Conventions
 
 In a classic `MVVM` pattern:
-- `M` is `Model`
-- `V` is `View`
-- `VM` is `ViewModel`
+- `M` stands for `Model`
+- `V` stands for `View`
+- `VM` stands for `ViewModel`
 
-Since our `Screen` is a `UIViewController`, this Kit uses different naming conventions for `View` because `UIView` is a subview of a `Screen` (`UIViewController`).
+Since our `Screen` is a `UIViewController`, this Kit uses different naming conventions for `View` part of the `MVVM`.
+
+`UIView` in iOS represents a view that is part of a `UIViewController`'s view hierarchy, and we want to treat `UIViewController` as the 'main' view --> `Screen`.
+
+So changes in namings are these:
 - `View` -> `Screen`
 - `ViewModel` -> `ScreenModel`
 
 We can call our `MVVM` the `MSSM` (Model-Screen-ScreenModel)
+
+This is to distinguish between the `UIViewController` and `UIView` file names because in your apps, you are likely to have lots of custom `UIView`s, and you are almost certainly going to append *View* suffix to those custom views. Additionally, when creating a `UIViewController`, you are likely to name it with the *ViewController* suffix, which does not fit well with the `MVVM` naming conventions. We want to treat `UIViewController` as the `Screen`.
 
 ## Main classes of interest:
 

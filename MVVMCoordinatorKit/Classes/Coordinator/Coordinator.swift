@@ -7,9 +7,9 @@
 
 import UIKit
 
-open class Coordinator<DeepLinkType, CoordinatorOutput>: BaseCoordinator<DeepLinkType>, CoordinatorOutputType {
+open class Coordinator<DeepLinkType, ResultType>: BaseCoordinator<DeepLinkType>, CoordinatorResultType {
 
-    // MARK: CoordinatorType
+    // MARK: CoordinatorResultType
 
-    public var finishFlow: ((CoordinatorOutput) -> ())?
+    public var finishFlow: ((ResultType) -> ())?
 }

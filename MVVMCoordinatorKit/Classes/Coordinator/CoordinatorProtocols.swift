@@ -13,7 +13,7 @@ public protocol BaseCoordinatorType: Presentable {
     var router: Router { get }
 }
 
-public protocol CoordinatorOutputType {
-    associatedtype CoordinatorOutput
-    var finishFlow: ((CoordinatorOutput) -> ())? { get set }
+public protocol CoordinatorResultType {
+    associatedtype ResultType
+    var finishFlow: ((ResultType) -> ())? { get set }
 }

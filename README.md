@@ -57,10 +57,10 @@ This is to distinguish between the `UIViewController` and `UIView` file names be
 
 ## Main classes of interest
 
-### `Coordinator<DeepLinkType, CoordinatorOutput>`
+### `Coordinator<DeepLinkType, ResultType>`
 Encapsulates a particular flow of screens and its business logic, with the ability to push/present/setRoot child coordinators.
 
-`Coordinator` has a `CoordinatorOutput` type which is used to notify its parent `Coordinator` when it is finished with its flow.
+`Coordinator` has a `ResultType` type which is used to notify its parent `Coordinator` when it is finished with its flow.
 
 It also has a `DeepLinkType`, which you can use to implement deep linking specifically to your app needs. Note that each `Coordinator` that you create in a "coordinators tree" will have to have the exact same concrete implementation of `DeepLinkType` (In 99.99% of cases, this will be an `enum` named `DeepLinkOption`).
 
@@ -152,12 +152,12 @@ pushCoordinator(coordinator)
 
 When a `Coordinator` adds a child `Coordinator` (push, present, doesn't matter), it will need to observe its child results, and it is doing it through this callback:
 ```
-public var finishFlow: ((CoordinatorOutput) -> ())?
+public var finishFlow: ((ResultType) -> ())?
 ```
 
-`CoordinatorOutput` is defined in `Coordinator` class and it will most likely be some `enum`.
+`ResultType` is defined in the `Coordinator` class, and it will most likely be some `enum`.
 
-`Coordinator` template will autogenerate this `enum` for you, ready to be filled with your use cases:
+The `Coordinator` template will autogenerate this `enum` for you, ready to be filled with your use cases:
 
 e.g.
 ```
@@ -170,8 +170,8 @@ class ProfileCoordinator: Coordinator<DeepLinkOption, ProfileCoordinatorResult>
 
 ```
 let coordinator = ProfileCoordinator(router: router)
-coordinator.finishFlow = { [weak self] coordinatorOutput in
-  switch coordinatorOutput {
+coordinator.finishFlow = { [weak self] result in
+  switch result {
   case .didLogout: // do something here...
     // show another flow,
     // pop ProfileCoordinator,

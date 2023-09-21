@@ -279,6 +279,39 @@ MVVMCoordinatorKitLogger.loggingEnabled = true
 
 You probably won't need this, as it will just pollute your logs.
 
+## Credits and Sources
+
+This Kit was made possible by bunch of other people that explored and wrote about Coordinators. This Kit is a combination of bunch of ideas from those people.
+It is not meant to be perfect and it will always have space for improvements. Feel free to write suggestions, feature requests, pull requests or just say Hi!
+
+#### How all of this started:
+
+https://khanlou.com/2015/01/the-coordinator/
+
+https://khanlou.com/2015/10/coordinators-redux/
+
+#### When the first problems arrived (handling Screen removal from the view stack, UINavigationController's back button, and screen-edge gesture):
+
+https://khanlou.com/2017/05/back-buttons-and-coordinators/
+
+#### When the back button problem was solved (with the `Router`):
+
+https://hackernoon.com/coordinators-routers-and-back-buttons-c58b021b32a
+
+MVVMCoordinatorKit also has an upgrade for interactive dismissal of presented `UIViewController` (sheet), which the original `Router` solution did not support.
+
+#### When somebody put all this together nicely (these two articles and hackernoon article above are the biggest inspiration for MVVMCoordinatorKit):
+
+https://medium.com/blacklane-engineering/coordinators-essential-tutorial-part-i-376c836e9ba7
+
+https://medium.com/blacklane-engineering/coordinators-essential-tutorial-part-ii-b5ab3eb4a74
+
+#### Honorable mentions (not many ideas taken from these two articles, but still a good read if you want to explore the Coordinator pattern):
+
+https://www.hackingwithswift.com/articles/71/how-to-use-the-coordinator-pattern-in-ios-apps
+
+https://www.hackingwithswift.com/articles/175/advanced-coordinator-pattern-tutorial-ios
+
 ## Author
 
 Dino Bartosak, dino.bartosak@gmail.com

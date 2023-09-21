@@ -298,7 +298,7 @@ https://khanlou.com/2017/05/back-buttons-and-coordinators/
 
 https://hackernoon.com/coordinators-routers-and-back-buttons-c58b021b32a
 
-MVVMCoordinatorKit also has an upgrade for interactive dismissal of presented `UIViewController` (sheet), which the original `Router` solution did not support.
+*MVVMCoordinatorKit also has an upgrade for interactive dismissal of presented `UIViewController` (sheet), which the original `Router` solution did not support.*
 
 #### When somebody put all this together nicely (these two articles and hackernoon article above are the biggest inspiration for MVVMCoordinatorKit):
 

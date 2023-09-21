@@ -51,7 +51,7 @@ Since our `Screen` is a `UIViewController`, this Kit uses different naming conve
 - `View` -> `Screen`
 - `ViewModel` -> `ScreenModel`
 
-We can call our `MVVM` the `MSSM` (Model-Screen-ScreenModel)
+We can call our `MVVM` the `MSSM` (Model-Screen-ScreenModel).
 
 This is to distinguish between the `UIViewController` and `UIView` file names because in your apps, you are likely to have lots of custom `UIView`s, and you are almost certainly going to append *View* suffix to those custom views. Additionally, when creating a `UIViewController`, you are likely to name it with the *ViewController* suffix, which, as mentioned, does not fit well with the `MVVM` naming conventions. This Kit encourages the usage of the *Screen* suffix for `UIViewController`s.
 
@@ -119,14 +119,14 @@ The best way to explore MVVMCoordinatorKit is to examine the Example app, which 
 
 #### Navigation (Push/Present)
 
-Each `Coordinator` has its own `Router`, which you use to do all the push/pop/present/dismiss calls. However, the `BaseCoordinator` class has convenience functions for `push`, `present`, and `setRoot` `Coordinator`, which automatically handles the release of resources for you when `Screen` is removed from the view stack. It doesn't matter how the Screen is removed, all cases are supported for resources autorelease:
+Each `Coordinator` has its own `Router`, which you use to do all the push/pop/present/dismiss calls. However, the `BaseCoordinator` class has convenience functions for `push`, `present`, and `setRoot` `Coordinator`, which automatically handles the release of resources for you when `Screen` is removed from the view stack. It doesn't matter how the `Screen` is removed, all cases are supported for resources autorelease:
 - Pushed `Coordinator`
     - *Back* button from `UINavigationController`
-    - interactive left-screen-edge pan
-    - manual call of `router.popModule`
+    - interactive left-screen-edge pan pop gesture
+    - manual call to `router.popModule`
 - Presented `Coordinator`
     - interactive top-to-bottom pan dismiss gesture
-    - manual call of `router.dismissModule`
+    - manual call to `router.dismissModule`
 
 ```
 public func pushCoordinator(_ coordinator: BaseCoordinator, deepLink: DeepLinkType? = nil, animated: Bool = true, onPop: RouterCompletion? = nil)
@@ -134,7 +134,7 @@ public func presentCoordinator(_ coordinator: BaseCoordinator, deepLink: DeepLin
 public func setRootCoordinator(_ coordinator: BaseCoordinator, deepLink: DeepLinkType? = nil, animated: Bool = true, onPop: RouterCompletion? = nil)
 ```
 
-Typically if we want to PRESENT flow, we would create a new `Router` with a new `UINavigationController`:
+Typically if we want to PRESENT a flow, we would create a new `Router` with a new `UINavigationController`:
 ```
 let navigationController = UINavigationController()
 let router = Router(navigationController: navigationController)
@@ -142,7 +142,7 @@ let coordinator = ExampleCoordinator(router: router)
 presentCoordinator(coordinator)
 ```
 
-If we want to PUSH flow, we will use the same `Router` from the current `Coordinator`:
+If we want to PUSH a flow, we will use the same `Router` from the current `Coordinator`:
 ```
 let coordinator = ExampleCoordinator(router: router)
 pushCoordinator(coordinator)
@@ -173,8 +173,7 @@ let coordinator = ProfileCoordinator(router: router)
 coordinator.finishFlow = { [weak self] result in
   switch result {
   case .didLogout: // do something here...
-    // show another flow,
-    // pop ProfileCoordinator,
+    // push or present another flow,
     // or call self?.finishFlow to propagate the event up the tree and let the parent Coordinator decide what to do next
     break
   }

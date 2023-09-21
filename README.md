@@ -107,7 +107,7 @@ Optionally select whether to import `Combine` framework with an example code ser
 
 ![MVVM-2](https://github.com/Dino4674/MVVMCoordinatorKit/assets/1395703/aea9591f-5d2e-4fd1-81c8-1e9a572bb11f)
 
-In the screenshots example above, template will generate these 3 files:
+In the screenshots example above, the template will generate these 3 files:
 
 ![MVVM-3](https://github.com/Dino4674/MVVMCoordinatorKit/assets/1395703/da04e732-39eb-4e09-9050-4b35633c7fa5)
 
@@ -238,7 +238,7 @@ public var onResult: ((Result) -> Void)?
 
 e.g.
 ```
-// we are in ProfileCoordinator here
+// We are in ProfileCoordinator here
 let screenModel = ProfileScreenModel()
 screenModel.onResult = { [weak self] result in
   switch result {
@@ -247,10 +247,32 @@ screenModel.onResult = { [weak self] result in
 }
 ```
 
+#### `ScreenModel` <--> `Screen` bindings
+
+Since this Kit does not depend on any particular bindings implementation, it is up to you which one you want to use. The `Screen + ScreenModel` template will generate two empty `struct`s inside `ScreenModel`, which you can use for the `Screen`'s `input` and `output`:
+- `Input`
+    - fill with all possible inputs from the view (e.g. `buttonTap`, `swipeGestureActivated`, or any other...)
+- `Output`
+    - fill with all possible outputs for the view (e.g. `loginButtonTitle`, `screenTitle`, `actionButtonEnabled`, or any other...)
+
+e.g. (Using `Combine`)
+```
+extension ProfileScreenModel: ScreenModelType {
+    struct Input {
+        let logout: PassthroughSubject<Void, Never>
+    }
+
+    struct Output {
+        let screenTitle: AnyPublisher<String?, Never>
+        let logoutButtonTitle: AnyPublisher<String?, Never>
+    }
+}
+```
+
 ## Logging
 
 A quick note on logging in this Kit. There is an `MVVMCoordinatorKitLogger` class used for debugging this Kit to make sure all resources are properly released.
-Logging is disabled by default. You can enable it by calling this (from `AppDelegate` e.g.):
+Logging is disabled by default. You can enable it by calling this (e.g. from `AppDelegate`):
 
 ```
 MVVMCoordinatorKitLogger.loggingEnabled = true

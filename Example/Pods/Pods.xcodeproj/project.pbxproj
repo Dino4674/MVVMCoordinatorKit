@@ -482,7 +482,7 @@
 				GCC_PREFIX_HEADER = "Target Support Files/MVVMCoordinatorKit/MVVMCoordinatorKit-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/MVVMCoordinatorKit/MVVMCoordinatorKit-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/MVVMCoordinatorKit/MVVMCoordinatorKit.modulemap";
 				PRODUCT_MODULE_NAME = MVVMCoordinatorKit;
@@ -514,7 +514,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = "Target Support Files/Pods-MVVMCoordinatorKit_Tests/Pods-MVVMCoordinatorKit_Tests-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MACH_O_TYPE = staticlib;
 				MODULEMAP_FILE = "Target Support Files/Pods-MVVMCoordinatorKit_Tests/Pods-MVVMCoordinatorKit_Tests.modulemap";
@@ -548,7 +548,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = "Target Support Files/Pods-MVVMCoordinatorKit_Example/Pods-MVVMCoordinatorKit_Example-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MACH_O_TYPE = staticlib;
 				MODULEMAP_FILE = "Target Support Files/Pods-MVVMCoordinatorKit_Example/Pods-MVVMCoordinatorKit_Example.modulemap";
@@ -582,7 +582,7 @@
 				GCC_PREFIX_HEADER = "Target Support Files/MVVMCoordinatorKit/MVVMCoordinatorKit-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/MVVMCoordinatorKit/MVVMCoordinatorKit-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/MVVMCoordinatorKit/MVVMCoordinatorKit.modulemap";
 				PRODUCT_MODULE_NAME = MVVMCoordinatorKit;
@@ -613,7 +613,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = "Target Support Files/Pods-MVVMCoordinatorKit_Tests/Pods-MVVMCoordinatorKit_Tests-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MACH_O_TYPE = staticlib;
 				MODULEMAP_FILE = "Target Support Files/Pods-MVVMCoordinatorKit_Tests/Pods-MVVMCoordinatorKit_Tests.modulemap";
@@ -646,7 +646,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = "Target Support Files/Pods-MVVMCoordinatorKit_Example/Pods-MVVMCoordinatorKit_Example-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MACH_O_TYPE = staticlib;
 				MODULEMAP_FILE = "Target Support Files/Pods-MVVMCoordinatorKit_Example/Pods-MVVMCoordinatorKit_Example.modulemap";

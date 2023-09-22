@@ -79,7 +79,7 @@ MVVMCoordinatorKit is designed NOT to depend on any particular bindings implemen
 
 ## Templates
 
-To reduce the time when creating a particular `Screen + ScreenModel` or `Coordinator`, you can [download](https://github.com/Dino4674/MVVMCoordinatorKit/files/12659000/MVVMCoordinatorKit.Screen.%2B.ScreenModel.%2B.Coordinator.zip) custom templates made for this Kit. Move the root extracted folder `MVVMCoordinatorKit (Screen + ScreenModel + Coordinator)` into one of these two folders: 
+To reduce the time when creating a particular `Screen + ScreenModel` or `Coordinator`, you can [download](https://github.com/Dino4674/MVVMCoordinatorKit/files/12697636/MVVMCoordinatorKit.zip) custom templates made for this Kit. Move the root extracted folder `MVVMCoordinatorKit` into one of these two folders: 
 
 ```
 ~/Library/Developer/Xcode/Templates
@@ -90,7 +90,7 @@ To reduce the time when creating a particular `Screen + ScreenModel` or `Coordin
 
 *NOTE: If you add templates to the 2nd location, they won't survive the Xcode update.*
 
-![Screenshot 2023-09-19 at 12 59 53](https://github.com/Dino4674/MVVMCoordinatorKit/assets/1395703/e60cfebc-e87b-4791-8e3d-7dde07bb93fc)
+![Screenshot 2023-09-22 at 08 54 13](https://github.com/Dino4674/MVVMCoordinatorKit/assets/1395703/998eb21b-d248-4f69-b031-78d37d26ac00)
 
 With these templates, you can create files more quickly without the need for adding boilerplate code every time.
 There are templates for `Screen + ScreenModel` and for `Coordinator`.
@@ -281,8 +281,8 @@ You probably won't need this, as it will just pollute your logs.
 
 ## Credits and Sources
 
-This Kit was made possible by bunch of other people that explored and wrote about Coordinators. This Kit is a combination of bunch of ideas from those people.
-It is not meant to be perfect and it will always have space for improvements. Feel free to write suggestions, feature requests, pull requests or just say Hi!
+This Kit was made possible by a bunch of other people who explored and wrote about Coordinators. This Kit is a combination of ideas from those people.
+It is not meant to be perfect, and it will always have space for improvement. Feel free to write suggestions, feature requests, pull requests, or just say Hi!
 
 #### How all of this started:
 
@@ -298,7 +298,7 @@ https://khanlou.com/2017/05/back-buttons-and-coordinators/
 
 https://hackernoon.com/coordinators-routers-and-back-buttons-c58b021b32a
 
-*MVVMCoordinatorKit also has an upgrade for interactive dismissal of presented `UIViewController` (sheet), which the original `Router` solution did not support.*
+*MVVMCoordinatorKit also has an upgrade for interactive dismissal of presented `UIViewController` (sheet) and autorelease of resources, which the original `Router` solution did not support. Additionally, MVVMCoordinatorKit has an upgrade for `setRootModule` and its completion block, which is used for the autorelease of resources.*
 
 #### When somebody put all this together nicely (these two articles and hackernoon article above are the biggest inspiration for MVVMCoordinatorKit):
 

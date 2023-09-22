@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'MVVMCoordinatorKit'
-  s.version          = '0.1.0'
+  s.version          = '0.1.1'
   s.summary          = 'Kit that helps you with UIViewController creation, navigation, and organization into reusable flows using the MVVM+Coordinator pattern.'
 
   s.description      = <<-DESC

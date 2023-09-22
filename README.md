@@ -2,7 +2,7 @@
 
 A Swift Kit that helps you with Screen (`UIViewController`) creation, navigation, and organization into reusable coherent flows using the `MVVM` pattern in combination with the `Coordinator` pattern.
 
-https://github.com/Dino4674/MVVMCoordinatorKit/assets/1395703/9e97c173-8ed2-488f-a288-34b27f2bd7f1
+https://github.com/Dino4674/MVVMCoordinatorKit/assets/1395703/760508e3-d3ec-453f-89dd-0869f712cf47
 
 [![Version](https://img.shields.io/cocoapods/v/MVVMCoordinatorKit.svg?style=flat)](https://cocoapods.org/pods/MVVMCoordinatorKit)
 
@@ -88,7 +88,7 @@ To reduce the time when creating a particular `Screen + ScreenModel` or `Coordin
 
 *NOTE: If you add templates to the 2nd location, they won't survive the Xcode update.*
 
-![Screenshot 2023-09-22 at 08 54 13](https://github.com/Dino4674/MVVMCoordinatorKit/assets/1395703/998eb21b-d248-4f69-b031-78d37d26ac00)
+![269855421-998eb21b-d248-4f69-b031-78d37d26ac00](https://github.com/Dino4674/MVVMCoordinatorKit/assets/1395703/92887417-f7a2-438f-94aa-0a7948a1898e)
 
 With these templates, you can create files more quickly without the need for adding boilerplate code every time.
 There are templates for `Screen + ScreenModel` and for `Coordinator`.
@@ -99,15 +99,15 @@ Additionally, when using the `Screen + ScreenModel` template you can pick a *Vie
 - *With XIB*
     - creates a `*Module Name*Screen.swift` WITH a companion `.xib` file (plus the `*Module Name*ScreenModel.swift`).
 
-![MVVM-1](https://github.com/Dino4674/MVVMCoordinatorKit/assets/1395703/4a9b65c2-7a4c-41e3-9cf2-561ab410089f)
+![268934845-4a9b65c2-7a4c-41e3-9cf2-561ab410089f](https://github.com/Dino4674/MVVMCoordinatorKit/assets/1395703/d8d944dd-d5b4-4fff-85c9-37d4f64a62b0)
 
 Optionally select whether to import `Combine` framework with an example code serving you as a starter point for your `Screen` and `ScreenModel`.
 
-![MVVM-2](https://github.com/Dino4674/MVVMCoordinatorKit/assets/1395703/aea9591f-5d2e-4fd1-81c8-1e9a572bb11f)
+![268934859-aea9591f-5d2e-4fd1-81c8-1e9a572bb11f](https://github.com/Dino4674/MVVMCoordinatorKit/assets/1395703/6dbdd16e-407c-454e-ae66-588e62149f7b)
 
 In the screenshots example above, the template will generate these 3 files:
 
-![MVVM-3](https://github.com/Dino4674/MVVMCoordinatorKit/assets/1395703/da04e732-39eb-4e09-9050-4b35633c7fa5)
+![268934861-da04e732-39eb-4e09-9050-4b35633c7fa5](https://github.com/Dino4674/MVVMCoordinatorKit/assets/1395703/c984f657-091c-489d-aa8d-16de7be24f6e)
 
 ## Usage
 

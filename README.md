@@ -21,7 +21,7 @@ This Kit also helps you create `UIViewController` (the `View` in the `MVVM` patt
 
 ## Requirements
 
-- iOS 10.0+
+- iOS 11.0+
 - Swift 5.0+
 
 ## Installation

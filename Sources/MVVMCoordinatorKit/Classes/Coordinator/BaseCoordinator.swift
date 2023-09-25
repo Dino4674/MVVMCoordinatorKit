@@ -5,7 +5,7 @@
 //  Created by Dino Bartosak on 15.09.2023.
 //
 
-import Foundation
+import UIKit
 
 open class BaseCoordinator<DeepLinkType>: NSObject, BaseCoordinatorType {
 

@@ -42,6 +42,8 @@ Search for this package in Xcode's *Package Dependencies* and add it:
 https://github.com/Dino4674/MVVMCoordinatorKit
 ```
 
+![Screenshot 2023-09-25 at 13 07 25](https://github.com/Dino4674/MVVMCoordinatorKit/assets/1395703/9a821c86-7f47-400c-b212-c6332249d18f)
+
 ## Example
 
 To run the example project, clone the repo, and open `Example/MVVMCoordinatorKit.xcworkspace`.

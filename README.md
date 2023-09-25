@@ -24,11 +24,22 @@ This Kit also helps you create `UIViewController` (the `View` in the `MVVM` patt
 
 ## Installation
 
+### CocoaPods
+
 MVVMCoordinatorKit is available through [CocoaPods](https://cocoapods.org). To install
 it, simply add the following line to your Podfile:
 
 ```ruby
 pod 'MVVMCoordinatorKit'
+```
+
+### Swift Package Manager
+
+The [Swift Package Manager](https://swift.org/package-manager/) is a tool for automating the distribution of Swift code and is integrated into the `swift` compiler.
+
+Search for this package in Xcode's *Package Dependencies* and add it: 
+```
+https://github.com/Dino4674/MVVMCoordinatorKit
 ```
 
 ## Example

@@ -5,6 +5,7 @@ A Swift Kit that helps you with Screen (`UIViewController`) creation, navigation
 https://github.com/Dino4674/MVVMCoordinatorKit/assets/1395703/760508e3-d3ec-453f-89dd-0869f712cf47
 
 [![Version](https://img.shields.io/cocoapods/v/MVVMCoordinatorKit.svg?style=flat)](https://cocoapods.org/pods/MVVMCoordinatorKit)
+[![Swift Package Manager](https://img.shields.io/badge/Swift_Package_Manager-compatible-orange?style=flat-square)](https://img.shields.io/badge/Swift_Package_Manager-compatible-orange?style=flat-square)
 
 ## Description
 
